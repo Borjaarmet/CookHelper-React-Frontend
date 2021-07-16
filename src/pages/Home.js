@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-// import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import recipeClient from '../lib/recipeClient'
 import Signup from '../components/Signup'
 
@@ -15,9 +15,11 @@ class Home extends Component {
     console.log("compdidmount")
     try{
       recipeClient.getAllRecipes().then(data => {
-        console.log("recipes: ", data)
+        console.log("recipes: ", data.recipes)
+        console.log(data.recipes)
+        
         this.setState({
-          recipes: data
+          recipes: data.recipes.slice(0,12)
         })
       })
     }
@@ -39,24 +41,33 @@ class Home extends Component {
         </div>
         <div>
         <h1>Some recipes</h1>
-        </div>
-        <div>
-        <h1>Sign up</h1>
-        <Signup/>
-        </div>
-        
-         {/* <div style={{width: '60%', float:"left"}}>
+         <div style={{ width: '20%'}}>
           { this.state.recipes.map( (recipe) => {
             return (
               <div key={recipe._id}>
                 <Link to={`/recipes/${recipe._id}/details`}>
                   <h3>{recipe.recipeName}</h3>
                 </Link>
-                 <p style={{maxWidth: '400px'}} >{recipe.videoLinK} </p>
+                 <iframe
+                    width='200'
+                    height='200'
+                    src={recipe.videoLink}
+                    title='YouTube video player'
+                    frameBorder='0'
+                    allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
+                    allowFullScreen
+                 ></iframe>
               </div>
             )})
           }
-        </div> */}
+        </div> 
+        </div>
+        <div>
+        <h1>Sign up</h1>
+        <Signup/>
+        </div>
+        
+         
       </div>
     )
   }

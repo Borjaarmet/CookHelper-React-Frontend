@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Switch, Route } from 'react-router-dom';
+import { Switch } from 'react-router-dom';
 
 import Navbar from './components/Navbar';
 import PrivateRoute from './components/PrivateRoute';
@@ -20,7 +20,7 @@ class App extends Component {
 			<div className="container">
 				<Navbar />
 				<Switch>
-					<Route exact path= "/" component= {Home}/>
+					<AnonRoute exact path= "/" component= {Home}/>
 					{/* <AnonRoute path="/signup" component={Signup} /> */}
 					<AnonRoute path="/login" component={Login} />
 					<PrivateRoute path="/private" component={Private} />
