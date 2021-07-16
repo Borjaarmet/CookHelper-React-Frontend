@@ -6,7 +6,7 @@ import PrivateRoute from './components/PrivateRoute';
 import AnonRoute from './components/AnonRoute';
 import Private from './pages/Private';
 import Home from './pages/Home';
-import Signup from './pages/Signup';
+// import Signup from './components/Signup';
 import Login from './pages/Login';
 import { withAuth } from './providers/AuthProvider';
 
@@ -18,12 +18,11 @@ class App extends Component {
 		}
 		return (
 			<div className="container">
-				<h1>Basic React Authentication</h1>
 				<Navbar />
 				<Switch>
-					<AnonRoute path="/signup" component={Signup} />
+					<Route exact path= "/" component= {Home}/>
+					{/* <AnonRoute path="/signup" component={Signup} /> */}
 					<AnonRoute path="/login" component={Login} />
-					<Route exact path= "/recipes" component= {Home}/>
 					<PrivateRoute path="/private" component={Private} />
 				</Switch>
 			</div>

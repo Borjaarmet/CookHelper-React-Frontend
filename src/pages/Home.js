@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
+// import { Link } from 'react-router-dom'
 import recipeClient from '../lib/recipeClient'
+import Signup from '../components/Signup'
 
 class Home extends Component {
   constructor(props){
@@ -30,19 +31,32 @@ class Home extends Component {
     console.log(this.state.recipes)
     return (
       <div>
-        <h1>list of recipes</h1>
-         <div style={{width: '60%', float:"left"}}>
-          { this.state.recipes.map( recipe => {
+        <div>
+        <h1>CookHelper App</h1>
+        </div>
+        <div>
+        <h1>About</h1>
+        </div>
+        <div>
+        <h1>Some recipes</h1>
+        </div>
+        <div>
+        <h1>Sign up</h1>
+        <Signup/>
+        </div>
+        
+         {/* <div style={{width: '60%', float:"left"}}>
+          { this.state.recipes.map( (recipe) => {
             return (
               <div key={recipe._id}>
                 <Link to={`/recipes/${recipe._id}/details`}>
                   <h3>{recipe.recipeName}</h3>
                 </Link>
-                 <p style={{maxWidth: '400px'}} >{recipe.videoLinK} </p> 
+                 <p style={{maxWidth: '400px'}} >{recipe.videoLinK} </p>
               </div>
             )})
           }
-        </div>
+        </div> */}
       </div>
     )
   }
