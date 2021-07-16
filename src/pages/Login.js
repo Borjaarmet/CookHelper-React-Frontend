@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { withAuth } from "../providers/AuthProvider";
+import apiClient from "../lib/apiClient";
 
 
 class Login extends Component {
@@ -11,7 +12,13 @@ class Login extends Component {
     };
   }
 
-  handleFormSubmit = event => {
+  componentDidMount = () => {
+    apiClient.login(this.state.username).then((user) => {
+      
+    })
+  }
+
+  handleFormSubmit = (event) => {
     event.preventDefault();
     const { username, password } = this.state;
     this.props.login({
@@ -21,6 +28,7 @@ class Login extends Component {
   };
 
   handleChange = event => {
+    console.log("name: ", event.target.value)
     const { name, value } = event.target;
     this.setState({ [name]: value });
   };

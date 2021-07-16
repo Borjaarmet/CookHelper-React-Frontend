@@ -3,7 +3,7 @@ import axios from 'axios';
 class ApiClient {
 	constructor() {
 		this.apiClient = axios.create({
-			baseURL: process.env.REACT_APP_API_URI,
+			baseURL: "http://localhost:5000",
 			withCredentials: true,
 		});
 	}
@@ -13,8 +13,8 @@ class ApiClient {
 	}
 
 	signup(user) {
-		const { username, password } = user;
-		return this.apiClient.post('/signup', { username, password }).then(({ data }) => data);
+		const { username, password, email } = user;
+		return this.apiClient.post('/signup', { username, password, email }).then(({ data }) => data);
 	}
 
 	login(user) {
