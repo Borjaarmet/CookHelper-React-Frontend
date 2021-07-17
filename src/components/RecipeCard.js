@@ -6,7 +6,7 @@ class RecipeCard extends Component {
   constructor(props) {
     super(props)
     this.state={
-      recipe:{}
+      recipe: [],
     }
   }
 

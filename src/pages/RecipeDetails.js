@@ -10,6 +10,7 @@ class RecipeDetail extends Component {
     return (
       <>
       <Navbar/>
+      {/* No pintar card, directamente los detalles */}
       <RecipeCard/>
       </>
     )
