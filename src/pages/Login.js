@@ -14,7 +14,11 @@ class Login extends Component {
 
   componentDidMount = () => {
     apiClient.login(this.state.username).then((user) => {
-      
+     console.log(user)
+      // this.setState({
+      //   username: user,
+      //   password: user
+      // })
     })
   }
 
@@ -28,7 +32,7 @@ class Login extends Component {
   };
 
   handleChange = event => {
-    console.log("name: ", event.target.value)
+    
     const { name, value } = event.target;
     this.setState({ [name]: value });
   };

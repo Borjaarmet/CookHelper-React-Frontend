@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
-import { Switch } from 'react-router-dom';
-
-import Navbar from './components/Navbar';
+import { Switch, Route } from 'react-router-dom';
 import PrivateRoute from './components/PrivateRoute';
 import AnonRoute from './components/AnonRoute';
 import Private from './pages/Private';
@@ -9,6 +7,8 @@ import Home from './pages/Home';
 // import Signup from './components/Signup';
 import Login from './pages/Login';
 import { withAuth } from './providers/AuthProvider';
+
+import RecipeDetail from './pages/RecipeDetails';
 
 class App extends Component {
 	render() {
@@ -18,12 +18,13 @@ class App extends Component {
 		}
 		return (
 			<div className="container">
-				<Navbar />
+				
 				<Switch>
 					<AnonRoute exact path= "/" component= {Home}/>
 					{/* <AnonRoute path="/signup" component={Signup} /> */}
 					<AnonRoute path="/login" component={Login} />
 					<PrivateRoute path="/private" component={Private} />
+					<Route path="/recipes/:id/details" component= {RecipeDetail}/>
 				</Switch>
 			</div>
 		);

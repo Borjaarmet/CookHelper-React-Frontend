@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import recipeClient from '../lib/recipeClient'
 import Signup from '../components/Signup'
+import Navbar from '../components/Navbar';
 
 class Home extends Component {
   constructor(props){
@@ -16,7 +17,7 @@ class Home extends Component {
     try{
       recipeClient.getAllRecipes().then(data => {
         console.log("recipes: ", data.recipes)
-        console.log(data.recipes)
+       
         
         this.setState({
           recipes: data.recipes.slice(0,12)
@@ -30,9 +31,9 @@ class Home extends Component {
 
   render() {
     console.log("render")
-    console.log(this.state.recipes)
     return (
       <div>
+        <Navbar/>
         <div>
         <h1>CookHelper App</h1>
         </div>

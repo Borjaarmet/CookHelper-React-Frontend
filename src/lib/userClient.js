@@ -26,6 +26,18 @@ class RecipeClient {
 		return this.recipeClient.post(`/user/profiloe/create`, {recipeName, difficulty, TimeToCook, ingredientsList, Steps, videoLink}).then(response => response.data);
 	}
 
+  getUserDeleteRecipeCreated(id) {
+		return this.userClient.delete(`/user/profile/${id}`).then(({ data }) => data);
+	}
+
+   getUserFavouriteList() {
+		return this.userClient.get('/user/favourites').then(({ data }) => data);
+	}
+
+  getUserDeleteRecipeFromFav(id) {
+		return this.userClient.delete(`/user/favourites/${id}`).then(({ data }) => data);
+	}
+
 };
 
 const recipeClient = new RecipeClient();
