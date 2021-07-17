@@ -25,7 +25,6 @@ class RecipeClient {
     const {id} = recipe._id
 		return this.recipeClient.post(`/recipes/${id}`, {recipeName, difficulty, TimeToCook, ingredientsList, Steps, videoLink}).then(response => response.data);
 	}
-
 };
 
 const recipeClient = new RecipeClient();

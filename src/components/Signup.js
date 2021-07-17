@@ -15,7 +15,13 @@ class Signup extends Component {
   handleFormSubmit = event => {
     event.preventDefault();
     const { username, password, email } = this.state;
-    this.props.signup({ username, password, email });
+    try {
+      this.props.signup({ username, password, email });
+    } catch (error) {
+      console.log(error);
+    } finally {
+      this.props.history.push('/app');
+    }
   };
 
   handleChange = event => {
@@ -25,7 +31,7 @@ class Signup extends Component {
 
   render() {
     const { username, password, email } = this.state;
-    return (
+    return ( 
       <div>
         <form onSubmit={this.handleFormSubmit}>
           <label>Username:</label>

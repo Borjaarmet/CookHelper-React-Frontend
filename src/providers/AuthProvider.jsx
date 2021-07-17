@@ -102,7 +102,7 @@ class AuthProvider extends Component {
         user: null,
       })
     } catch (e) {
-
+      console.log(e)
     }
   }
 

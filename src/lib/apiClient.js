@@ -23,7 +23,7 @@ class ApiClient {
 	}
 
 	logout() {
-		return this.apiClient.post('/logout', {}).then(response => response.data);
+		return this.apiClient.get('/logout', {}).then(response => response.data);
 	}
 }
 

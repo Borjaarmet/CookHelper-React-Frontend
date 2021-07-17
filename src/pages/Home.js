@@ -17,8 +17,6 @@ class Home extends Component {
     try{
       recipeClient.getAllRecipes().then(data => {
         console.log("recipes: ", data.recipes)
-       
-        
         this.setState({
           recipes: data.recipes.slice(0,12)
         })
