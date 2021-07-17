@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+// import { Link } from 'react-router-dom'
 import recipeClient from '../lib/recipeClient'
 
 
@@ -12,8 +13,10 @@ class RecipeCard extends Component {
 
    componentDidMount = () => {
     console.log("compdidmount")
+    const {id} = this.props.match.params.recipeId
     try{
-      recipeClient.getRecipeDetails().then(data => {
+     
+      recipeClient.getRecipeDetails(id).then(data => {
         console.log("recipe: ",data)
         this.setState({
           recipe: data
@@ -31,9 +34,9 @@ class RecipeCard extends Component {
       <div>
         <h1>Recipe card</h1>
         <div>
-      
-        <h1>Recipe details</h1>
-        
+          {/* <Link to={`/recipes/${recipe._id}/details`}>
+            <h3>{recipe.recipeName}</h3>
+          </Link> */}
           {/* <div style={{ width: '20%'}}>
           { this.state.recipe.map( (elem) => {
             return (
