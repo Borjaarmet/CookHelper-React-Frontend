@@ -24,7 +24,7 @@ class App extends Component {
 					<AnonRoute path="/signup" component={Signup} />
 					<AnonRoute path="/login" component={Login} />
 					<PrivateRoute path="/app" component={Home} />
-					<Route path="/recipes/:id/details" component= {RecipeDetail}/>
+					<Route path="/recipes/details" component= {RecipeDetail}/>
 				</Switch>
 			</div>
 		);
