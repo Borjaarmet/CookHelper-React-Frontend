@@ -34,7 +34,7 @@ class RecipeCard extends Component {
       
         <h1>Recipe details</h1>
         
-          <div style={{ width: '20%'}}>
+          {/* <div style={{ width: '20%'}}>
           { this.state.recipe.map( (elem) => {
             return (
               <div key={elem._id}>
@@ -54,7 +54,7 @@ class RecipeCard extends Component {
               </div>
             )})
           }
-        </div> 
+        </div>  */}
         <button>Add to favourites</button>    
       </div>
       </div>
