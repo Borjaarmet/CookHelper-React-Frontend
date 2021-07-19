@@ -20,12 +20,12 @@ class Navbar extends Component {
 						   </Link>
 						  </div>
 							<div>
-						   <Link to={`/user/${user._id}/profile`}>
+						   <Link to={`/user/favourites`}>
 						    <p className="navLink">FavList</p>
 						   </Link>
 						  </div>
 							<div>
-						   <Link to={`/user/${user._id}/profile`}>
+						   <Link to={`/user/create`}>
 						    <p className="navLink">Create recipe</p>
 						   </Link>
 						  </div>
