@@ -48,12 +48,8 @@ class Main extends Component {
     console.log(this.state.initialRecipes)
 		return (
 			<>
-			
         <Navbar/>
-      
-      
 				<SearchInput onSearchValue = {this.handleSearchValue} value= {this.state.searchValue}/>
-			
 				<div>
           <h1>Some recipes</h1>
            <div style={{ width: '20%'}}>
