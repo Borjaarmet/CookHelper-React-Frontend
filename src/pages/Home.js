@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import Navbar from '../components/Navbar';
-import '../App.css/Navbar.css'
+import '../App.css'
+import TitleSection from '../components/TitleSection';
+
 class Home extends Component {
  
 
@@ -12,17 +14,18 @@ class Home extends Component {
       <div className="navbar">
        <Navbar/>
       </div>
-      <div className="container">
-        <div>
-        <h1>CookHelper App</h1>
+      <TitleSection/>
+      {/* <div className="container">
+        <div className="titleSection">
+         <h1>CookHelper App</h1>
         </div>
-        <div>
+        <div className="AboutSection">
         <h1>About</h1>
         </div>
-        <div>
-        <h1>Some Recipes</h1>
+        <div className="RecipesSection">
+        <h1>Some recipes</h1>
         </div>
-      </div>
+      </div> */}
       </>
     )
   }
