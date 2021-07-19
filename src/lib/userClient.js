@@ -18,16 +18,16 @@ class RecipeClient {
 	}
 
 	getUserCreatedRecipesList() {
-		return this.userClient.get(`/user/profile/create`).then(({ data }) => data);
+		return this.userClient.get(`/user/create`).then(({ data }) => data);
 	}
 
 	getUserCreateRecipe(body) {
     const {recipeName, difficulty, TimeToCook, ingredientsList, Steps, videoLink} = body
-		return this.recipeClient.post(`/user/profiloe/create`, {recipeName, difficulty, TimeToCook, ingredientsList, Steps, videoLink}).then(response => response.data);
+		return this.recipeClient.post(`/user/create`, {recipeName, difficulty, TimeToCook, ingredientsList, Steps, videoLink}).then(response => response.data);
 	}
 
   getUserDeleteRecipeCreated(id) {
-		return this.userClient.delete(`/user/profile/${id}`).then(({ data }) => data);
+		return this.userClient.delete(`/user/create/${id}`).then(({ data }) => data);
 	}
 
    getUserFavouriteList() {
