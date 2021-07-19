@@ -13,6 +13,8 @@ import Signup from './pages/Signup';
 import Login from './pages/Login';
 import Profile from './pages/Profile';
 import RecipeDetail from './pages/RecipeDetails';
+import CreateRecipe from './pages/CreateRecipe'
+import FavList from './pages/FavList'
 
 // import provider
 import { withAuth } from './providers/AuthProvider';
