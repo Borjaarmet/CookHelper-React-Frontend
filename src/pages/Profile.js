@@ -13,7 +13,7 @@ import { withAuth } from '../providers/AuthProvider';
 
   async componentDidMount(){
     console.log("compdidmount");
-    console.log(this.props.match.params.userId)
+    console.log("userId: ",this.props.match.params.userId)
 
    try{
     const profile = await userClient.getUserProfile(this.props.match.params.recipeId);
