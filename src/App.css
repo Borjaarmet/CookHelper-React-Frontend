@@ -4,22 +4,17 @@
 
 /*   navbar  */
 
-.navbar {
+.navContainer {
   background: #000;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
-  font-size: 1rem;
   position: sticky;
   top: 0;
-  z-index: 10;
-}
-.navContainer {
-  display: flex;
-  justify-content: space-between;
   height: 80px;
-  z-index: 1;
+  z-index: 10;
   width: 100%;
+  font-size: 1rem;
   padding: 0 24px;
   
 }
@@ -87,7 +82,7 @@
   z-index: 1;
 }
 .titleSection ::before{
-    content: "";
+  content: "";
     position: absolute;
     top: 0;
     right: 0;

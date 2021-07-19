@@ -10,7 +10,6 @@ import Navbar from '../components/Navbar';
 import { withAuth } from '../providers/AuthProvider';
 import SearchInput from '../components/SearchInput';
 import recipeClient from '../lib/recipeClient';
-import userClient from '../lib/userClient';
 import {Link} from 'react-router-dom';
 
 class Main extends Component {
@@ -36,10 +35,9 @@ class Main extends Component {
       recipeClient.getAllRecipes().then(data => {
         console.log("recipes: ", data.recipes)
         this.setState({
-          initialRecipes: data.recipes.slice(0,5)
+          initialRecipes: data.recipes
         })
       })
-      userClient.getUserProfile(this.props.match.params.userId)
     }
     catch{
       console.log("eerror")
@@ -47,15 +45,15 @@ class Main extends Component {
   };
 
 	render() {
-     console.log(this.state.initialRecipes)
+    console.log(this.state.initialRecipes)
 		return (
 			<>
-			 <div className="navbar">
+			
         <Navbar/>
-       </div>
-				
+      
+      
 				<SearchInput onSearchValue = {this.handleSearchValue} value= {this.state.searchValue}/>
-				<button>Submit</button>
+			
 				<div>
           <h1>Some recipes</h1>
            <div style={{ width: '20%'}}>

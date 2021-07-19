@@ -28,6 +28,7 @@ class Searchinput extends Component {
         onChange={this.handleChange}
         placeholder="Search for a recipe"
       />
+      <button>Submit</button>
       </form>
     );
   }

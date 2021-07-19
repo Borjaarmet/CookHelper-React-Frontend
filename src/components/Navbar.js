@@ -9,6 +9,7 @@ class Navbar extends Component {
 		return (
 			<>
 				{isLoggedIn ? (
+					
 					<div className="navContainer">
 						<div className="navLogo">
 						 <p> {user.username}</p>
@@ -34,7 +35,9 @@ class Navbar extends Component {
 						<button className="navBtn"  onClick={logout}>Logout</button>
 						</div>
 					</div>
+					
 				) : (
+					
 					<div className="navContainer">
 						<div className="navLogo">
 					  <Link to="/">
@@ -67,6 +70,7 @@ class Navbar extends Component {
 						</div>
 						
 					</div>
+					
 				)}
 			</>
 		);
