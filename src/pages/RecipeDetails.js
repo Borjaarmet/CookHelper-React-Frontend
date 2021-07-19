@@ -42,7 +42,7 @@ class RecipeDetail extends Component {
       <h1>Recipe details</h1>
       <div>
         {status === 'loading' && <div>loading</div>}
-      {status === 'loaded' && 
+        {status === 'loaded' && 
         <div>
           <h2>{recipe.recipeName}</h2>
           <p>{recipe.difficulty}</p>

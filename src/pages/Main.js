@@ -49,8 +49,10 @@ class Main extends Component {
 	render() {
      console.log(this.state.initialRecipes)
 		return (
-			<div>
-				<Navbar/>
+			<>
+			 <div className="navbar">
+        <Navbar/>
+       </div>
 				
 				<SearchInput onSearchValue = {this.handleSearchValue} value= {this.state.searchValue}/>
 				<button>Submit</button>
@@ -79,7 +81,7 @@ class Main extends Component {
         </div>  
 				</div>
          
-			</div>
+			</>
 		);
 	}
 }
