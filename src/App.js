@@ -17,6 +17,9 @@ import RecipeDetail from './pages/RecipeDetails';
 // import provider
 import { withAuth } from './providers/AuthProvider';
 
+// import assets
+import './App.css'
+
 class App extends Component {
 	render() {
 		const { isLoading } = this.props;
