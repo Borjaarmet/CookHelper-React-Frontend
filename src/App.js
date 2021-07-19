@@ -1,15 +1,21 @@
+// import dependencies
 import React, { Component } from 'react';
 import { Switch, Route } from 'react-router-dom';
+
+// import components
 import PrivateRoute from './components/PrivateRoute';
 import AnonRoute from './components/AnonRoute';
-// import Private from './pages/Private';
+
+// import pages
 import Home from './pages/Home';
 import Main from './pages/Main';
 import Signup from './pages/Signup';
 import Login from './pages/Login';
-import { withAuth } from './providers/AuthProvider';
-
+import Profile from './pages/Profile';
 import RecipeDetail from './pages/RecipeDetails';
+
+// import provider
+import { withAuth } from './providers/AuthProvider';
 
 class App extends Component {
 	render() {
@@ -25,6 +31,7 @@ class App extends Component {
 					<AnonRoute path="/signup" component={Signup} />
 					<AnonRoute path="/login" component={Login} />
 					<PrivateRoute path="/app" component={Main} />
+					<PrivateRoute path="/user/:userId/profile" component={Profile}/>
 					<Route path="/recipes/:recipeId/details" component= {RecipeDetail}/>
 				</Switch>
 			</div>

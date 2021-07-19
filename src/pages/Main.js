@@ -10,7 +10,8 @@ import Navbar from '../components/Navbar';
 import { withAuth } from '../providers/AuthProvider';
 import SearchInput from '../components/SearchInput';
 import recipeClient from '../lib/recipeClient';
-import {Link} from 'react-router-dom'
+import userClient from '../lib/userClient';
+import {Link} from 'react-router-dom';
 
 class Main extends Component {
   constructor(props){
@@ -38,6 +39,7 @@ class Main extends Component {
           initialRecipes: data.recipes.slice(0,5)
         })
       })
+      userClient.getUserProfile(this.props.match.params.userId)
     }
     catch{
       console.log("eerror")
@@ -45,16 +47,14 @@ class Main extends Component {
   };
 
 	render() {
-		 const { user } = this.props
      console.log(this.state.initialRecipes)
 		return (
 			<div>
 				<Navbar/>
-				<h1>Welcome {user.username}</h1>
-				 <SearchInput onSearchValue = {this.handleSearchValue} value= {this.state.searchValue}/>
+				
+				<SearchInput onSearchValue = {this.handleSearchValue} value= {this.state.searchValue}/>
 				<button>Submit</button>
 				<div>
-					<h1>Profile</h1>
           <h1>Some recipes</h1>
            <div style={{ width: '20%'}}>
           { this.state.initialRecipes.map( (recipe) => {

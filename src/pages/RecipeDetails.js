@@ -14,18 +14,17 @@ class RecipeDetail extends Component {
     }
   }
 
-   async componentDidMount() {
+  async componentDidMount() {
     console.log("compdidmount")
     console.log(this.props.match.params.recipeId)
-    // const {id} = this.props.match.params.recipeId
+    
     try{
       const details = await recipeClient.getRecipeDetails(this.props.match.params.recipeId);
         console.log("recipe: ",details)
         this.setState({
           status: 'loaded',
           recipe: details.recipe
-        })
-      
+        })      
     }
     catch{
       console.log("eerror")
@@ -39,9 +38,7 @@ class RecipeDetail extends Component {
     return (
       <>
       <Navbar/>
-      {/* <Link to={`/user/${user._id}/profile`}>
-      <h1>Profile</h1>
-      </Link> */}
+      
       <h1>Recipe details</h1>
       <div>
         {status === 'loading' && <div>loading</div>}

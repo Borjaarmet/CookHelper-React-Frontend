@@ -12,6 +12,9 @@ class Navbar extends Component {
 					<>
 						<p> {user.username}</p>
 						<button onClick={logout}>Logout</button>
+						<Link to={`/user/${user._id}/profile`}>
+						<p>Profile</p>
+						</Link>
 					</>
 				) : (
 					<>
