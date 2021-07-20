@@ -52,7 +52,7 @@ class Main extends Component {
 				<SearchInput onSearchValue = {this.handleSearchValue} value= {this.state.searchValue}/>
 				<div>
           <h1>Some recipes</h1>
-           <div style={{ width: '20%'}}>
+           <div className="recipe-box">
           { this.state.initialRecipes.map( (recipe) => {
             return (
               <div key={recipe._id}>
