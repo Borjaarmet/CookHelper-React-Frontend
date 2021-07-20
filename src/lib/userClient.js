@@ -23,7 +23,7 @@ class RecipeClient {
 
 	getUserCreateRecipe(body) {
     const {recipeName, difficulty, TimeToCook, ingredientsList, Steps, videoLink} = body
-		return this.recipeClient.post(`/user/create`, {recipeName, difficulty, TimeToCook, ingredientsList, Steps, videoLink}).then(response => response.data);
+		return this.userClient.post(`/user/create`, {recipeName, difficulty, TimeToCook, ingredientsList, Steps, videoLink}).then(res => res.data);
 	}
 
   getUserDeleteRecipeCreated(id) {
