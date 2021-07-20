@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import recipeClient from '../lib/recipeClient'
 // import userClient from '../lib/userClient'
 import Navbar from '../components/Navbar'
-// import {Link} from 'react-router-dom'
+import {Link} from 'react-router-dom'
 
 
 class RecipeDetail extends Component {
@@ -34,7 +34,8 @@ class RecipeDetail extends Component {
   addToFav = () => {
    console.log("click to fav")
    recipeClient.pushRecipeToFav(this.props.match.params.recipeId).then((recipe) => {
-    console.log("recipe:", recipe)
+    console.log("recipe:", recipe);
+    
    })
    
   }
@@ -92,7 +93,9 @@ class RecipeDetail extends Component {
                 </ul>
             </div>
           </div>
+          <Link to={"/user/favourites"}>
           <button onClick={this.addToFav} className="btn"><span>Add to your list!</span></button>
+          </Link>
         </div>
   } 
       </>
