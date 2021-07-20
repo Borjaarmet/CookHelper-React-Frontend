@@ -58,13 +58,8 @@ class Navbar extends Component {
 						</div>
 						<div className="navBtns">
 							<div >
-								<Link to="/login">
-									<button className="navBtn">Login</button>
-								</Link>
-							</div>
-							<div >
 								<Link to="/signup">
-					   			<button className="navBtn">Signup</button>
+					   			<button className="navBtn">Login / Signup</button>
 								</Link>
 						  </div>
 						</div>

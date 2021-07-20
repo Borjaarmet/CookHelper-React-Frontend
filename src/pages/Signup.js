@@ -32,6 +32,7 @@ class Signup extends Component {
   render() {
     const { username, password, email } = this.state;
     return ( 
+      <>
       <div>
         <form onSubmit={this.handleFormSubmit}>
           <label>Username:</label>
@@ -62,6 +63,9 @@ class Signup extends Component {
           <Link to={"/login"}> Login</Link>
         </p>
       </div>
+
+      
+      </>
     );
   }
 }

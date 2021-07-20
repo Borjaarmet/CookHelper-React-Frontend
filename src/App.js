@@ -10,7 +10,7 @@ import AnonRoute from './components/AnonRoute';
 import Home from './pages/Home';
 import Main from './pages/Main';
 import Signup from './pages/Signup';
-import Login from './pages/Login';
+// import Login from './pages/Login';
 import Profile from './pages/Profile';
 import RecipeDetail from './pages/RecipeDetails';
 import CreateRecipe from './pages/CreateRecipe'
@@ -34,7 +34,7 @@ class App extends Component {
 				<Switch>
 					<AnonRoute exact path= "/" component= {Home}/>
 					<AnonRoute path="/signup" component={Signup} />
-					<AnonRoute path="/login" component={Login} />
+					{/* <AnonRoute path="/login" component={Login} /> */}
 					<PrivateRoute path="/app" component={Main} />
 					<PrivateRoute path="/user/:userId/profile" component={Profile}/>
 					<PrivateRoute path="/user/favourites" component={FavList}/>
