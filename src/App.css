@@ -25,7 +25,7 @@
   padding: 0 24px;
 }
 .navLogo {
-  color: #fff;
+  
   justify-self: flex-start;
   cursor: pointer;
   display: flex;
@@ -34,6 +34,9 @@
   font-weight: bold;
   align-items: center;
   text-decoration: none;
+}
+.navLogo a{
+  color: #fff;
 }
 .navLinks {
   display: flex;
@@ -73,6 +76,50 @@
   .nav{
    transition: 0.8s all ease;
   }
+}
+
+/*  signup and login form */
+
+.container-form {
+  border:1px solid #ccc;
+  border-radius: 5px;
+  width:80%;
+  margin-top: 30px;
+  -webkit-box-shadow: -5px -5px 10px rgba(50, 50, 50, 1);
+  -moz-box-shadow: -5px -5px 10px rgba(50, 50, 50, 1);
+  box-shadow: -5px -5px 10px rgba(50, 50, 50, 1);
+}
+input[type=text], input[type=password] {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  display: inline-block;
+  border: none;
+  background: #f1f1f1;
+}
+input[type=text]:focus, input[type=password]:focus {
+  background-color: #ddd;
+  outline: none;
+}
+hr {
+  border: 1px solid #f1f1f1;
+  margin-bottom: 25px;
+}
+.signupbtn {
+  background-color: #01bf71;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  opacity: 0.9;
+}
+button:hover {
+  opacity:1;
+}
+.container {
+  padding: 16px;
 }
 
 /*  Recipe Card  */
@@ -142,6 +189,27 @@ h3{
   margin: 10px 0;
 }
 
+/*  recipeSearch  */
+
+.search-ingredients {
+  display: flex;
+  flex-direction: column;
+}
+.form-search{
+  display: flex;
+  justify-content: space-between;
+  align-items:baseline;
+  margin: 0;
+}
+.recipe-box{
+  width:90%;
+  border:1px solid gray;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+
+}
+
 /* Form container */
 
 .form-container {
@@ -155,6 +223,6 @@ h3{
   box-shadow: -41px 43px 61px -17px rgba(0,0,0,0.74);
   -webkit-box-shadow: -41px 43px 61px -17px rgba(0,0,0,0.74);
   -moz-box-shadow: -41px 43px 61px -17px rgba(0,0,0,0.74);
-  height: 400px;
+  height: 600px;
   width:300px;
 }
