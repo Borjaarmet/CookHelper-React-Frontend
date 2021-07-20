@@ -59,6 +59,14 @@ export default class CreateRecipe extends Component {
     };
   };
 
+  // addToCreatedList = () => {
+  //   console.log("click to cretaedList")
+  //  //recipeClient.pushRecipeToFav(this.props.match.params.recipeId).then((recipe) => {
+  //   console.log("recipe:", recipe);
+    
+  //  })
+  // }
+
 
   render() {
     return(
@@ -141,7 +149,7 @@ export default class CreateRecipe extends Component {
             value={this.state.videoLink}
           />
         </div>
-        <button className="">
+        <button onClick={this.addToCreatedList}>
           Create Recipe!
         </button>
       </form>
