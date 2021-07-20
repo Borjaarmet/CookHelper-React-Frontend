@@ -10,7 +10,9 @@ class Searchinput extends Component {
   }
 
   handleChange = (event) => {
-    this.props.onSearchValue(event.target.value);
+    this.setState({
+      [event.target.name]: event.target.value
+    });
   };
 
    handleSubmit = (event) => {
@@ -32,7 +34,7 @@ class Searchinput extends Component {
           onChange={this.handleChange}
           placeholder="Search for a recipe"
           />
-          <button>Submit</button>
+          <button className="submit-search">Submit</button>
         </form>
       </div>
       <div className="search-ingredients">
