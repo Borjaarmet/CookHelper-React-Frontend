@@ -29,7 +29,6 @@ import { withAuth } from '../providers/AuthProvider';
   };
 
   render() {
-    console.log("render user", this.state.user)
     const {user, status} = this.state;
     return (
       <>
