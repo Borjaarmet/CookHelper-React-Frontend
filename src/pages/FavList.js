@@ -13,11 +13,11 @@ class FavList extends Component {
   async componentDidMount(){
     console.log("compdidmount");
    try{
-    const favList = await userClient.getUserFavouriteList();
-      console.log("favList: ",favList)
+    const myList = await userClient.getUserFavouriteList();
+      console.log("favList: ",myList)
       this.setState({
         status: 'loaded',
-        favouriteList: [favList],
+        favouriteList: myList,
       })  
    }
    catch(error) {
@@ -26,10 +26,16 @@ class FavList extends Component {
   };
     
   render() {
+    //  const {favouriteList} = this.state
     console.log("render favList", this.state.favouriteList)
     return (
       <div>
         <h1>Favourite recipes</h1>
+         {/* <ul>
+           {myList.map((recipe, index) => {
+            return <li key={index}>{recipe}</li>
+          })}  
+        </ul>  */}
       </div>
     )
   };
