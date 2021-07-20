@@ -20,8 +20,8 @@ class FavList extends Component {
         favouriteList: [favList],
       })  
    }
-   catch{
-    console.log("eerror")
+   catch(error) {
+    console.log(error)
    } 
   };
     

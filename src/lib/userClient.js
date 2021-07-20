@@ -2,7 +2,7 @@ import axios from 'axios';
 
 class RecipeClient {
 	constructor() {
-		this.recipeClient = axios.create({
+		this.userClient = axios.create({
 			baseURL: "http://localhost:5000",
 			withCredentials: true,
 		});

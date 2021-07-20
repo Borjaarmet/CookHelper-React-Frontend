@@ -7,7 +7,7 @@ import { withAuth } from '../providers/AuthProvider';
     super(props)
     this.state = {
       status: "loading",
-      user:undefined,
+      user:"",
     }
   }
 
@@ -20,11 +20,11 @@ import { withAuth } from '../providers/AuthProvider';
       console.log("user: ",profile)
       this.setState({
         status: 'loaded',
-        user: profile.user,
+        user: profile.userProfile,
       })  
    }
-   catch{
-    console.log("eerror")
+   catch(error) {
+    console.log(error)
    } 
   };
 
