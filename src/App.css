@@ -141,3 +141,20 @@
 h3{
   margin: 10px 0;
 }
+
+/* Form container */
+
+.form-container {
+  margin-top: 30px;
+  border: none;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-shadow: -41px 43px 61px -17px rgba(0,0,0,0.74);
+  -webkit-box-shadow: -41px 43px 61px -17px rgba(0,0,0,0.74);
+  -moz-box-shadow: -41px 43px 61px -17px rgba(0,0,0,0.74);
+  height: 400px;
+  width:300px;
+}
