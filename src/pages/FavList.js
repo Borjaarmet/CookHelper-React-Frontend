@@ -17,7 +17,7 @@ class FavList extends Component {
       console.log("favList: ",myList)
       this.setState({
         status: 'loaded',
-        favouriteList: myList,
+        favouriteList: myList.favourites,
       })  
    }
    catch(error) {
@@ -26,16 +26,16 @@ class FavList extends Component {
   };
     
   render() {
-    //  const {favouriteList} = this.state
+    const {favouriteList} = this.state
     console.log("render favList", this.state.favouriteList)
     return (
       <div>
         <h1>Favourite recipes</h1>
-         {/* <ul>
-           {myList.map((recipe, index) => {
+          <ul>
+           {favouriteList.map((recipe, index) => {
             return <li key={index}>{recipe}</li>
           })}  
-        </ul>  */}
+        </ul>  
       </div>
     )
   };
