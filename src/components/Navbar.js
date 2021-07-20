@@ -27,6 +27,11 @@ class Navbar extends Component {
 						  </div>
 							<div>
 						   <Link to={`/user/create`}>
+						    <p className="navLink">CreatedList</p>
+						   </Link>
+						  </div>
+							<div>
+						   <Link to={`/user/createRecipe`}>
 						    <p className="navLink">Create recipe</p>
 						   </Link>
 						  </div>
