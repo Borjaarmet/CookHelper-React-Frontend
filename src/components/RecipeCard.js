@@ -4,59 +4,87 @@ import recipeClient from '../lib/recipeClient'
 
 
 class RecipeCard extends Component {
-  constructor(props) {
+  constructor(props){
     super(props)
-    this.state={
-      recipe: [],
+    this.state= {
+      status: 'loading',
+      recipe:undefined,
     }
   }
 
-   componentDidMount = () => {
+
+   async componentDidMount() {
     console.log("compdidmount")
-    const {id} = this.props.match.params.recipeId
+    console.log(this.props.match.params.recipeId)
+    
     try{
-     
-      recipeClient.getRecipeDetails(id).then(data => {
-        console.log("recipe: ",data)
+      const details = await recipeClient.getRecipeDetails(this.props.match.params.recipeId);
+        console.log("recipe: ",details)
         this.setState({
-          recipe: data
-        })
-      })
+          status: 'loaded',
+          recipe: details.recipe
+        })      
     }
     catch{
       console.log("eerror")
     }
   };
 
-
   render() {
+    console.log("render recipe", this.state.recipe)
+    const {recipe, status} = this.state;
     return (
-      <div class="card">
-        <div class="header">
-          <div class="icon">
-            <a href="#"><i class="fa fa-heart-o"></i></a>
+      <>
+        {status === 'loading' && <div>loading</div>}
+        {status === 'loaded' && 
+        <div className="card">
+          <div className="header">
+            <iframe 
+              className="video"
+              src={recipe.videoLink}
+              title='YouTube video player'
+              frameBorder='0'
+              allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
+              allowFullScreen
+            ></iframe>
           </div>
-        </div>
-        <div class="text">
-          <h1 class="food">
-            Chinese Noodles
-          </h1>
-          <i class="fa fa-clock-o"> 15 Mins</i>
-          <i class="fa fa-users"> Serves 2</i>
-      
-          <div class="stars">
-            <li>
-              <a href="#"><i class="fa fa-star"></i></a>
-              <a href="#"><i class="fa fa-star"></i></a>
-              <a href="#"><i class="fa fa-star"></i></a>
-              <a href="#"><i class="fa fa-star"></i></a>
-              <a href="#"><i class="fa fa-star-o"></i></a>
-            </li>
+          <div className="text">
+            <h1 className="food">
+              {recipe.recipeName}
+            </h1>
+            <i className="fa fa-clock">{recipe.TimeToCook}</i>
+            <i className="fa fa-users"> Serves 4</i>
+            
+            <div className="stars">
+              <li>
+                  <a href="#"><i className="fa fa-star"></i></a>
+                  <a href="#"><i className="fa fa-star"></i></a>
+                  <a href="#"><i className="fa fa-star"></i></a>
+                  <a href="#"><i className="fa fa-star"></i></a>
+                  <a href="#"><i className="fa fa-star-o"></i></a>
+              </li>
+            </div>
+            <div className="info">
+              <h3>Steps</h3>
+              <ul>
+                {recipe.Steps.map((step,index) => {
+                  return <li key={index}>{step}</li>
+                })}
+                  
+              </ul>
+              <h3>Ingredients</h3>
+              <ul>
+                {recipe.ingredientsList.map((ingredientt,index) => {
+                  return <li key={index}>{ingredientt}</li>
+                })}
+                  
+                </ul>
+            </div>
           </div>
-          <p class="info">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum, temporibus.</p>
+          <button onClick={this.addToFav} className="btn"><span>Add to your list!</span></button>
         </div>
-        <a href="#" class="btn">Let's Cook!</a>
-      </div>
+  } 
+      </>
     )
   }
 };
