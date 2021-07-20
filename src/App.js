@@ -13,8 +13,9 @@ import Signup from './pages/Signup';
 import Login from './pages/Login';
 import Profile from './pages/Profile';
 import RecipeDetail from './pages/RecipeDetails';
-import CreateRecipe from './pages/CreateRecipe'
-import FavList from './pages/FavList'
+import CreateRecipe from './pages/CreateRecipe';
+import FavList from './pages/FavList';
+import CreateList from './pages/CreateList';
 
 // import provider
 import { withAuth } from './providers/AuthProvider';
@@ -38,7 +39,8 @@ class App extends Component {
 					<PrivateRoute path="/app" component={Main} />
 					<PrivateRoute path="/user/:userId/profile" component={Profile}/>
 					<PrivateRoute path="/user/favourites" component={FavList}/>
-					<PrivateRoute path="/user/create" component={CreateRecipe}/>
+					<PrivateRoute path="/user/create" component={CreateList}/>
+					<PrivateRoute path="/user/createRecipe" component={CreateRecipe}/>
 
 					<Route path="/recipes/:recipeId/details" component= {RecipeDetail}/>
 				</Switch>
