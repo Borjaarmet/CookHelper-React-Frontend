@@ -5,6 +5,7 @@ class Searchinput extends Component {
     super(props)
     this.state = {
       name: "",
+      searchValue:"",
     }
   }
 

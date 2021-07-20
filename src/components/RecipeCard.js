@@ -31,35 +31,31 @@ class RecipeCard extends Component {
 
   render() {
     return (
-      <div>
-        <h1>Recipe card</h1>
-        <div>
-          {/* <Link to={`/recipes/${recipe._id}/details`}>
-            <h3>{recipe.recipeName}</h3>
-          </Link> */}
-          {/* <div style={{ width: '20%'}}>
-          { this.state.recipe.map( (elem) => {
-            return (
-              <div key={elem._id}>
-                  <h1>{elem.difficulty}</h1>
-                  <h2>{elem.TimeToCook}</h2>
-                  <h2>{elem.ingredientsList}</h2>
-                  <p>{elem.Steps}</p>
-                 <iframe
-                    width='200'
-                    height='200'
-                    src={elem.videoLink}
-                    title='YouTube video player'
-                    frameBorder='0'
-                    allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
-                    allowFullScreen
-                 ></iframe>
-              </div>
-            )})
-          }
-        </div>  */}
-        <button>Add to favourites</button>    
-      </div>
+      <div class="card">
+        <div class="header">
+          <div class="icon">
+            <a href="#"><i class="fa fa-heart-o"></i></a>
+          </div>
+        </div>
+        <div class="text">
+          <h1 class="food">
+            Chinese Noodles
+          </h1>
+          <i class="fa fa-clock-o"> 15 Mins</i>
+          <i class="fa fa-users"> Serves 2</i>
+      
+          <div class="stars">
+            <li>
+              <a href="#"><i class="fa fa-star"></i></a>
+              <a href="#"><i class="fa fa-star"></i></a>
+              <a href="#"><i class="fa fa-star"></i></a>
+              <a href="#"><i class="fa fa-star"></i></a>
+              <a href="#"><i class="fa fa-star-o"></i></a>
+            </li>
+          </div>
+          <p class="info">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum, temporibus.</p>
+        </div>
+        <a href="#" class="btn">Let's Cook!</a>
       </div>
     )
   }

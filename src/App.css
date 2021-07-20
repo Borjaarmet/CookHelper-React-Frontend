@@ -1,5 +1,12 @@
 *{
   margin: auto;
+  padding: 0;
+   -webkit-box-sizing: border-box;
+   -moz-box-sizing: border-box;
+   -o-box-sizing: border-box;
+  box-sizing:border-box;
+  list-style-type: none;
+   text-decoration: none;
 }
 
 /*   navbar  */
@@ -68,30 +75,69 @@
   }
 }
 
-/*  Title section  */
+/*  Recipe Card  */
 
-.titleSection{
-  background: #0c0c0c;
+.card {
+  position: relative;
+  background: white;
+  max-width: 500px;
+  margin: 30px auto;
+  box-shadow: 0px 0px 30px 2px #000;
+  border-radius: 5px; 
+}
+.header {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 0 30px;
-  height: 500px;
-  position: relative;
-  z-index: 1;
+  min-height: 300px;
 }
-.titleSection ::before{
-  content: "";
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    background: linear-gradient(
-        180deg,
-        rgba(0, 0, 0, 0.2) 100%,
-        rgba(0, 0, 0, 0.8) 100%
-      ),
-      linear-gradient(180deg, rgba(0, 0, 0, 0.2) 0%, transparent 100%);
-    z-index: 2;
+.video {
+  background-size:cover;
+  max-width: 500px;
+  width:100%;
+  height:60vh;
+  border-radius: 5px 5px 0 0;
+}
+.text .food { 
+  color: black;
+  text-align: left;
+  font-weight: normal;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin: 5px 20px;
+}
+.fa-clock {
+  color: gray;
+  margin: 0 20px;
+}
+.fa-users {
+  color: gray;
+}   
+.stars {
+  margin: 10px 20px;    
+}
+.stars li a i {
+  color: #ffe500;
+}
+.info {
+  margin: 10px 20px;
+  font-size: 12px;
+}
+.btn {
+  background-color: #ddd;
+  border-radius:0 0 5px 5px;
+  width:100%;
+  border: none;
+  color: black;
+  padding: 16px 32px;
+  text-align: center;
+  font-size: 16px;
+  transition: 0.3s;
+}
+.btn:hover {
+  background-color: #01bf71;
+  color: white;
+}
+h3{
+  margin: 10px 0;
 }
