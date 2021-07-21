@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import userClient from '../lib/userClient'
+import userClient from '../lib/userClient';
+import {Link} from 'react-router-dom';
 
 class FavList extends Component {
   constructor(props){
@@ -24,6 +25,7 @@ class FavList extends Component {
     console.log(error)
    } 
   };
+
     
   render() {
     const {favouriteList} = this.state
@@ -31,11 +33,25 @@ class FavList extends Component {
     return (
       <div>
         <h1>Favourite recipes</h1>
-          <ul>
-           {favouriteList.map((recipe, index) => {
-            return <li key={index}>{recipe}</li>
-          })}  
-        </ul>  
+          <div className="favList">
+           {favouriteList.map((recipe) => {
+            return <div className="recipeBox" key={recipe._id}>
+                      <h2>{recipe.recipeName}</h2>
+                      <iframe
+                        width='345'
+                        height='400'
+                        src={recipe.videoLink}
+                        title='YouTube video player'
+                        frameBorder='0'
+                        allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
+                        allowFullScreen
+                      ></iframe>
+                      <Link to = {`/recipes/${recipe._id}/details`}>
+                      <button onClick={this.seeDetails}>See details</button>
+                      </Link>
+                   </div>
+            })}  
+         </div>  
       </div>
     )
   };
