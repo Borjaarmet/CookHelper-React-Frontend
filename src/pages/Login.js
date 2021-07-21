@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { withAuth } from "../providers/AuthProvider";
 import apiClient from "../lib/apiClient";
+import Navbar from "../components/Navbar";
 
 
 class Login extends Component {
@@ -46,31 +47,33 @@ class Login extends Component {
   render() {
     const { username, password } = this.state;
     return (
-      <form onSubmit={this.handleFormSubmit}>
-        <div className="container-form">
-          <h1>Login</h1>
-          <p>Please fill in this form to login.</p>
-          <hr/>
-          <label>Username</label>
-          <input
-            type="text"
-            name="username"
-            value={username}
-            onChange={this.handleChange}
-          />
-          <label>Password</label>
-          <input
-            type="password"
-            name="password"
-            value={password}
-            onChange={this.handleChange}
-          />
-         
-        </div>
-        <div className="clearfix">
-          <button type="submit" className="signupbtn" value="Login">Sign Up</button>
-        </div>
-      </form>
+      <>
+      <Navbar/>
+        <form onSubmit={this.handleFormSubmit}>
+          <div className="container-form">
+            <h1>Login</h1>
+            <p>Please fill in this form to login.</p>
+            <hr/>
+            <label>Username</label>
+            <input
+              type="text"
+              name="username"
+              value={username}
+              onChange={this.handleChange}
+            />
+            <label>Password</label>
+            <input
+              type="password"
+              name="password"
+              value={password}
+              onChange={this.handleChange}
+            />
+          <div className="form-btn">
+            <button type="submit" className="signupbtn" value="Login">Login</button>
+          </div>
+          </div>
+        </form>
+      </>
     );
   }
 }

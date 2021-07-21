@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { withAuth } from "../providers/AuthProvider";
+import Navbar from '../components/Navbar'
 
 class Signup extends Component {
   constructor(props) {
@@ -32,42 +33,44 @@ class Signup extends Component {
   render() {
     const { username, password, email } = this.state;
     return ( 
-      <form onSubmit={this.handleFormSubmit}>
-        <div className="container-form">
-          <h1>Sign Up</h1>
-          <p>Please fill in this form to create an account.</p>
-          <hr/>
-          <label>Username</label>
-          <input
-            type="text"
-            name="username"
-            value={username}
-            onChange={this.handleChange}
-          />
-          <label>Password</label>
-          <input
-            type="password"
-            name="password"
-            value={password}
-            onChange={this.handleChange}
-          />
-          <label>Email</label>
-          <input
-            type="text"
-            name="email"
-            value={email}
-            onChange={this.handleChange}
-          />
-         
-        </div>
-        <p>
-          Already have account?
-          <Link to={"/login"}> Login</Link>
-        </p>
-        <div className="clearfix">
-          <button type="submit" className="signupbtn" value="Signup" >Login</button>
-        </div>
-      </form>
+      <>
+      <Navbar/>
+        <form onSubmit={this.handleFormSubmit}>
+          <div className="container-form">
+            <h1>Sign Up</h1>
+            <p>Please fill in this form to create an account.</p>
+            <hr/>
+            <label>Username</label>
+            <input
+              type="text"
+              name="username"
+              value={username}
+              onChange={this.handleChange}
+            />
+            <label>Password</label>
+            <input
+              type="password"
+              name="password"
+              value={password}
+              onChange={this.handleChange}
+            />
+            <label>Email</label>
+            <input
+              type="text"
+              name="email"
+              value={email}
+              onChange={this.handleChange}
+            />
+          <p>
+            Already have account?
+            <Link to={"/login"}> Login</Link>
+          </p>
+          <div className="clearfix">
+            <button type="submit" className="signupbtn" value="Signup" >Sign up</button>
+          </div>
+          </div>
+        </form>
+      </>
     );
   }
 }

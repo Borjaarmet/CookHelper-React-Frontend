@@ -81,13 +81,17 @@
 /*  signup and login form */
 
 .container-form {
-  border:1px solid #ccc;
+  border:none;
   border-radius: 5px;
+  padding:10px;
   width:80%;
   margin-top: 30px;
   -webkit-box-shadow: -5px -5px 10px rgba(50, 50, 50, 1);
   -moz-box-shadow: -5px -5px 10px rgba(50, 50, 50, 1);
   box-shadow: -5px -5px 10px rgba(50, 50, 50, 1);
+}
+.container-form h1,p{
+  margin: 20px 0;
 }
 input[type=text], input[type=password] {
   width: 100%;
