@@ -87,9 +87,6 @@ class TitleSection extends Component {
           <Button>
             Get started
           </Button>
-          {/* <Button to="signup" onMouseEnter={onHover} onMouseLeave={onHover}>
-            Get started {hover ? <ArrowForward /> : <ArrowRight />}
-          </Button> */}
         </TitleButton>
       </TitleContent>
     </TitleContainer>
