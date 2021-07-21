@@ -56,6 +56,7 @@ class Login extends Component {
             <hr/>
             <label>Username</label>
             <input
+             className="input-signup"
               type="text"
               name="username"
               value={username}
@@ -63,6 +64,7 @@ class Login extends Component {
             />
             <label>Password</label>
             <input
+             className="input-signup"
               type="password"
               name="password"
               value={password}

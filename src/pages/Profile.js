@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import userClient from '../lib/userClient'
 import { withAuth } from '../providers/AuthProvider';
+import Navbar from '../components/Navbar';
 
  class Profile extends Component {
   constructor(props) {
@@ -38,14 +39,18 @@ import { withAuth } from '../providers/AuthProvider';
     const {user, status} = this.state;
     return (
       <>
-        <h1>profile</h1>
-        <div>
+      <Navbar/>
          {status === 'loading' && <div>loading</div>}
          {status === 'loaded' && 
-         <form >
-          <div className='container-form'>
-            
-              <label className='label-profile' htmlFor='name'>Username</label>
+         
+           <div className="container-profile">
+            <div className="shape">
+                <div className="image"></div>
+            </div>
+            <h3>{user.userName}</h3>
+            <div className="profile-form">
+              <form>
+                <label className='label-profile' htmlFor='name'>Username</label>
               <br />
               <input className='input-profile' type='text' name='username' id='name' value={user.username} onChange={this.handleChange} />
               <br />
@@ -78,20 +83,20 @@ import { withAuth } from '../providers/AuthProvider';
               <br/>
               <label className='label-profile' htmlFor='cookLevel'>Cook level <br />{user.cookLevel}</label>
               <br />
-              <select name='cookLevel' id='cookLevel'>
+              <select name='cookLevel' id='cookLevel' className="input-profile">
                 <option value='none' selected></option>
                 <option value='I have no idea'>I have no idea</option>
                 <option value='I defend myself'>I defend myself</option>
                 <option value='Advanced'>Advanced</option>
                 <option value='I´m a chef'>I´m a chef</option>
               </select>
-              <br />
-              <button className='submit' type='submit'>Save Changes</button>
-            
+              <br/>
+              <button className='navBtn' type='submit'>Save Changes</button>
+            </form>
+            </div>
           </div>
-          </form>
-        }
-        </div>
+        
+         } 
       </>
     )
   }

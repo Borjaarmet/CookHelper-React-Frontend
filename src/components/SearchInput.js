@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 
+
 class Searchinput extends Component {
   constructor(props) {
     super(props)
@@ -24,21 +25,23 @@ class Searchinput extends Component {
   render() {
     return (
      <div className="recipes-container">
-      <div className="search-recipe">
+      
        <h3>Search a recipe</h3>
-        <form className="inputSearch" onSubmit={this.handleSubmit}>
-          <input
-          type= "text"
-          name="search"
-          value={this.props.value}
-          onChange={this.handleChange}
-          placeholder="Search for a recipe"
-          />
-          <button className="submit-search">Submit</button>
+       <div className="search-recipe">
+        <form>
+         <input 
+         className="input-search" 
+         type="text" name="search" 
+         value={this.props.value}
+         onChange={this.handleChange} 
+         placeholder="Search a recipe"/>
+         <div className="btn-search">
+         <button className="fas fa-search"></button>
+         </div>
         </form>
       </div>
-      <div className="search-ingredients">
-        <h3 className='title-search'>Search by ingredients</h3>
+      <h3 className='title-search'>Search by ingredients</h3>
+      <div className="search-ingredients"> 
         <form className='form-search' method='POST'>
           <div className='label-search'>
           <h3>meat</h3>
