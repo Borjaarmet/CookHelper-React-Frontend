@@ -1,8 +1,8 @@
 import axios from 'axios';
 
-class RecipeClient {
+class UserClient {
 	constructor() {
-		this.recipeClient = axios.create({
+		this.userClient = axios.create({
 			baseURL: "http://localhost:5000",
 			withCredentials: true,
 		});
@@ -23,7 +23,7 @@ class RecipeClient {
 
 	getUserCreateRecipe(body) {
     const {recipeName, difficulty, TimeToCook, ingredientsList, Steps, videoLink} = body
-		return this.recipeClient.post(`/user/create`, {recipeName, difficulty, TimeToCook, ingredientsList, Steps, videoLink}).then(response => response.data);
+		return this.userClient.post(`/user/create`, {recipeName, difficulty, TimeToCook, ingredientsList, Steps, videoLink}).then(response => response.data);
 	}
 
   getUserDeleteRecipeCreated(id) {
@@ -40,6 +40,6 @@ class RecipeClient {
 
 };
 
-const recipeClient = new RecipeClient();
+const userClient = new UserClient();
 
-export default recipeClient;
+export default userClient;

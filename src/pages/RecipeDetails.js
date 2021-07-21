@@ -10,7 +10,7 @@ class RecipeDetail extends Component {
     super(props)
     this.state= {
       status: 'loading',
-      recipe:undefined,
+      recipe: undefined,
     }
   }
 
@@ -32,9 +32,10 @@ class RecipeDetail extends Component {
   };
 
   addToFav = () => {
-   console.log("click to fav")
+  //  console.log("click to fav")
    recipeClient.pushRecipeToFav(this.props.match.params.recipeId).then((recipe) => {
-    console.log("recipe:", recipe)
+    // console.log("recipe:", recipe)
+    this.props.history.push('/user/favourites')
    })
    
   }

@@ -10,27 +10,37 @@ class FavList extends Component {
     }
   }
   
-  async componentDidMount(){
-    console.log("compdidmount");
-   try{
-    const favList = await userClient.getUserFavouriteList();
-      console.log("favList: ",favList)
+  componentDidMount = async () => {
+  // console.log("compdidmount");
+   try {
+     const favList = await userClient.getUserFavouriteList();
+    // const favList = await userClient.getUserFavouriteList();
+    // console.log("favList: ",favList)
       this.setState({
         status: 'loaded',
-        favouriteList: [favList],
+        favouriteList: favList.favourites,
       })  
-   }
-   catch{
-    console.log("eerror")
+   } catch (error){
+    console.log(error);
    } 
   };
     
   render() {
-    console.log("render favList", this.state.favouriteList)
+    // console.log("render favList", this.state.favouriteList)
+    const { favouriteList } = this.state;
     return (
+      <>
+      {this.state === "loading" ? <p>Loading...</p> : 
       <div>
         <h1>Favourite recipes</h1>
+        <ul>
+          {favouriteList.map((item) => {
+            return <li key={item._id}>{item.recipeName}</li>
+          })}
+        </ul>
       </div>
+  }
+      </>
     )
   };
 };
