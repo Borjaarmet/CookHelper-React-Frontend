@@ -12,9 +12,9 @@ class UserClient {
 		return this.userClient.get(`/user/${id}/profile`).then(response => response.data);
 	}
 
-	getUpdateProfile(data) {
-    const {username, email, nationality, age, cookLevel} = data
-		return this.userClient.put('/user/profile', {username, email, nationality, age, cookLevel}).then(({ data }) => data);
+	getUpdateProfile(id,body) {
+    
+		return this.userClient.put(`/user/${id}/profile`, body).then(({ data }) => data);
 	}
 
 	getUserCreatedRecipesList() {
@@ -22,8 +22,7 @@ class UserClient {
 	}
 
 	getUserCreateRecipe(body) {
-    const {recipeName, difficulty, timeToCook, ingredientsList, steps, videoLink} = body
-		return this.userClient.post(`/user/create`, {recipeName, difficulty, timeToCook, ingredientsList, steps, videoLink}).then(res => res.data);
+		return this.userClient.post(`/user/create`, {body}).then((res )=> res.data);
 	}
 
   getUserDeleteRecipeCreated(id) {
