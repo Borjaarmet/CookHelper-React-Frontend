@@ -29,39 +29,40 @@ class FavList extends Component {
     
   render() {
     const {favouriteList} = this.state
-    console.log("render favList", this.state.favouriteList)
     return (
       <>
        <h1>Favourite recipes</h1>
-        <p>You have {favouriteList.length} recipes!</p>
-      <div>
-          <div className="favList">
-           {favouriteList.map((recipe) => {
-            return <div className="recipeBox" key={recipe._id}>
-                      <div className="recipeBox-title">
-                        <h2>{recipe.recipeName}</h2>
+       {this.state === "loading" ? <p>Loading...</p> :   
+          <div>
+            <p>You have {favouriteList.length} recipes!</p>
+              <div className="favList">
+              {favouriteList.map((recipe) => {
+                return <div className="recipeBox" key={recipe._id}>
+                          <div className="recipeBox-title">
+                            <h2>{recipe.recipeName}</h2>
+                          </div>
+                          <div className="recipeBox-video">
+                            <iframe
+                              width='200'
+                              height='150'
+                              src={recipe.videoLink}
+                              title='YouTube video player'
+                              frameBorder='0'
+                              allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
+                              allowFullScreen
+                            ></iframe>
+                          </div>
+                          <div className="recipeBox-btns">
+                            <Link to = {`/recipes/${recipe._id}/details`}>
+                            <button>See details</button>
+                            </Link>
+                            <button onClick={this.handleDelete}>🗑️</button>                     
+                          </div>
                       </div>
-                      <div className="recipeBox-video">
-                        <iframe
-                          width='200'
-                          height='150'
-                          src={recipe.videoLink}
-                          title='YouTube video player'
-                          frameBorder='0'
-                          allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
-                          allowFullScreen
-                        ></iframe>
-                      </div>
-                      <div className="recipeBox-btns">
-                        <Link to = {`/recipes/${recipe._id}/details`}>
-                        <button>See details</button>
-                        </Link>
-                        <button onClick={this.handleDelete}>🗑️</button>                     
-                      </div>
-                   </div>
             })}  
-         </div>  
-      </div>
+          </div>  
+        </div>
+      }
       </>
     )
   };

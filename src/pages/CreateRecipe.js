@@ -18,7 +18,7 @@ export default class CreateRecipe extends Component {
 
   async componentDidMount(body){
     try{
-      const data = await userClient.getUserCreateRecipe({body})
+      const data = await userClient.getUserCreateRecipe(body)
       console.log("body:",data)
       
       this.setState({

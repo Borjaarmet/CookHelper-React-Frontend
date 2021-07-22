@@ -17,7 +17,7 @@ class CreateList extends Component {
       console.log("createdList: ",myList)
       this.setState({
         status: 'loaded',
-        createdList: myList,
+        createdList: myList.created,
       })  
    }
    catch(error) {
@@ -26,16 +26,17 @@ class CreateList extends Component {
   };
     
   render() {
-    //  const {favouriteList} = this.state
+    const {createdList} = this.state
     console.log("render createdList", this.state.createdList)
     return (
       <div>
         <h1>My own recipes</h1>
-         {/* <ul>
-           {myList.map((recipe, index) => {
-            return <li key={index}>{recipe}</li>
+        <p>You have {createdList.length} recipes!</p>
+          <ul>
+           {createdList.map((recipe, index) => {
+            return <li key={index}>{recipe.ingredientsList}</li>
           })}  
-        </ul>  */}
+        </ul>  
       </div>
     )
   };

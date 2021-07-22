@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-class RecipeClient {
+class UserClient {
 	constructor() {
 		this.userClient = axios.create({
 			baseURL: "http://localhost:5000",
@@ -40,6 +40,6 @@ class RecipeClient {
 
 };
 
-const recipeClient = new RecipeClient();
+const userClient = new UserClient();
 
-export default recipeClient;
+export default userClient;

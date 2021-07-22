@@ -9,6 +9,11 @@ import Navbar from '../components/Navbar';
     this.state = {
       status: "loading",
       user:"",
+      userName:"",
+      age:"",
+      nationality:"",
+      email:"",
+      cookLevel:"",
     }
   }
 
@@ -22,6 +27,7 @@ import Navbar from '../components/Navbar';
       this.setState({
         status: 'loaded',
         user: profile.userProfile,
+        
       })  
    }
    catch(error) {
@@ -30,8 +36,19 @@ import Navbar from '../components/Navbar';
   };
 
   handleChange = (event) => {
-    this.setState({
+     this.setState({
+      [event.target.name]: event.target.value,
+    });
+  }
 
+  handleSubmit = (event) => {
+    event.preventDefault()
+    this.setState({
+      userName:this.state.userName,
+      age:this.state.age,
+      nationality:this.state.nationality,
+      email: this.state.email,
+      cookLevel:this.state.cookLevel,
     })
   }
 
@@ -49,7 +66,7 @@ import Navbar from '../components/Navbar';
             </div>
             <h3>{user.userName}</h3>
             <div className="profile-form">
-              <form>
+              <form onSubmit={this.handleSubmit}>
                 <label className='label-profile' htmlFor='name'>Username</label>
               <br />
               <input className='input-profile' type='text' name='username' id='name' value={user.username} onChange={this.handleChange} />
