@@ -34,12 +34,10 @@ class RecipeDetail extends Component {
   addToFav = () => {
    console.log("click to fav")
    recipeClient.pushRecipeToFav(this.props.match.params.recipeId).then((recipe) => {
-    console.log("recipe:", recipe);
-    
+    console.log("recipe:", recipe)
+    this.props.history.push('/user/favourites')
    })
-   
-  }
-
+  };
  
   render() {
     console.log("render recipe", this.state.recipe)
