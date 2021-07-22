@@ -16,9 +16,10 @@ export default class CreateRecipe extends Component {
     }
   };
 
-  async componentDidMount(body){
+  async componentDidMount(){
+    console.log(this.props)
     try{
-      const data = await userClient.getUserCreateRecipe(body)
+      const data = await userClient.getUserCreateRecipe()
       console.log("body:",data)
       
       this.setState({
@@ -33,8 +34,7 @@ export default class CreateRecipe extends Component {
     }
      catch(error) {
     console.log(error)
-   } 
-      
+   }    
   }
 
   handleChange = (event) => {
@@ -59,13 +59,13 @@ export default class CreateRecipe extends Component {
     };
   };
 
-  // addToCreatedList = () => {
-  //   console.log("click to cretaedList")
-  //  //recipeClient.pushRecipeToFav(this.props.match.params.recipeId).then((recipe) => {
-  //   console.log("recipe:", recipe);
-    
-  //  })
-  // }
+   addToCreatedList = () => {
+   console.log("click to CreatedList")
+   userClient.getUserCreateRecipe(this.props.match.params.recipeId).then((recipe) => {
+    console.log("recipe:", recipe)
+    this.props.history.push('/user/create')
+   })
+  };
 
 
   render() {
