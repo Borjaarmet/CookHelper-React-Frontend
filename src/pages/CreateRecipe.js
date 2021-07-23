@@ -1,41 +1,21 @@
 import React, { Component } from 'react'
 import userClient from '../lib/userClient'
+import Navbar from '../components/Navbar'
 
 export default class CreateRecipe extends Component {
   constructor(props) {
     super(props)
     this.state={
-      status:"loading",
       recipeName:"",
       difficulty:"",
       TimeToCook:"", 
       ingredientsList:[],
       Steps:[], 
-      videoLink:""
-      
+      videoLink:"" 
     }
   };
 
-  async componentDidMount(){
-    console.log(this.props)
-    try{
-      const data = await userClient.getUserCreateRecipe()
-      console.log("body:",data)
-      
-      this.setState({
-        status:"loaded",
-        recipeName:"",
-        difficulty:"",
-        TimeToCook:"", 
-        ingredientsList:[],
-        Steps:[], 
-        videoLink:""
-      })
-    }
-     catch(error) {
-    console.log(error)
-   }    
-  }
+
 
   handleChange = (event) => {
     console.log(event.target.name)
@@ -45,32 +25,26 @@ export default class CreateRecipe extends Component {
     });
   };
 
-   handleSubmit = (event) => {
+  handleSubmit = async (event) => {
     event.preventDefault();
 
-    this.setState = {
-      name: this.state.name,
-      recipeName: this.state.recipeName,
-      difficulty: this.state.difficulty,
-      TimeToCook: this.state.TimeToCook,
-      ingredientsList: this.state.ingredientsList,
-      Steps: this.state.Steps,
-      videoLink: this.state.videoLink
-    };
-  };
-
-   addToCreatedList = () => {
-   console.log("click to CreatedList")
-   userClient.getUserCreateRecipe(this.props.match.params.recipeId).then((recipe) => {
-    console.log("recipe:", recipe)
-    this.props.history.push('/user/create')
-   })
-  };
+   try{
+    await userClient.getUserCreateRecipe(this.state)
+    console.log("recipeCreated:" ,this.state)
+    }
+    catch(error) {
+    console.log(error)
+   } finally {
+     this.props.history.push('/user/create',this.state)
+   }
+  }
 
 
   render() {
+
     return(
       <>
+      <Navbar/>
       <h1>Do you want to create a recipe?</h1>
       <form
         className="form-container"
@@ -149,7 +123,7 @@ export default class CreateRecipe extends Component {
             value={this.state.videoLink}
           />
         </div>
-        <button onClick={this.addToCreatedList}>
+        <button type="submit">
           Create Recipe!
         </button>
       </form>
