@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import userClient from '../lib/userClient';
 import {Link} from 'react-router-dom';
+import Navbar from '../components/Navbar'
 
 class FavList extends Component {
   constructor(props){
@@ -38,6 +39,7 @@ class FavList extends Component {
     const {favouriteList} = this.state
     return (
       <>
+        <Navbar/>
        <h1>Favourite recipes</h1>
        {this.state === "loading" ? <p>Loading...</p> :   
           <div>
