@@ -35,7 +35,7 @@ class RecipeDetail extends Component {
    console.log("click to fav")
    recipeClient.pushRecipeToFav(this.props.match.params.recipeId).then((recipe) => {
     console.log("recipe:", recipe)
-    this.props.history.push('/user/favourites')
+    this.props.history.push('/user/favourites',recipe)
    })
   };
  
