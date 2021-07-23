@@ -11,11 +11,9 @@ export default class CreateRecipe extends Component {
       TimeToCook:"", 
       ingredientsList:[],
       Steps:[], 
-      videoLink:"" 
+      videoLink:"", 
     }
   };
-
-
 
   handleChange = (event) => {
     console.log(event.target.name)
@@ -30,12 +28,23 @@ export default class CreateRecipe extends Component {
 
    try{
     await userClient.getUserCreateRecipe(this.state)
-    console.log("recipeCreated:" ,this.state)
+    console.log("newRecipe:",this.state)
     }
     catch(error) {
     console.log(error)
    } finally {
-     this.props.history.push('/user/create',this.state)
+     const {recipeName,
+      difficulty,
+      TimeToCook, 
+      ingredientsList,
+      Steps, 
+      videoLink} = this.state
+     this.props.history.push('/user/create',{recipeName,
+      difficulty,
+      TimeToCook, 
+      ingredientsList,
+      Steps, 
+      videoLink})
    }
   }
 
@@ -45,87 +54,63 @@ export default class CreateRecipe extends Component {
     return(
       <>
       <Navbar/>
-      <h1>Do you want to create a recipe?</h1>
-      <form
-        className="form-container"
-        onSubmit={this.handleSubmit}
-      >
-        <div className="">
-          <label className="" htmlFor="name">
-            Recipe name
-          </label>
-          <br/>
-          <input
-            type="text"
-            name="recipeName"
-            id="recipeName"
-            onChange={this.handleChange}
-            value={this.state.recipeName}
-          />
+      <form onSubmit={this.handleSubmit} >
+        <div className="container-createRecipe">
+        <h2>Do you want to create a recipe?</h2>
+        <p>Please fill in this form to create a recipe.</p>
+        <hr/>
+        <label>Recipe name</label>
+        <input
+          className="input-recipe"
+          type="text"
+          name="recipeName"
+          onChange={this.handleChange}
+          value={this.state.recipeName}
+        />
+        <label> Difficulty</label>
+        <input
+          type="text"
+          name="difficulty"
+          className="input-recipe"
+          onChange={this.handleChange}
+          value={this.state.difficulty}
+        />
+        <label>Time to cook</label>
+        <input
+          type="text"
+          name="TimeToCook"
+          className="input-recipe"
+          onChange={this.handleChange}
+          value={this.state.TimeToCook}
+        />
+        <label>Ingredients list</label>
+        <input
+          type="text"
+          name="ingredientsList"
+          className="input-recipe"
+          onChange={this.handleChange}
+          value={this.state.ingredientsList}
+        />
+        <label>Steps</label> 
+        <input
+          type="text"
+          name="Steps"
+          className="input-recipe"
+          onChange={this.handleChange}
+          value={this.state.Steps}
+        />
+        <label>video Link</label>
+        <input
+          type="text"
+          name="videoLink"
+          className="input-recipe"
+          onChange={this.handleChange}
+          value={this.state.videoLink}
+            />
+        <div className="clearfix">
+          <button type="submit" className="signupbtn" value="Signup">Create Recipe!</button>
         </div>
-        <div className="">
-          <label className="" htmlFor="image">
-            Difficulty
-          </label>
-          <input
-            type="text"
-            name="difficulty"
-            id="difficulty"
-            onChange={this.handleChange}
-            value={this.state.difficulty}
-          />
         </div>
-        <div className="">
-          <label className="" htmlFor="calories">
-            Time to cook
-          </label>
-          <input
-            type="text"
-            name="TimeToCook"
-            id="TimeToCook"
-            onChange={this.handleChange}
-            value={this.state.TimeToCook}
-          />
-        </div>
-         <div className="">
-          <label className="" htmlFor="calories">
-            Ingredients list
-          </label>
-          <input
-            type="text"
-            name="ingredientsList"
-            id="ingredientsList"
-            onChange={this.handleChange}
-            value={this.state.ingredientsList}
-          />
-        </div>
-         <div className="">
-          <label className="" htmlFor="calories">
-            Steps
-          </label>
-          <input
-            type="text"
-            name="Steps"
-            id="Steps"
-            onChange={this.handleChange}
-            value={this.state.Steps}
-          />
-        </div>
-         <div className="">
-          <label className="" htmlFor="calories">
-            video Link
-          </label>
-          <input
-            type="text"
-            name="videoLink"
-            id="videoLink"
-            onChange={this.handleChange}
-            value={this.state.videoLink}
-          />
-        </div>
-        <button type="submit">
-          Create Recipe!
-        </button>
       </form>
       </>
     )
