@@ -67,15 +67,15 @@ class Navbar extends Component {
 								</Link>
 							</div>
 						</div>
-						<div className="navBtns">
+						<div className="navBtn">
 							<div >
 								<Link to="/login">
-									<button className="navBtn">Login</button>
+									<button className="navBtnLink">Login</button>
 								</Link>
 							</div>
 							<div >
 								<Link to="/signup">
-					   			<button className="navBtn">Signup</button>
+					   			<button className="navBtnLink">Signup</button>
 								</Link>
 						  </div>
 							<div className="mobileIcon">
