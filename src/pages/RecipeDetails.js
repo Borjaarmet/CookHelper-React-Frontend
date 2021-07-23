@@ -35,7 +35,7 @@ class RecipeDetail extends Component {
    console.log("click to fav")
    recipeClient.pushRecipeToFav(this.props.match.params.recipeId).then((recipe) => {
     console.log("recipe:", recipe)
-    this.props.history.push('/user/favourites',recipe)
+    this.props.history.push('/user/favourites')
    })
   };
  
@@ -59,9 +59,9 @@ class RecipeDetail extends Component {
             ></iframe>
           </div>
           <div className="text">
-            <h1 className="food">
+            <h2 className="food">
               {recipe.recipeName}
-            </h1>
+            </h2>
             <i className="fa fa-clock">{recipe.TimeToCook}</i>
             <i className="fa fa-users"> Serves 4</i>
             
