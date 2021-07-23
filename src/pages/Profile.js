@@ -9,7 +9,7 @@ import Navbar from '../components/Navbar';
     this.state = {
       status: "loading",
       user:"",
-      userName:"",
+      username:"",
       age:"",
       nationality:"",
       email:"",
@@ -36,6 +36,8 @@ import Navbar from '../components/Navbar';
   };
 
   handleChange = (event) => {
+    console.log(event.target.name)
+    console.log(event.target.value)
      this.setState({
       [event.target.name]: event.target.value,
     });
@@ -43,17 +45,15 @@ import Navbar from '../components/Navbar';
 
   handleSubmit = (event) => {
     event.preventDefault()
-    this.setState({
-      userName:this.state.userName,
-      age:this.state.age,
-      nationality:this.state.nationality,
-      email: this.state.email,
-      cookLevel:this.state.cookLevel,
+    userClient.getUpdateProfile(this.state).then((user) => {
+      console.log("profile updated:", this.state.user)
+      this.props.history.push(`/user/${user._id}/profile`)
     })
   }
 
   render() {
     const {user, status} = this.state;
+    console.log("render user:", user)
     return (
       <>
       <Navbar/>
@@ -98,14 +98,14 @@ import Navbar from '../components/Navbar';
                 onChange={this.handleChange}
               />
               <br/>
-              <label className='label-profile' htmlFor='cookLevel'>Cook level <br />{user.cookLevel}</label>
+              <label className='label-profile' htmlFor='cookLevel'>Cook level <br /></label>
               <br />
-              <select name='cookLevel' id='cookLevel' className="input-profile">
-                <option value='none' selected></option>
-                <option value='I have no idea'>I have no idea</option>
-                <option value='I defend myself'>I defend myself</option>
-                <option value='Advanced'>Advanced</option>
-                <option value='I´m a chef'>I´m a chef</option>
+              <select name='cookLevel' id='cookLevel' className="input-profile" value={user.cookLevel}>
+                <option value='none' onChange={this.handleChange}></option>
+                <option value='I have no idea'  onChange={this.handleChange}>I have no idea</option>
+                <option value='I defend myself'  onChange={this.handleChange}>I defend myself</option>
+                <option value='Advanced '  onChange={this.handleChange}>Advanced</option>
+                <option value='I´m a chef'  onChange={this.handleChange}>I´m a chef</option>
               </select>
               <br/>
               <button className='navBtn' type='submit'>Save Changes</button>
