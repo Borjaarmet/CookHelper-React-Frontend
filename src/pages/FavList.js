@@ -27,9 +27,9 @@ class FavList extends Component {
    } 
   };
 
-  handleDelete = () => {
+  handleDelete = (recipeId) => {
     console.log("click to delete")
-    userClient.getUserDeleteRecipeFromFav(this.props.match.params.recipeId).then((deletedRecipe) => {
+    userClient.getUserDeleteRecipeFromFav(recipeId).then((deletedRecipe) => {
       console.log("recipe:", deletedRecipe)
     })
   }
