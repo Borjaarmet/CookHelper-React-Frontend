@@ -2,47 +2,42 @@ import React, { Component } from 'react';
 
 
 class Searchinput extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      name: "",
-      searchValue:"",
-    }
+
+  handleChange = (searchValue) => {
+    this.props.onSearchValue(searchValue);
+  };
+
+  handleSubmitSearchInput = (event) => {
+    event.preventDefault()
+    console.log("props:", this.props)
+    console.log("click submit: ",this.props.value)
+    this.props.onSearchRecipe(this.props.value)
   }
 
-  handleChange = (event) => {
-    this.setState({
-      [event.target.name]: event.target.value
-    });
-  };
-
-   handleSubmit = (event) => {
-    event.preventDefault();
-
-  
-  };
-
   render() {
+    
     return (
      <div className="recipes-container">
-      
+     
        <h3>Search a recipe</h3>
        <div className="search-recipe">
-        <form>
-         <input 
+         
+        <form onSubmit={this.handleSubmitSearchInput}>
+        <input 
          className="input-search" 
-         type="text" name="search" 
+         type="text"
+         name="search" 
+         onChange = {this.handleChange}
          value={this.props.value}
-         onChange={this.handleChange} 
          placeholder="Search a recipe"/>
          <div className="btn-search">
-         <button className="fas fa-search"></button>
+         <button type="submit" className="fas fa-search"></button>
          </div>
         </form>
       </div>
       <h3 className='title-search'>Search by ingredients</h3>
       <div className="search-ingredients"> 
-        <form className='form-search' method='POST'>
+        <form className='form-search' onSubmit={this.handleSubmitCheckBox}>
           <div className='searchBox'>
             <h4>meat</h4>
             <div className="searchBox-ing">
