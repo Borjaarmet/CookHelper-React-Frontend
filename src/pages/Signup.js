@@ -37,7 +37,7 @@ class Signup extends Component {
       <Navbar/>
         <form onSubmit={this.handleFormSubmit}>
           <div className="container-form">
-            <h1>Sign Up</h1>
+            <h2>Sign Up</h2>
             <p>Please fill in this form to create an account.</p>
             <hr/>
             <label>Username</label>
