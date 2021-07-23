@@ -13,7 +13,7 @@
 .nav{
   background: #000;
   display: flex;
-  height: 80px;
+  height: 60px;
   justify-content: center;
   align-items: center;
   font-size: 1rem;
@@ -24,7 +24,7 @@
 .navContainer {
   display: flex;
   justify-content: space-between;
-  height: 80px;
+  height: 60px;
   z-index: 1;
   width: 100%;
   padding: 0 24px;
@@ -109,10 +109,8 @@
   }
   .navLogo {
   font-size: 1rem;
+ }
 }
-}
-
-
 
 /*  signup and login form */
 
@@ -120,19 +118,20 @@
   border:none;
   border-radius: 5px;
   padding:10px;
-  width:80%;
+  width:75%;
   margin-top: 30px;
   -webkit-box-shadow: -5px -5px 10px rgba(50, 50, 50, 1);
   -moz-box-shadow: -5px -5px 10px rgba(50, 50, 50, 1);
   box-shadow: -5px -5px 10px rgba(50, 50, 50, 1);
+  
 }
 .container-form h1,p{
-  margin: 20px 0;
+  margin: 10px 0;
 }
 .input-signup , select {
   width: 100%;
-  padding: 15px;
-  margin: 5px 0 22px 0;
+  padding: 10px;
+  margin: 5px 0 10px 0;
   display: inline-block;
   border: none;
   background: #f1f1f1;
@@ -158,16 +157,13 @@ hr {
 button:hover {
   opacity:1;
 }
-/* .container {
-  padding: 16px;
-} */
 
 /*  Recipe Card  */
 
 .card {
   position: relative;
   background: white;
-  max-width: 500px;
+  max-width: 600px;
   margin: 30px auto;
   box-shadow: 0px 0px 30px 2px #000;
   border-radius: 5px; 
@@ -176,19 +172,20 @@ button:hover {
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 300px;
+  min-height: 250px;
 }
 .video {
   background-size:cover;
-  max-width: 500px;
+  max-width: 600px;
   width:100%;
-  height:60vh;
+  height:250px;
   border-radius: 5px 5px 0 0;
 }
 .text .food { 
   color: black;
   text-align: left;
-  font-weight: normal;
+  font-weight:700;
+  text-shadow: 5px 5px 10px #787978;
   text-transform: uppercase;
   letter-spacing: 0.1em;
   margin: 5px 20px;
@@ -210,6 +207,10 @@ button:hover {
   margin: 10px 20px;
   font-size: 12px;
 }
+.info li {
+  list-style-type:disc;
+  margin: 0 10px;
+}
 .btn {
   background-color: #ddd;
   border-radius:0 0 5px 5px;
@@ -229,9 +230,17 @@ h3{
   margin: 10px 0;
 }
 
+@media screen and (max-width: 768px) {
+  .card{
+    margin: 30px 75px;
+  }
+}
+
 /*  recipeSearch  */
 
-
+.recipes-container {
+  margin: 4%;
+}
 .input-search {
   width: 200px;
   box-sizing: border-box;
@@ -259,8 +268,11 @@ h3{
 }
 
 .search-ingredients {
-  width:90%;
-  border:1px solid gray;
+  width:100%;
+  border:none;
+  border-radius: 4px;
+  -webkit-box-shadow: 5px 5px 5px 0px #000000, inset 4px 4px 15px 0px #000000, -19px 21px 37px -8px rgba(0,0,0,0); 
+  box-shadow: 5px 5px 5px 0px #000000, inset 4px 4px 15px 0px #000000, -19px 21px 37px -8px rgba(0,0,0,0);
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
@@ -278,7 +290,7 @@ h3{
   margin: 0;
 }
 .recipe-box{
-  width:90%;
+  width:100%;
   border:1px solid gray;
   display: flex;
   justify-content: space-between;
@@ -287,18 +299,19 @@ h3{
   
 }
 .searchBox {
-  border: 1px solid gray;
+  border: none;
+  border-radius: 4px;
   background: #01bf71;
   padding: 10px;
   width: 250px;
   height: 200px;
-  margin: 10px;
+  margin: 10px 20px;
   color: white;
   font-weight: bold;
   font-size: 1em;
   text-align:left;
-  -webkit-box-shadow: 5px 5px 5px 0px #2c2c2c, inset 4px 4px 15px 0px #2f2f2f, -19px 21px 37px -8px rgba(0,0,0,0); 
-box-shadow: 5px 5px 5px 0px #2f2f2f, inset 4px 4px 15px 0px #2e2e2e, -19px 21px 37px -8px rgba(0,0,0,0);
+  -webkit-box-shadow: -10px 0px 13px -7px #000000, 10px 0px 13px -7px #000000, -19px 21px 37px -8px rgba(0,0,0,0); 
+box-shadow: -10px 0px 13px -7px #000000, 10px 0px 13px -7px #000000, -19px 21px 37px -8px rgba(0,0,0,0);
 }
 .searchBox h4 {
   text-align: center;
@@ -420,4 +433,35 @@ h3 {
 .recipeBox-btns button {
   width: 50%;
   padding: 5px 15px;
+}
+
+/*  CREATE RECIPE  */
+
+.container-createRecipe {
+  border:none;
+  border-radius: 5px;
+  padding:10px;
+  width:60%;
+  margin-top: 30px;
+  -webkit-box-shadow: -5px -5px 10px rgba(50, 50, 50, 1);
+  -moz-box-shadow: -5px -5px 10px rgba(50, 50, 50, 1);
+  box-shadow: -5px -5px 10px rgba(50, 50, 50, 1);
+}
+.container-createRecipe label {
+  font-size: 0.8rem;
+}
+hr {
+  margin:10px;
+}
+.input-recipe  {
+  width: 100%;
+  padding: 8px;
+  margin: 5px 0 8px 0;
+  display: inline-block;
+  border: none;
+  background: #f1f1f1;
+}
+.input-recipe :focus {
+  background-color: #ddd;
+  outline: none;
 }
