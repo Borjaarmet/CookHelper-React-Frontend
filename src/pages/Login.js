@@ -51,7 +51,7 @@ class Login extends Component {
       <Navbar/>
         <form onSubmit={this.handleFormSubmit}>
           <div className="container-form">
-            <h1>Login</h1>
+            <h2>Login</h2>
             <p>Please fill in this form to login.</p>
             <hr/>
             <label>Username</label>
