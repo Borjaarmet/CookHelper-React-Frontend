@@ -31,7 +31,8 @@ class Main extends Component {
       recipeClient.getAllRecipes().then(data => {
         console.log("recipes: ", data.recipes)
         this.setState({
-          initialRecipes: data.recipes
+          initialRecipes: data.recipes,
+          shownRecipes: data.recipes
         })
       })
     }
@@ -58,14 +59,14 @@ class Main extends Component {
      })
    console.log("recipes founded: ", {recipesFounded})
    this.setState({
-     shownRecipes: this.state.shownRecipes.push({recipesFounded})
+       shownRecipes: recipesFounded[0]
+     // shownRecipes: [...this.state.shownRecipes, recipesFounded]
    })
   };
   
 	render() {
-    console.log(this.state.initialRecipes)
-    
-     console.log("shownRecipes:" ,this.state.shownRecipes)
+    console.log("initialRecipes" ,this.state.initialRecipes)
+    console.log("shownRecipes:" ,this.state.shownRecipes)
 		return (
 			<>
         <Navbar/>
@@ -76,26 +77,26 @@ class Main extends Component {
           />
 
 				<div className="recipes-container">
-          <h1>Some recipes</h1>
+          <h1>Recipes founded ...</h1>
            <div className="recipe-box">
-           
-              {/* {this.state.shownRecipes.map((recipe) => {
-               return <div key={recipe._id}>
-                 <Link to={`/recipes/${recipe._id}/details`}>
-                  <h4>{recipe.recipeName}</h4>
+           <div>
+             
+             <Link to={`/recipes/${this.state.shownRecipes._id}/details`}>
+                  <h4>{this.state.shownRecipes.recipeName}</h4>
                 </Link>
                  <iframe
                     width='200'
                     height='200'
-                    src={recipe.videoLink}
+                    src={this.state.shownRecipes.videoLink}
                     title='YouTube video player'
                     frameBorder='0'
                     allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
                     allowFullScreen
                  ></iframe>
-
-               </div>
-             })}  */}
+           </div>
+            </div>
+           <h1>Some recipes</h1>
+             <div className="recipe-box">
                { this.state.initialRecipes.map( (recipe) => {
            
             return (
@@ -116,7 +117,8 @@ class Main extends Component {
               </div>
             )})
           } 
-        </div>  
+          </div>
+         
 				</div>
         
           
