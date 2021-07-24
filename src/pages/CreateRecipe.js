@@ -24,27 +24,16 @@ export default class CreateRecipe extends Component {
   };
 
   handleSubmit = async (event) => {
-    event.preventDefault();
-
+   event.preventDefault();
+   console.log(this.state)
    try{
-    await userClient.getUserCreateRecipe(this.state)
-    console.log("newRecipe:",this.state)
+    const recipe = await userClient.getUserCreateRecipe(this.state)
+    console.log("newRecipe:", recipe)
     }
     catch(error) {
     console.log(error)
    } finally {
-     const {recipeName,
-      difficulty,
-      TimeToCook, 
-      ingredientsList,
-      Steps, 
-      videoLink} = this.state
-     this.props.history.push('/user/create',{recipeName,
-      difficulty,
-      TimeToCook, 
-      ingredientsList,
-      Steps, 
-      videoLink})
+     this.props.history.push('/user/create')
    }
   }
 
@@ -108,7 +97,7 @@ export default class CreateRecipe extends Component {
           value={this.state.videoLink}
             />
         <div className="clearfix">
-          <button type="submit" className="signupbtn" value="Signup">Create Recipe!</button>
+          <button type="submit" className="signupbtn">Create Recipe!</button>
         </div>
         </div>
       </form>
