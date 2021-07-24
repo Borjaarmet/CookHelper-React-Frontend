@@ -9,7 +9,6 @@ class Searchinput extends Component {
 
   handleSubmitSearchInput = (event) => {
     event.preventDefault()
-    console.log("props:", this.props)
     console.log("click submit: ",this.props.value)
     this.props.onSearchRecipe(this.props.value)
   }
