@@ -64,8 +64,8 @@ class Main extends Component {
   
 	render() {
     console.log(this.state.initialRecipes)
-    const {shownRecipes} = this.state
-     console.log("shownRecipes:" ,shownRecipes)
+    
+     console.log("shownRecipes:" ,this.state.shownRecipes)
 		return (
 			<>
         <Navbar/>
@@ -78,8 +78,8 @@ class Main extends Component {
 				<div className="recipes-container">
           <h1>Some recipes</h1>
            <div className="recipe-box">
-            
-             {shownRecipes.map((recipe) => {
+           
+              {/* {this.state.shownRecipes.map((recipe) => {
                return <div key={recipe._id}>
                  <Link to={`/recipes/${recipe._id}/details`}>
                   <h4>{recipe.recipeName}</h4>
@@ -93,9 +93,10 @@ class Main extends Component {
                     allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
                     allowFullScreen
                  ></iframe>
+
                </div>
-             })}
-          {/* { this.state.initialRecipes.map( (recipe) => {
+             })}  */}
+               { this.state.initialRecipes.map( (recipe) => {
            
             return (
               <div key={recipe._id}>
@@ -114,7 +115,7 @@ class Main extends Component {
                  ></iframe>
               </div>
             )})
-          } */}
+          } 
         </div>  
 				</div>
         
