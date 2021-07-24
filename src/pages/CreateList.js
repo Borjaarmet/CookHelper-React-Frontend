@@ -48,6 +48,7 @@ class CreateList extends Component {
   render() {
     const {createdList} = this.state
     console.log("render createdList", this.state)
+    
     return (
       <>
         <Navbar/>

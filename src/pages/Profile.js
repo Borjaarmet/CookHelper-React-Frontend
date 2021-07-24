@@ -8,7 +8,7 @@ import Navbar from '../components/Navbar';
     super(props)
     this.state = {
       status: "loading",
-      user:"",
+      user:{},
       username:"",
       age:"",
       nationality:"",

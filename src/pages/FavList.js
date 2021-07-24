@@ -29,8 +29,9 @@ class FavList extends Component {
 
   handleDelete = async () => {
     try{
-       const deletedRecipe = await userClient.getUserDeleteRecipeCreated(this.props.match.params.id) 
+      const deletedRecipe = await userClient.getUserDeleteRecipeCreated(this.props.match.params.id) 
       console.log("deleted recipe:" , deletedRecipe)
+
       
       this.setState({
         favouriteList: this.state.favouriteList.slice(1, deletedRecipe)

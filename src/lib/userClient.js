@@ -22,7 +22,7 @@ class UserClient {
 	}
 
 	getUserCreateRecipe(body) {
-		return this.userClient.post(`/user/create`, {body}).then((res )=> res.data);
+		return this.userClient.post(`/user/create`, body).then(({data} )=> data);
 	}
 
   getUserDeleteRecipeCreated(id) {
