@@ -56,9 +56,9 @@ class Main extends Component {
    const recipesFounded = newCopy.filter((item) => {
         return item.recipeName === searchValue
      })
-   console.log("recipes founded: ", recipesFounded)
+   console.log("recipes founded: ", {recipesFounded})
    this.setState({
-     shownRecipes: this.state.shownRecipes.push(recipesFounded)
+     shownRecipes: this.state.shownRecipes.push({recipesFounded})
    })
   };
   

@@ -70,6 +70,7 @@ import Navbar from '../components/Navbar';
                 <label className='label-profile' htmlFor='name'>Username</label>
               <br />
               <input className='input-profile' type='text' name='username' id='name' value={user.username} onChange={this.handleChange} />
+              <button></button>
               <br />
               <label className='label-profile' htmlFor='email'>Email</label>
               <br />
