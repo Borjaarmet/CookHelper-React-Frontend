@@ -25,6 +25,11 @@ class ApiClient {
 	logout() {
 		return this.apiClient.get('/logout', {}).then(response => response.data);
 	}
+
+	//  updateUser(id,body) {
+	//  	return this.apiClient.put(`/user/${id}/profile`, body).then(({data}) => data)
+	// }
+
 }
 
 const apiClient = new ApiClient();

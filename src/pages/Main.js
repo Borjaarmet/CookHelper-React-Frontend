@@ -29,7 +29,6 @@ class Main extends Component {
     console.log("compdidmount")
     try{
       recipeClient.getAllRecipes().then(data => {
-        console.log("recipes: ", data.recipes)
         this.setState({
           initialRecipes: data.recipes,
           shownRecipes: data.recipes

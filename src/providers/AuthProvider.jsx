@@ -94,6 +94,21 @@ class AuthProvider extends Component {
     }
   }
 
+  // updateProfile = async ({ username, email, age, nationality, CookLevel }) => {
+  //   try {
+      
+  //     const updatedUser = await apiClient.updateUser({ username, email, age, nationality, CookLevel })
+  //     console.log(updatedUser)
+  //     this.setState({
+  //       status: 'loggedIn',
+  //       user: updatedUser
+  //     })
+
+  //   } catch (e) {
+  //     console.log(e)
+  //   }
+  // }
+
   logout = async () => {
     try {
       await apiClient.logout()

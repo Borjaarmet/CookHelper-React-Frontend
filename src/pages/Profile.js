@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import userClient from '../lib/userClient'
+import apiClient from '../lib/apiClient';
 import { withAuth } from '../providers/AuthProvider';
 import Navbar from '../components/Navbar';
 
@@ -43,10 +44,10 @@ import Navbar from '../components/Navbar';
     });
   }
 
-  handleSubmit = (event) => {
+  handleSubmit = async (event) => {
     event.preventDefault()
-    userClient.getUpdateProfile(this.state).then((user) => {
-      console.log("profile updated:", this.state.user)
+    const updatedProfile = await apiClient.updateUser(this.state).then((user) => {
+      console.log("profile updated:", updatedProfile)
       this.props.history.push(`/user/${user._id}/profile`)
     })
   }
