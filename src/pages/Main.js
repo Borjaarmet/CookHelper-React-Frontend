@@ -8,7 +8,8 @@
 import React, { Component } from 'react';
 import Navbar from '../components/Navbar';
 import { withAuth } from '../providers/AuthProvider';
-import SearchInput from '../components/SearchInput';
+import FormInput from '../components/FormInput';
+import FormCheckBox from '../components/FormCheckBox';
 import recipeClient from '../lib/recipeClient';
 import {Link} from 'react-router-dom';
 
@@ -21,7 +22,7 @@ class Main extends Component {
       initialRecipes: [],
       shownRecipes: [],
       searchValue: "",
-      
+      searchValueIngredient:[],  
     }
   }
 
@@ -59,9 +60,25 @@ class Main extends Component {
    console.log("recipes founded: ", {recipesFounded})
    this.setState({
        shownRecipes: recipesFounded[0]
-     // shownRecipes: [...this.state.shownRecipes, recipesFounded]
    })
   };
+
+  handleSearchRecipeByIngredients = () => {
+    const {searchValueIngredient} = this.state;
+    console.log("searchvalueIngredient :", searchValueIngredient)
+    const newCopy = [...this.state.initialRecipes]
+    console.log("newCopy: ", newCopy)
+    const recipesFounded = newCopy.filter((recipe) => {
+      return recipe.ingredientsList.includes(searchValueIngredient)
+    })
+    console.log("recipes founded: ", {recipesFounded})
+   this.setState({
+       shownRecipes: recipesFounded
+   })
+
+  }
+
+
   
 	render() {
     console.log("initialRecipes" ,this.state.initialRecipes)
@@ -69,21 +86,25 @@ class Main extends Component {
 		return (
 			<>
         <Navbar/>
-				<SearchInput 
+				<FormInput 
           value={this.state.searchValue}
           onSearchValue={this.handleSearchValue}
-          onSearchRecipe= {this.handleSearchRecipe}
-          />
+          onSearchRecipe= {this.handleSearchRecipe}    
+        />
+        <FormCheckBox 
+          value = {this.state.searchValueIngredient}
+          // onSearchIngredientValue={this.handleSearchIngredientValue}
+          onSearchRecipeByIngredient = {this.handleSearchRecipeByIngredients} 
+        />
 
 				<div className="recipes-container">
           <h1>Recipes founded ...</h1>
-           <div className="recipe-box">
-           <div>
-             
-             <Link to={`/recipes/${this.state.shownRecipes._id}/details`}>
-                  <h4>{this.state.shownRecipes.recipeName}</h4>
-                </Link>
-                 <iframe
+          <div className="recipe-box">
+            <div>
+              <Link to={`/recipes/${this.state.shownRecipes._id}/details`}>
+                <h4>{this.state.shownRecipes.recipeName}</h4>
+              </Link>
+                <iframe
                     width='200'
                     height='200'
                     src={this.state.shownRecipes.videoLink}
@@ -92,35 +113,31 @@ class Main extends Component {
                     allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
                     allowFullScreen
                  ></iframe>
-           </div>
             </div>
-           <h1>Some recipes</h1>
-             <div className="recipe-box">
-               { this.state.initialRecipes.map( (recipe) => {
-           
-            return (
-              <div key={recipe._id}>
-                
-                <Link to={`/recipes/${recipe._id}/details`}>
-                  <h4>{recipe.recipeName}</h4>
-                </Link>
-                 <iframe
-                    width='200'
-                    height='200'
-                    src={recipe.videoLink}
-                    title='YouTube video player'
-                    frameBorder='0'
-                    allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
-                    allowFullScreen
-                 ></iframe>
-              </div>
-            )})
-          } 
           </div>
-         
-				</div>
-        
-          
+          <h1>Some recipes</h1>
+             <div className="recipe-box">
+               { this.state.initialRecipes.map( (recipe) => { 
+                return (
+                  <div key={recipe._id}>
+                
+                    <Link to={`/recipes/${recipe._id}/details`}>
+                      <h4>{recipe.recipeName}</h4>
+                    </Link>
+                    <iframe
+                      width='200'
+                      height='200'
+                      src={recipe.videoLink}
+                      title='YouTube video player'
+                      frameBorder='0'
+                      allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
+                      allowFullScreen
+                    ></iframe>
+                  </div>
+                )})
+               } 
+             </div>
+				</div>  
 			</>
 		);
 	}
