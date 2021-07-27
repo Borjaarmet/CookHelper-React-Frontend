@@ -43,6 +43,7 @@ export default class CreateRecipe extends Component {
     return(
       <>
       <Navbar/>
+      <div className="container-profile">
       <form onSubmit={this.handleSubmit} >
         <div className="container-createRecipe">
         <h2>Do you want to create a recipe?</h2>
@@ -101,6 +102,7 @@ export default class CreateRecipe extends Component {
         </div>
         </div>
       </form>
+      </div>
       </>
     )
   }     

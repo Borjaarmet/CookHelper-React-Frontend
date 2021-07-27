@@ -47,13 +47,14 @@ class FavList extends Component {
     return (
       <>
         <Navbar/>
-       <h1>Favourite recipes</h1>
+        <div>
+       
        {this.state === "loading" ? <p>Loading...</p> :   
-          <div>
+          <div  className="container-favList">
             <p>You have {favouriteList.length} recipes!</p>
-              <div className="favList">
+              <div className="recipe-box">
               {favouriteList.map((recipe) => {
-                return <div className="recipeBox" key={recipe._id}>
+                return <div className="recipe-box-recipe" key={recipe._id}>
                           <div className="recipeBox-title">
                             <h2>{recipe.recipeName}</h2>
                           </div>
@@ -79,6 +80,7 @@ class FavList extends Component {
           </div>  
         </div>
       }
+      </div>
       </>
     )
   };

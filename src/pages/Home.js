@@ -10,14 +10,6 @@ class Home extends Component {
       <>
        <Navbar/>
        <TitleSection/>
-      {/* <div className="container">
-        <div className="AboutSection">
-        <h1>About</h1>
-        </div>
-        <div className="RecipesSection">
-        <h1>Some recipes</h1>
-        </div>
-      </div> */}
       </>
     );
   };
