@@ -5,6 +5,13 @@ import { FaBars } from "react-icons/fa";
 import '../App.css'
 
 class Navbar extends Component {
+	
+
+// handleClick = () => {
+// 	this.props.toggle()
+	
+// }
+
 	render() {
 		const { user, isLoggedIn, logout } = this.props;
 		return (
@@ -42,7 +49,7 @@ class Navbar extends Component {
 						<div className="navBtn">
 						<button className="navBtnLink"  onClick={logout}>Logout</button>
 						</div>
-						<div className="mobileIcon">
+						<div className="mobileIcon"  onClick = {this.handleClick}>
 							<FaBars/>
 						</div>
 					</div>
@@ -79,7 +86,8 @@ class Navbar extends Component {
 								</Link>
 						  </div>
 							<div className="mobileIcon">
-							<FaBars/>
+								<button onClick = {this.handleClick}><FaBars/></button>
+							
 						</div>
 						</div>	
 					</div>
