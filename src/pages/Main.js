@@ -5,13 +5,15 @@
 // onCheckBoxMeat > Controlo el estado
 
 // componente RecipeCard tiene sus botones me dirigen al single view
-import React, { Component } from 'react';
+import React, { Component} from 'react';
 import Navbar from '../components/Navbar';
 import { withAuth } from '../providers/AuthProvider';
 import FormInput from '../components/FormInput';
 import FormCheckBox from '../components/FormCheckBox';
 import recipeClient from '../lib/recipeClient';
 import {Link} from 'react-router-dom';
+// import Sidebar from '../components/Sidebar';
+
 
 
 
@@ -21,8 +23,7 @@ class Main extends Component {
     this.state={
       initialRecipes: [],
       shownRecipes: [],
-      searchValue: "",
-      searchValueIngredient:[],  
+      searchValue: "", 
     }
   }
 
@@ -63,39 +64,25 @@ class Main extends Component {
    })
   };
 
-  handleSearchRecipeByIngredients = () => {
-    const {searchValueIngredient} = this.state;
-    console.log("searchvalueIngredient :", searchValueIngredient)
-    const newCopy = [...this.state.initialRecipes]
-    console.log("newCopy: ", newCopy)
-    const recipesFounded = newCopy.filter((recipe) => {
-      return recipe.ingredientsList.includes(searchValueIngredient)
-    })
-    console.log("recipes founded: ", {recipesFounded})
-   this.setState({
-       shownRecipes: recipesFounded
-   })
-
-  }
-
-
+   toggleMenu = () => {
+    const sidebarContainer = document.getElementById('sidebarContainer');
+    sidebarContainer.classList.toggle('block');
+  };
   
 	render() {
     console.log("initialRecipes" ,this.state.initialRecipes)
     console.log("shownRecipes:" ,this.state.shownRecipes)
+   
 		return (
 			<>
-        <Navbar/>
+        {/* <Sidebar/> */}
+        <Navbar toggle={this.toggleMenu}/>
 				<FormInput 
           value={this.state.searchValue}
           onSearchValue={this.handleSearchValue}
           onSearchRecipe= {this.handleSearchRecipe}    
         />
-        <FormCheckBox 
-          value = {this.state.searchValueIngredient}
-          // onSearchIngredientValue={this.handleSearchIngredientValue}
-          onSearchRecipeByIngredient = {this.handleSearchRecipeByIngredients} 
-        />
+        <FormCheckBox/>
 
 				<div className="recipes-container">
           <h1>Recipes founded ...</h1>
