@@ -12,7 +12,7 @@ import FormInput from '../components/FormInput';
 import FormCheckBox from '../components/FormCheckBox';
 import recipeClient from '../lib/recipeClient';
 import {Link} from 'react-router-dom';
-// import Sidebar from '../components/Sidebar';
+import Sidebar from '../components/Sidebar';
 
 
 
@@ -24,6 +24,7 @@ class Main extends Component {
       initialRecipes: [],
       shownRecipes: [],
       searchValue: "", 
+      isOpen: false,
     }
   }
 
@@ -64,9 +65,10 @@ class Main extends Component {
    })
   };
 
-   toggleMenu = () => {
-    const sidebarContainer = document.getElementById('sidebarContainer');
-    sidebarContainer.classList.toggle('block');
+   toggle = () => {
+    this.setState({
+      isOpen: true,
+    })
   };
   
 	render() {
@@ -75,17 +77,17 @@ class Main extends Component {
    
 		return (
 			<>
-        {/* <Sidebar/> */}
-        <Navbar toggle={this.toggleMenu}/>
+        <Sidebar isOpen={this.state.isOpen} toggle = {this.toggle}/> 
+        <Navbar toggle = {this.toggle}/>
 				<FormInput 
           value={this.state.searchValue}
           onSearchValue={this.handleSearchValue}
           onSearchRecipe= {this.handleSearchRecipe}    
         />
-        <FormCheckBox/>
-
+        <div className="recipes-container"> <FormCheckBox/></div>
+       
 				<div className="recipes-container">
-          <h1>Recipes founded ...</h1>
+          <h3>Recipes founded ...</h3>
           <div className="recipe-box">
             <div>
               <Link to={`/recipes/${this.state.shownRecipes._id}/details`}>
@@ -102,14 +104,14 @@ class Main extends Component {
                  ></iframe>
             </div>
           </div>
-          <h1>Some recipes</h1>
+          <h3>Check some of our recipes</h3>
              <div className="recipe-box">
                { this.state.initialRecipes.map( (recipe) => { 
                 return (
-                  <div key={recipe._id}>
+                  <div className="recipe-box-recipe" key={recipe._id}>
                 
                     <Link to={`/recipes/${recipe._id}/details`}>
-                      <h4>{recipe.recipeName}</h4>
+                      <h3>{recipe.recipeName}</h3>
                     </Link>
                     <iframe
                       width='200'

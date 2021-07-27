@@ -3,14 +3,12 @@ import { Link } from 'react-router-dom';
 import { withAuth } from '../providers/AuthProvider';
 import { FaBars } from "react-icons/fa";
 import '../App.css'
+import Sidebar from './Sidebar';
 
 class Navbar extends Component {
 	
 
-// handleClick = () => {
-// 	this.props.toggle()
-	
-// }
+handleClick = () => {}
 
 	render() {
 		const { user, isLoggedIn, logout } = this.props;
@@ -53,6 +51,9 @@ class Navbar extends Component {
 							<FaBars/>
 						</div>
 					</div>
+					<div  className="hidden">
+						<Sidebar/>
+					</div>
 					</div>
 				) : (
 					<div className="nav">
@@ -62,18 +63,7 @@ class Navbar extends Component {
 							<h3 >CookHelper</h3>
 						</Link>
 						</div>
-						<div className="navMenu">
-							<div className="navItem">
-								<Link to="/login">
-									<i className="navLink">About us</i>
-								</Link>
-							</div>
-							<div className="navItem">
-								<Link  to="/login">
-									<i className="navLink">Some recipes</i>
-								</Link>
-							</div>
-						</div>
+						
 						<div className="navBtn">
 							<div >
 								<Link to="/login">
@@ -90,6 +80,9 @@ class Navbar extends Component {
 							
 						</div>
 						</div>	
+					</div>
+					<div className="hidden">
+						<Sidebar/>
 					</div>
 					</div>
 				)}

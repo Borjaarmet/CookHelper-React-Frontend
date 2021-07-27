@@ -10,6 +10,7 @@
 }
 
 /*   navbar  */
+
 .nav{
   background: #000;
   display: flex;
@@ -89,7 +90,6 @@
   }
 }
 
-
 @media screen and (max-width: 768px) {
   .mobileIcon {
     display: block;
@@ -113,6 +113,10 @@
 }
 
 /*  SIDEBAR  */
+
+.hidden {
+  display: none;
+ }
 
 /* .hidden {
   display: none;
@@ -286,7 +290,7 @@ h3{
 /*  recipeSearch  */
 
 .recipes-container {
-  margin: 4%;
+  margin: 5%;
 }
 .input-search {
   width: 200px;
@@ -327,8 +331,6 @@ h3{
   overflow-y: hidden;
   white-space: nowrap;
   padding: 10px;
-  
-  
 }
 .form-search{
   display: flex;
@@ -342,8 +344,22 @@ h3{
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
+  margin-bottom: 40px;
+  padding:20px
   
-  
+}
+.recipe-box-recipe {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  margin:10px;
+  text-align: center;
+  border:1px solid gray;
+  padding:10px;
+  max-width: 250px;
+}
+.recipe-box-recipe h4 {
+  margin-bottom: 10px;
 }
 .searchBox {
   border: none;
