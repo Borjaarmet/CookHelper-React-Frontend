@@ -22,14 +22,14 @@ class FishBoxCheck extends Component {
   render() {
     return (
       <>
-         <input className='input-searchBox' type='checkbox' name='salmon' value={this.state.salmon} onChange={this.handleChange} />
-            <label> Salmon</label><br />
-            <input className='input-searchBox' type='checkbox' name='tuna' value={this.state.tuna} onChange={this.handleChange}/>
-            <label> Tuna</label><br />
-            <input className='input-searchBox' type='checkbox' name='seabass' value={this.state.seabass} onChange={this.handleChange}/>
-            <label> Seabass</label><br />
-            <input className='input-searchBox' type='checkbox' name='monkfish' value={this.state.monkfish} onChange={this.handleChange}/>
-            <label> Monkfish</label><br />
+         <input className='input-searchBox' type='checkbox' name='salmon' id="salmon" value={this.state.salmon} onChange={this.handleChange} />
+            <label htmlFor="salmon"> Salmon</label><br />
+            <input className='input-searchBox' type='checkbox' name='tuna' id="tuna"  value={this.state.tuna} onChange={this.handleChange}/>
+            <label htmlFor="tuna"> Tuna</label><br />
+            <input className='input-searchBox' type='checkbox' name='seabass' id="seabass"  value={this.state.seabass} onChange={this.handleChange}/>
+            <label htmlFor="seabass"> Seabass</label><br />
+            <input className='input-searchBox' type='checkbox' name='monkfish' id="monkfish"  value={this.state.monkfish} onChange={this.handleChange}/>
+            <label htmlFor="monkfish"> Monkfish</label><br />
       </>
     )
   }
