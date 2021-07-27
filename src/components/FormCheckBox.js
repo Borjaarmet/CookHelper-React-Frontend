@@ -10,14 +10,24 @@ class FormCheckBox extends Component {
   constructor(props){
     super(props)
     this.state = {
-      status:"loading"
+      searchValueIngredient: [],
     }
   }
 
-  // handleSearchRecipeByIngredients = () => {
-  //   // const {searchValueIngredient} = this.state;
-  //   console.log("searchIngredient:", this.props.value)
-  // }
+ handleSearchRecipeByIngredients = () => {
+    const {searchValueIngredient} = this.state;
+    console.log("searchvalueIngredient :", searchValueIngredient)
+    const newCopy = [...this.props.initialRecipes]
+    console.log("newCopy: ", newCopy)
+    const recipesFounded = newCopy.filter((recipe) => {
+      return recipe.ingredientsList.includes(searchValueIngredient)
+    })
+    console.log("recipes founded: ", {recipesFounded})
+   this.setState({
+       shownRecipes: recipesFounded
+   })
+
+  }
 
   handleSubmitCheckBox = (event) => {
     event.preventDefault()
@@ -34,7 +44,7 @@ class FormCheckBox extends Component {
           <div className='searchBox'>
             <h4>meat</h4>
             <div className="searchBox-ing">
-              <MeatBoxCheck 
+              <MeatBoxCheck          
                 onSearchRecipeByIngredient = {this.handleSearchRecipeByIngredients} 
               />
             </div>
