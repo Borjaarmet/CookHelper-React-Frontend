@@ -51,7 +51,7 @@ class FavList extends Component {
        
        {this.state === "loading" ? <p>Loading...</p> :   
           <div  className="container-favList">
-            <p>You have {favouriteList.length} recipes!</p>
+            <h1>You have {favouriteList.length} recipes!</h1>
               <div className="recipe-box">
               {favouriteList.map((recipe) => {
                 return <div className="recipe-box-recipe" key={recipe._id}>
