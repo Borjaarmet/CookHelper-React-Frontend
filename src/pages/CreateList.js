@@ -27,17 +27,23 @@ class CreateList extends Component {
    } 
   };
 
-  deleteRecipe = async () => {
+  handleDelete = async () => {
+    console.log("click delete")
     try{
-       const deletedRecipe = await userClient.getUserDeleteRecipeCreated(this.props.match.params.id) 
-      console.log("deleted recipe:" , deletedRecipe)
+      const recipeId = await userClient.deleteRecipeCreated(this.props.match.params.id) 
+      console.log("deleted recipe:" , recipeId)
       this.setState({
-        createdList: this.state.createdList.slice(1, deletedRecipe)
+        createdList: this.state.createdList.splice(1, recipeId)
       })
     }
-    catch{
-      console.log("eerror")
+    catch(error) {
+      console.log(error)
     }
+    finally {
+      this.setState({
+        createdList: this.state.createdList.slice()
+      })
+    } 
   };
 
   // editRecipe = async() => {
@@ -53,19 +59,13 @@ class CreateList extends Component {
     return (
       <>
         <Navbar/>
-        {/* <h1>My own recipes</h1>
-        <p>You have {createdList.length} recipes!</p>
-          <ul>
-           {createdList.map((recipe, index) => {
-            return <li key={index}>{recipe._id}, {recipe.recipeName}
-            <button onClick = {this.deleteRecipe}>delete</button>
-            <button onClick = {this.editRecipe}>edit</button>
-            </li>
-          })}  
-        </ul>   */}
+        
          {this.state === "loading" ? <p>Loading...</p> :   
           <div  className="container-favList">
-            <h1>You have {createdList.length} recipes!</h1>
+            <h1>Your own recipes</h1>
+            {createdList.length === 1 && <h2>You have {createdList.length} recipe!</h2>} 
+            {createdList.length > 1 && <h2>You have {createdList.length} recipes!</h2>}
+            {createdList.length === 0 && <h2>You don´t have any recipe saved!</h2>} 
               <div className="recipe-box">
               {createdList.map((recipe) => {
                 return <div className="recipe-box-recipe" key={recipe._id}>

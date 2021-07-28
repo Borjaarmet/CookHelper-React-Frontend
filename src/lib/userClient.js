@@ -12,11 +12,6 @@ class UserClient {
 		return this.userClient.get(`/user/${id}/profile`).then(response => response.data);
 	}
 
-	getUpdateProfile(id,body) {
-    
-		return this.userClient.put(`/user/${id}/profile`, body).then(({ data }) => data);
-	}
-
 	getUserCreatedRecipesList() {
 		return this.userClient.get(`/user/create`).then(({ data }) => data);
 	}
@@ -25,17 +20,15 @@ class UserClient {
 		return this.userClient.post(`/user/create`, body).then((res )=> res.data);
 	}
 
-  getUserDeleteRecipeCreated(id) {
-		return this.userClient.delete(`/user/create/${id}`).then(({ data }) => data);
-	}
+   deleteRecipeCreated(id) {
+ 	 return this.userClient.delete(`/user/create/${id}`).then(({ data }) => data);
+	 }
 
    getUserFavouriteList() {
 		return this.userClient.get('/user/favourites').then(({ data }) => data);
 	}
 
-  getUserDeleteRecipeFromFav(id) {
-		return this.userClient.delete(`/user/favourites/${id}`).then(({ data }) => data);
-	}
+  
 
 };
 

@@ -20,6 +20,14 @@ class RecipeClient {
 		return this.recipeClient.post(`/recipes/${id}/details`).then(({ data }) => data);
 	}
 
+	deleteRecipeFromFav(recipeId) {
+		return this.recipeClient.delete(`/recipes/favourites/${recipeId}`).then(({ data }) => data);
+	}
+
+	deleteRecipeCreated(id) {
+		return this.recipeClient.delete(`/recipes/create/${id}`).then(({ data }) => data);
+	}
+
 	getUpdateRecipe(recipe) {
     const {recipeName, difficulty, TimeToCook, ingredientsList, Steps, videoLink} = recipe
     const {id} = recipe._id

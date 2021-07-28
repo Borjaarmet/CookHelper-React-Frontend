@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import userClient from '../lib/userClient';
+import recipeClient from '../lib/recipeClient';
 import {Link} from 'react-router-dom';
 import Navbar from '../components/Navbar'
 
@@ -29,17 +30,15 @@ class FavList extends Component {
 
   handleDelete = async () => {
     try{
-      const deletedRecipe = await userClient.getUserDeleteRecipeCreated(this.props.match.params.id) 
+      const deletedRecipe = await recipeClient.deleteRecipeFromFav(this.props.match.params.id) 
       console.log("deleted recipe:" , deletedRecipe)
-
-      
       this.setState({
         favouriteList: this.state.favouriteList.slice(1, deletedRecipe)
       })
     }
-    catch{
-      console.log("eerror")
-    }
+    catch(error) {
+    console.log(error)
+   } 
   };
     
   render() {
@@ -51,7 +50,12 @@ class FavList extends Component {
        
        {this.state === "loading" ? <p>Loading...</p> :   
           <div  className="container-favList">
-            <h1>You have {favouriteList.length} recipes!</h1>
+            <h1>Your favourite recipes</h1>
+            
+            {favouriteList.length === 1 && <h2>You have {favouriteList.length} recipe!</h2>} 
+            {favouriteList.length > 1 && <h2>You have {favouriteList.length} recipes!</h2> }
+             {favouriteList.length === 0 && <h2>You don´t have any recipe saved!</h2>} 
+            
               <div className="recipe-box">
               {favouriteList.map((recipe) => {
                 return <div className="recipe-box-recipe" key={recipe._id}>

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import userClient from '../lib/userClient'
-import apiClient from '../lib/apiClient';
+// import apiClient from '../lib/apiClient';
 import { withAuth } from '../providers/AuthProvider';
 import Navbar from '../components/Navbar';
 
@@ -46,13 +46,19 @@ import Navbar from '../components/Navbar';
     });
   }
 
-  handleSubmit = async (event) => {
-    event.preventDefault()
-    const updatedProfile = await apiClient.updateUser(this.state).then((user) => {
-      console.log("profile updated:", updatedProfile)
-      this.props.history.push(`/user/${user._id}/profile`)
-    })
-  }
+  // handleSubmit = async (event) => {
+  //   event.preventDefault()
+  //   try{
+  //     const updatedProfile = await apiClient.updateUserProfile(this.state) 
+  //     console.log("profile updated:", updatedProfile)
+  //     this.props.history.push(`/user/${user._id}/profile`)
+  //   }
+  //   catch(error){
+  //     console.log(error)
+  //   }
+    
+  // } 
+  
 
   render() {
     const {user, status} = this.state;
