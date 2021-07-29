@@ -20,10 +20,6 @@ class UserClient {
 		return this.userClient.post(`/user/create`, body).then((res )=> res.data);
 	}
 
-   deleteRecipeCreated(id) {
- 	 return this.userClient.delete(`/user/create/${id}`).then(({ data }) => data);
-	 }
-
    getUserFavouriteList() {
 		return this.userClient.get('/user/favourites').then(({ data }) => data);
 	}
