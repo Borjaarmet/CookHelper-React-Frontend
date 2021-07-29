@@ -19,28 +19,31 @@ handleClick = () => {}
 					<div className="navContainer">
 						<div className="navLogo">
 						 <Link to="/app">
-							<h3 >CookHelper</h3>
+							<h1 className="logo" >CookHelper</h1>
 						</Link>
 						</div>
 						<div className="navMenu">
 							<div className="navItem">
 						   <Link to={`/user/${user._id}/profile`}>
-						    <p className="navLink">Profile</p>
+						    <h3 className="navLink">Profile</h3>
 						   </Link>
 						  </div>
+								<hr/>
 							<div className="navItem">
 						   <Link to={`/user/favourites`}>
-						    <p className="navLink">FavList</p>
+						    <h3 className="navLink">Favourite<br/> recipes</h3>
 						   </Link>
 						  </div>
+								<hr/>
 							<div className="navItem">
 						   <Link to={`/user/create`}>
-						    <p className="navLink">CreatedList</p>
+						    <h3 className="navLink">My own <br/> recipes</h3>
 						   </Link>
 						  </div>
+							<hr/>
 							<div className="navItem">
 						   <Link to={`/user/createRecipe`}>
-						    <p className="navLink">Create recipe</p>
+						    <h3 className="navLink">Create a <br/>recipe</h3>
 						   </Link>
 						  </div>
 						</div>
@@ -60,7 +63,7 @@ handleClick = () => {}
 					<div className="navContainer">
 						<div className="navLogo">
 					  <Link to="/">
-							<h3 >CookHelper</h3>
+							<h3 className="logo" >CookHelper</h3>
 						</Link>
 						</div>
 						
