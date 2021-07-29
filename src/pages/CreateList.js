@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import userClient from '../lib/userClient';
+import recipeClient from '../lib/recipeClient';
 import Navbar from '../components/Navbar';
 import { Link } from 'react-router-dom';
 
@@ -14,6 +15,7 @@ class CreateList extends Component {
   
   async componentDidMount(){
     console.log("compdidmount");
+    console.log("props:",this.props.match.params)
    try{
     const myList = await userClient.getUserCreatedRecipesList();
       console.log("createdList: ",myList)
@@ -27,11 +29,12 @@ class CreateList extends Component {
    } 
   };
 
-  handleDelete = async () => {
+  handleDelete = async (recipe) => {
     console.log("click delete")
     try{
-      const recipeId = await userClient.deleteRecipeCreated(this.props.match.params.id) 
+      const recipeId = await recipeClient.deleteRecipeCreated(recipe._id) 
       console.log("deleted recipe:" , recipeId)
+      console.log("props", this.props)
       this.setState({
         createdList: this.state.createdList.splice(1, recipeId)
       })
@@ -39,11 +42,60 @@ class CreateList extends Component {
     catch(error) {
       console.log(error)
     }
-    finally {
-      this.setState({
-        createdList: this.state.createdList.slice()
-      })
-    } 
+  };
+
+   handleSortByTime = () => {
+    console.log("click");
+    const { createdList } = this.state;
+
+    const newCopy = [...createdList];
+    newCopy.sort(function (a, b) {
+      if (a.TimeToCook > b.TimeToCook) {
+        return 1;
+      } else if (a.TimeToCook < b.TimeToCook) {
+        return -1;
+      }
+      return 0;
+    });
+    this.setState({
+      createdList: newCopy,
+    });
+  };
+
+   handleSortByIngredients = () => {
+    console.log("click");
+    const { createdList } = this.state;
+
+    const newCopy = [...createdList];
+    newCopy.sort(function (a, b) {
+      if (a.ingredientsList < b.ingredientsList) {
+        return 1;
+      } else if (a.ingredientsList > b.ingredientsList) {
+        return -1;
+      }
+      return 0;
+    });
+    this.setState({
+      createdList: newCopy,
+    });
+  };
+
+  handleSortByDifficulty = () => {
+    console.log("click");
+    const { createdList } = this.state;
+    
+    const newCopy = [...createdList];
+    newCopy.sort(function (a, b) {
+      if (a.difficulty > b.difficulty) {
+        return 1;
+      } else if (a.difficulty < b.difficulty) {
+        return -1;
+      }
+      return 0;
+    });
+    this.setState({
+      createdList: newCopy,
+    });
   };
 
   // editRecipe = async() => {
@@ -66,6 +118,9 @@ class CreateList extends Component {
             {createdList.length === 1 && <h2>You have {createdList.length} recipe!</h2>} 
             {createdList.length > 1 && <h2>You have {createdList.length} recipes!</h2>}
             {createdList.length === 0 && <h2>You don´t have any recipe saved!</h2>} 
+            <button onClick={this.handleSortByTime}>Sort by time to cook</button>
+            <button onClick={this.handleSortByDifficulty}>Sort by difficulty</button>
+            <button onClick={this.handleSortByIngredients}>Sort by quantity of ingredients</button>
               <div className="recipe-box">
               {createdList.map((recipe) => {
                 return <div className="recipe-box-recipe" key={recipe._id}>
@@ -87,7 +142,7 @@ class CreateList extends Component {
                             <Link to = {`/recipes/${recipe._id}/details`}>
                             <button>See details</button>
                             </Link>
-                            <button onClick={this.handleDelete}>🗑️</button>                     
+                            <button onClick={()=> {this.handleDelete(recipe)}}>🗑️</button>                     
                           </div>
                       </div>
             })}  
