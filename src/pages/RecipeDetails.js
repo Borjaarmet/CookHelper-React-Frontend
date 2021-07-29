@@ -16,10 +16,9 @@ class RecipeDetail extends Component {
 
   async componentDidMount() {
     console.log("compdidmount")
-    console.log(this.props.match.params.recipeId)
-    
+    const {recipeId} = this.props.match.params
     try{
-      const details = await recipeClient.getRecipeDetails(this.props.match.params.recipeId);
+      const details = await recipeClient.getRecipeDetails(recipeId);
         console.log("recipe: ",details)
         this.setState({
           status: 'loaded',
@@ -32,8 +31,8 @@ class RecipeDetail extends Component {
   };
 
   addToFav = () => {
-   console.log("click to fav")
    recipeClient.pushRecipeToFav(this.props.match.params.recipeId).then((recipe) => {
+    console.log("props:", this.props.match.params.recipeId)
     console.log("recipe:", recipe)
     this.props.history.push('/user/favourites')
    })
@@ -75,6 +74,8 @@ class RecipeDetail extends Component {
               </li>
             </div>
             <div className="info">
+              <h3>Difficulty</h3>
+              <p>{recipe.difficulty}</p>
               <h3>Steps</h3>
               <ul>
                 {recipe.Steps.map((step,index) => {
@@ -91,9 +92,8 @@ class RecipeDetail extends Component {
                 </ul>
             </div>
           </div>
-          {/* <Link to={"/user/favourites"}> */}
+          
           <button onClick={this.addToFav} className="btn"><span>Add to your list!</span></button>
-          {/* </Link> */}
         </div>
   } 
       </>
