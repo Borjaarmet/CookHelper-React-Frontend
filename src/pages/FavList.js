@@ -29,16 +29,72 @@ class FavList extends Component {
   };
 
   handleDelete = async () => {
+    console.log("props", this.props)
+    const {recipeId} = this.props
     try{
-      const deletedRecipe = await recipeClient.deleteRecipeFromFav(this.props.match.params.id) 
+      const deletedRecipe = await recipeClient.deleteRecipeFromFav(recipeId) 
       console.log("deleted recipe:" , deletedRecipe)
       this.setState({
-        favouriteList: this.state.favouriteList.slice(1, deletedRecipe)
+        favouriteList: this.state.favouriteList.splice(1, deletedRecipe)
       })
     }
     catch(error) {
     console.log(error)
    } 
+  };
+
+  handleSortByTime = () => {
+    console.log("click");
+    const { favouriteList } = this.state;
+
+    const newCopy = [...favouriteList];
+    newCopy.sort(function (a, b) {
+      if (a.TimeToCook > b.TimeToCook) {
+        return 1;
+      } else if (a.TimeToCook < b.TimeToCook) {
+        return -1;
+      }
+      return 0;
+    });
+    this.setState({
+      favouriteList: newCopy,
+    });
+  };
+
+  handleSortByIngredients = () => {
+    console.log("click");
+    const { favouriteList } = this.state;
+
+    const newCopy = [...favouriteList];
+    newCopy.sort(function (a, b) {
+      if (a.ingredientsList > b.ingredientsList) {
+        return 1;
+      } else if (a.ingredientsList < b.ingredientsList) {
+        return -1;
+      }
+      return 0;
+    });
+    this.setState({
+      favouriteList: newCopy,
+    });
+  };
+
+   handleSortByDifficulty = () => {
+    console.log("click");
+    const { favouriteList } = this.state;
+    
+    const newCopy = [...favouriteList];
+    newCopy.sort(function (a, b) {
+      if (a.difficulty > b.TimeToCook) {
+        return 1;
+      } else if (a.TimeToCook < b.TimeToCook) {
+        return -1;
+      }
+      return 0;
+    });
+    this.setState({
+      favouriteList: newCopy,
+    });
   };
     
   render() {
@@ -55,7 +111,11 @@ class FavList extends Component {
             {favouriteList.length === 1 && <h2>You have {favouriteList.length} recipe!</h2>} 
             {favouriteList.length > 1 && <h2>You have {favouriteList.length} recipes!</h2> }
              {favouriteList.length === 0 && <h2>You don´t have any recipe saved!</h2>} 
-            
+            <div className="sortbtns">
+            <button onClick={this.handleSortByTime}>Sort by time to cook</button>
+            <button onClick={this.handleSortByDifficulty}>Sort by difficulty</button>
+            <button onClick={this.handleSortByIngredients}>Sort by quantity of ingredients</button>
+            </div>
               <div className="recipe-box">
               {favouriteList.map((recipe) => {
                 return <div className="recipe-box-recipe" key={recipe._id}>
