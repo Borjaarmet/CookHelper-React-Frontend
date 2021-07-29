@@ -24,7 +24,7 @@ class FormInput extends Component {
     return (
      <div className="recipes-container">
      
-       <h3>Search a recipe</h3>
+       <h3 className="title-search-input" >Search a recipe</h3>
        <div className="search-recipe">
          
         <form onSubmit={this.handleSubmitFormInput}>
@@ -34,7 +34,7 @@ class FormInput extends Component {
          name="search" 
          onChange = {this.handleChange}
          value={this.props.value}
-         placeholder="Search a recipe"/>
+         placeholder="e.g. Salad"/>
          <div className="btn-search">
          <button type="submit" className="fas fa-search"></button>
          </div>
