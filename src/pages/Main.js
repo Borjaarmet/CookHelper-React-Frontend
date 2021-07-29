@@ -116,11 +116,12 @@ class Main extends Component {
           onSearchValue={this.handleSearchValue}
           onSearchRecipe= {this.handleSearchRecipe}    
         />
-        <div className="recipe-box">
-          <div className="search-igredients">
+          <h3 className="title-search">Search by ingredients</h3>
+          <div className="search-ingredients">
           <form className="search-form" onSubmit={this.handleSearchRecipeByIngredients}>
             <div className="searchBox">
-              <h4>Meat</h4>
+              <h4 className="title-box">Meat</h4>
+              <hr/>
               <input className='input-searchBox' type='checkbox' name='pork' id="pork" onChange={this.handleSubmitCheckBox} />
               <label htmlFor="pork"> Pork</label><br />
               <input className='input-searchBox' type='checkbox' name='chicken' id="chicken" onChange={this.handleSubmitCheckBox} />
@@ -135,7 +136,8 @@ class Main extends Component {
               <label htmlFor="beef"> Beef</label><br />
             </div>
             <div className="searchBox">
-              <h4>Fish</h4>
+              <h4 className="title-box">Fish</h4>
+              <hr/>
               <input className='input-searchBox' type='checkbox' name='salmon' id="salmon" onChange={this.handleSubmitCheckBox} />
               <label htmlFor="salmon"> Salmon</label><br />
               <input className='input-searchBox' type='checkbox' name='tuna' id="tuna" onChange={this.handleSubmitCheckBox}/>
@@ -146,7 +148,8 @@ class Main extends Component {
               <label htmlFor="monkfish"> Monkfish</label><br />
             </div>
             <div className="searchBox">
-              <h4>Vegetables</h4>
+              <h4 className="title-box">Vegetables</h4>
+              <hr/>
               <input className='input-searchBox' type='checkbox' name='tomatoes' id="tomatoes" onChange={this.handleSubmitCheckBox}/>
               <label htmlFor="tomatoes">Tomatoes</label><br />
               <input className='input-searchBox' type='checkbox' name='peppers' id="peppers" onChange={this.handleSubmitCheckBox}/>
@@ -169,7 +172,8 @@ class Main extends Component {
               <label htmlFor="mushrooms"> Mushrooms</label><br />
             </div>
             <div className="searchBox">
-              <h4>Pasta and grains</h4>
+              <h4 className="title-box">Pasta & grains</h4>
+              <hr/>
               <input className='input-searchBox' type='checkbox' name='macarroni' id="macarroni" onChange={this.handleSubmitCheckBox}/>
               <label htmlFor="macarroni"> Macarroni</label><br />
               <input className='input-searchBox' type='checkbox' name='spaghetti' id="spaghetti" onChange={this.handleSubmitCheckBox}/>
@@ -184,7 +188,8 @@ class Main extends Component {
               <label htmlFor="quinoa"> Quinoa</label><br />
             </div>
             <div className="searchBox">
-              <h4>Dairy products</h4>
+              <h4 className="title-box">Dairy products</h4>
+              <hr/>
               <input className='input-searchBox' type='checkbox' name='butter' id="butter" onChange={this.handleSubmitCheckBox}/>
               <label htmlFor='butter'> Butter</label><br />
               <input className='input-searchBox' type='checkbox' name='milk' id="milk" onChange={this.handleSubmitCheckBox}/>
@@ -202,22 +207,20 @@ class Main extends Component {
               <input className='input-searchBox' type='checkbox' name='cheddar cheese' id="cheddarCheese" onChange={this.handleSubmitCheckBox}/>
               <label htmlFor='cheddarCheese'> Cheddar cheese</label><br />
             </div>
-
-            <button type="submit">Search</button>
+            <div className="btn-search2">
+              <button className="fas fa-search"  type="submit"></button>
+            </div>
+            
           </form>
           </div>
-        </div>
-
-      
        
-       {/* <div className="recipes-container"> <FormCheckBox/></div> */}
        {this.state.shownRecipes.length !== 0 ? (<>
          	<div className="recipes-container">
-           <h3>Recipes found ...</h3>
+           <h3>We found {this.state.shownRecipes.length} recipes</h3>
            <div className="recipe-box">
            {this.state.shownRecipes.map((recipe) => {
              return (
-                 <div key={recipe._id}>
+                 <div className="recipe-box-recipe" key={recipe._id}>
                    <Link to={`/recipes/${recipe._id}/details`}>
                      <h4>{recipe.recipeName}</h4>
                    </Link>
@@ -235,14 +238,11 @@ class Main extends Component {
            })}
            </div>
            </div>
-          </>) : <p>No recipes found</p>
+          </>) : <div className="message-notFound"><p>Not found recipes yet</p></div> 
         }
 
 
-          <h3>Check some of our recipes</h3>
-          <div className="recipe-box">
-            
-          
+          <h2 className="title-search">Check some of our recipes</h2>
              <div className="recipe-box">
                { this.state.initialRecipes.map( (recipe) => { 
                 return (
@@ -264,7 +264,7 @@ class Main extends Component {
                 )})
                } 
              </div>
-	      </div>
+	      
 			</>
 		);
 	}
