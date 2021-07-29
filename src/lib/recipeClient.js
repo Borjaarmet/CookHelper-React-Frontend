@@ -21,11 +21,11 @@ class RecipeClient {
 	}
 
 	deleteRecipeFromFav(recipeId) {
-		return this.recipeClient.delete(`/recipes/favourites/${recipeId}`).then(({ data }) => data);
+		return this.recipeClient.put(`/recipes/favourites/${recipeId}`).then(({ data }) => data);
 	}
 
 	deleteRecipeCreated(id) {
-		return this.recipeClient.delete(`/recipes/create/${id}`).then(({ data }) => data);
+		return this.recipeClient.put(`/recipes/create/${id}`).then(({ data }) => data);
 	}
 
 	getUpdateRecipe(recipe) {
