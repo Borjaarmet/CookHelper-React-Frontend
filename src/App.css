@@ -1,23 +1,36 @@
 *{
   margin: auto;
   padding: 0;
-   -webkit-box-sizing: border-box;
-   -moz-box-sizing: border-box;
-   -o-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -o-box-sizing: border-box;
   box-sizing:border-box;
   list-style-type: none;
    text-decoration: none;
+   font-family: 'Rubik', sans-serif;
+}
+.container {
+  background: #ffd154 ;
+  height:100vh;
+
+}
+.logo {
+  font-family: 'Cookie', cursive;
+  color: #ffd154;
+}
+.title-box {
+  margin-top: 20px;
 }
 
 /*   navbar  */
 
 .nav{
-  background: #000;
+  background: rgb(204, 204, 204);
+  background: linear-gradient(0deg,  rgb(26, 26, 26) 0%, #434343 100%);
   display: flex;
-  height: 60px;
-  justify-content: center;
+  height: 80px;
+  justify-content: space-between;
   align-items: center;
-  font-size: 1rem;
   position: sticky;
   top: 0;
   z-index: 10;
@@ -25,10 +38,10 @@
 .navContainer {
   display: flex;
   justify-content: space-between;
-  height: 60px;
+  height: 80px;
   z-index: 1;
   width: 100%;
-  padding: 0 24px;
+  padding: 0 10px;
   max-width: 1100px;
 }
 .navLogo {
@@ -67,7 +80,7 @@
   align-items: center;
 }
 .navBtnLink {
-  background-color: #01bf71;
+  background-color: #ffd154;
   border-radius: 50px;
   padding: 5px 10px;
   border: none;
@@ -289,8 +302,8 @@ h3{
 
 /*  recipeSearch  */
 
-.recipes-container {
-  margin: 5%;
+.recipes-container, .message-notFound {
+  margin: 30px 0 25px 50px;
 }
 .input-search {
   width: 200px;
@@ -306,9 +319,11 @@ h3{
 .btn-search {
   display: inline-block;
 }
-.btn-search button {
+.btn-search button  {
   padding: 20px 20px;
-  background-color: #01bf71;
+   background: rgb(204, 204, 204);
+  background: linear-gradient(0deg, rgb(26, 26, 26) 0%, #434343 100%); 
+  color: #fff;
   border: none;
   border-radius: 4px;
   cursor: pointer;
@@ -317,29 +332,96 @@ h3{
 .input-search:focus {
   width: 50%;
 }
-
+.title-search {
+  margin-left: 50px;
+  color:#434343;
+}
+.title-search-input {
+  color:#434343;
+}
 .search-ingredients {
-  width:100%;
+  width:90%;
   border:none;
+  background-image: url('./images/bg-wood.jpeg');
+  background-position: center;
+  background-size: cover;
   border-radius: 4px;
-  -webkit-box-shadow: 5px 5px 5px 0px #000000, inset 4px 4px 15px 0px #000000, -19px 21px 37px -8px rgba(0,0,0,0); 
-  box-shadow: 5px 5px 5px 0px #000000, inset 4px 4px 15px 0px #000000, -19px 21px 37px -8px rgba(0,0,0,0);
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
   overflow-x: scroll;
   overflow-y: hidden;
   white-space: nowrap;
-  padding: 10px;
+  padding: 30px;
 }
-.form-search{
+
+input[type=checkbox] + label {
+  display: block;
+  margin-bottom: 0.2em;
+  cursor: pointer;
+}
+
+input[type=checkbox] {
+  display: none;
+}
+
+input[type=checkbox] + label:before {
+  content: "\2714";
+  border: 0.1em solid #000;
+  border-radius: 0.2em;
+  display: inline-block;
+  width: 0.7em;
+  height: 0.7em;
+  padding-left: 0.5em;
+  padding-bottom: 0.3em;
+  margin-right: 0.6em;
+  vertical-align: bottom;
+  color: transparent;
+  transition: .8s;
+}
+
+input[type=checkbox] + label:active:before {
+  transform: scale(0);
+}
+
+input[type=checkbox]:checked + label:before {
+  background-color: MediumSeaGreen;
+  border-color: MediumSeaGreen;
+  color: #fff;
+}
+
+input[type=checkbox]:disabled + label:before {
+  transform: scale(1);
+  border-color: #aaa;
+}
+
+input[type=checkbox]:checked:disabled + label:before {
+  transform: scale(1);
+  background-color: #bfb;
+  border-color: #bfb;
+} 
+
+
+.search-form{
   display: flex;
   justify-content: space-between;
   align-items:stretch;
   margin: 0;
 }
+.btn-search2 button {
+  padding: 80px 20px;
+  font-size: 30px;
+  color: #fff;
+  background: rgb(204, 204, 204);
+  background: linear-gradient(0deg,  rgb(26, 26, 26) 0%, #434343 100%);
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin:0 30px;
+}
 .recipe-box{
-  width:100%;
+  width:90%;
   border:1px solid gray;
   border-radius: 4px;
   display: flex;
@@ -347,55 +429,61 @@ h3{
   flex-wrap: wrap;
   margin-bottom: 40px;
   padding:20px;
-  -webkit-box-shadow: 5px 5px 5px 0px #000000, inset 4px 4px 15px 0px #000000, -19px 21px 37px -8px rgba(0,0,0,0); 
-  box-shadow: 5px 5px 5px 0px #000000, inset 4px 4px 15px 0px #000000, -19px 21px 37px -8px rgba(0,0,0,0);
-  
+  background-image: url('./images/bg-wood.jpeg');
+  background-position:inherit;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
 }
 .recipe-box-recipe {
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
+  background: rgb(204, 204, 204);
+  background: linear-gradient(0deg,  rgb(26, 26, 26) 0%, #434343 100%);
   margin:15px;
   text-align: center;
   max-height:300px;
   border-radius: 4px;
   padding:10px;
   max-width: 250px;
-  -webkit-box-shadow: 5px 5px 5px 0px #000000, inset 4px 4px 15px 0px #000000, -19px 21px 37px -8px rgba(0,0,0,0); 
-  box-shadow: 5px 5px 5px 0px #000000, inset 4px 4px 15px 0px #000000, -19px 21px 37px -8px rgba(0,0,0,0);
+ box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
 }
-.recipe-box-recipe h4 {
+.recipe-box-recipe h3 {
   margin-bottom: 10px;
+  color: #fff;
 }
 .searchBox {
+  
   border: none;
   border-radius: 4px;
-  background: #01bf71;
+  background: rgb(204, 204, 204);
+  background: linear-gradient(0deg,  rgb(26, 26, 26) 0%, #434343 100%); 
   padding: 10px;
-  width: 250px;
+  width: 230px;
   height: 200px;
-  margin: 10px 20px;
+  margin: 10px 50px;
   color: white;
-  font-weight: bold;
-  font-size: 1em;
+  font-size: 1.2em;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  white-space: nowrap;
   text-align:left;
-  -webkit-box-shadow: -10px 0px 13px -7px #000000, 10px 0px 13px -7px #000000, -19px 21px 37px -8px rgba(0,0,0,0); 
-  box-shadow: -10px 0px 13px -7px #000000, 10px 0px 13px -7px #000000, -19px 21px 37px -8px rgba(0,0,0,0);
+  box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
 }
+
 .searchBox h4 {
   text-align: center;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
   text-transform: uppercase;
+  font-family: 'Nanum Brush Script', cursive;
+  font-size: 2rem;
 }
-.searchBox-ing {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-  line-height: 2rem;
+
+.searchBox label {
+ font-family: 'Nanum Brush Script', cursive;
+ font-size: 1.8rem;
 }
-.searchBox-ing label {
-  margin-right: 20px;
+.searchBox hr {
+  margin-bottom: 30px;
 }
 
 /* Form container */
@@ -422,7 +510,8 @@ h3{
   display: flex;
   justify-content: center;
   align-items: center;
-  background: #232a34;
+  background: #ffd154;
+  
 } 
 .container-form {
   border:none;
@@ -455,7 +544,8 @@ hr {
   margin-bottom: 25px;
 }
 .signupbtn {
-  background-color: #01bf71;
+  background: rgb(204, 204, 204);
+  background: linear-gradient(0deg,  rgb(26, 26, 26) 0%, #434343 100%);
   color: white;
   padding: 14px 20px;
   margin: 8px 0;
