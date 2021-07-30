@@ -28,11 +28,10 @@ class FavList extends Component {
    } 
   };
 
-  handleDelete = async () => {
-    console.log("props", this.props)
-    const {recipeId} = this.props
+  handleDelete = async (recipe) => {
+    
     try{
-      const deletedRecipe = await recipeClient.deleteRecipeFromFav(recipeId) 
+      const deletedRecipe = await recipeClient.deleteRecipeFromFav(recipe.id) 
       console.log("deleted recipe:" , deletedRecipe)
       this.setState({
         favouriteList: this.state.favouriteList.splice(1, deletedRecipe)
@@ -106,11 +105,11 @@ class FavList extends Component {
        
        {this.state === "loading" ? <p>Loading...</p> :   
           <div  className="container-favList">
-            <h1>Your favourite recipes</h1>
+            <h1 className="title-search">Your favourite recipes</h1>
             
-            {favouriteList.length === 1 && <h2>You have {favouriteList.length} recipe!</h2>} 
-            {favouriteList.length > 1 && <h2>You have {favouriteList.length} recipes!</h2> }
-             {favouriteList.length === 0 && <h2>You don´t have any recipe saved!</h2>} 
+            {favouriteList.length === 1 && <h2 className="title-search">You have {favouriteList.length} recipe!</h2>} 
+            {favouriteList.length > 1 && <h2 className="title-search">You have {favouriteList.length} recipes!</h2> }
+             {favouriteList.length === 0 && <h2 className="title-search">You don´t have any recipe saved!</h2>} 
             <div className="sortbtns">
             <button onClick={this.handleSortByTime}>Sort by time to cook</button>
             <button onClick={this.handleSortByDifficulty}>Sort by difficulty</button>
@@ -120,7 +119,7 @@ class FavList extends Component {
               {favouriteList.map((recipe) => {
                 return <div className="recipe-box-recipe" key={recipe._id}>
                           <div className="recipeBox-title">
-                            <h2>{recipe.recipeName}</h2>
+                            <h3>{recipe.recipeName}</h3>
                           </div>
                           <div className="recipeBox-video">
                             <iframe
@@ -135,9 +134,10 @@ class FavList extends Component {
                           </div>
                           <div className="recipeBox-btns">
                             <Link to = {`/recipes/${recipe._id}/details`}>
-                            <button>See details</button>
+                            <button className="navBtnLink">See details</button>
                             </Link>
-                            <button onClick={this.handleDelete}>🗑️</button>                     
+                          
+                            <button className="fas fa-trash" onClick={() => {this.handleDelete(recipe)}}></button>                     
                           </div>
                       </div>
             })}  
