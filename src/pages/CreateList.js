@@ -114,18 +114,20 @@ class CreateList extends Component {
         
          {this.state === "loading" ? <p>Loading...</p> :   
           <div  className="container-favList">
-            <h1>Your own recipes</h1>
-            {createdList.length === 1 && <h2>You have {createdList.length} recipe!</h2>} 
-            {createdList.length > 1 && <h2>You have {createdList.length} recipes!</h2>}
-            {createdList.length === 0 && <h2>You don´t have any recipe saved!</h2>} 
+            <h1 className="title-search">Your own recipes</h1>
+            {createdList.length === 1 && <h2 className="title-search">You have {createdList.length} recipe!</h2>} 
+            {createdList.length > 1 && <h2 className="title-search">You have {createdList.length} recipes!</h2>}
+            {createdList.length === 0 && <h2 className="title-search">You don´t have any recipe saved!</h2>} 
+            <div className="sortbtns">
             <button onClick={this.handleSortByTime}>Sort by time to cook</button>
             <button onClick={this.handleSortByDifficulty}>Sort by difficulty</button>
             <button onClick={this.handleSortByIngredients}>Sort by quantity of ingredients</button>
+            </div>
               <div className="recipe-box">
               {createdList.map((recipe) => {
                 return <div className="recipe-box-recipe" key={recipe._id}>
                           <div className="recipeBox-title">
-                            <h2>{recipe.recipeName}</h2>
+                            <h3>{recipe.recipeName}</h3>
                           </div>
                           <div className="recipeBox-video">
                             <iframe
@@ -140,9 +142,9 @@ class CreateList extends Component {
                           </div>
                           <div className="recipeBox-btns">
                             <Link to = {`/recipes/${recipe._id}/details`}>
-                            <button>See details</button>
+                            <button className="navBtnLink">See details</button>
                             </Link>
-                            <button onClick={()=> {this.handleDelete(recipe)}}>🗑️</button>                     
+                            <button className="fas fa-trash" onClick={()=> {this.handleDelete(recipe)}}></button>                     
                           </div>
                       </div>
             })}  
