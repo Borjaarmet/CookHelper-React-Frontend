@@ -8,14 +8,11 @@
 import React, { Component} from 'react';
 import Navbar from '../components/Navbar';
 import { withAuth } from '../providers/AuthProvider';
-import FormInput from '../components/FormInput';
+// import FormInput from '../components/FormInput';
 
 import recipeClient from '../lib/recipeClient';
 import {Link} from 'react-router-dom';
-import Sidebar from '../components/Sidebar';
-
-
-
+// import Sidebar from './Sidebar';
 
 class Main extends Component {
   constructor(props){
@@ -52,23 +49,9 @@ class Main extends Component {
     });
   };
 
-  handleSearchRecipe = () => {
-   const {searchValue} = this.state;
-   console.log("searchvalue :", searchValue)
-   const newCopy = [...this.state.initialRecipes]
-   console.log("newCopy: ", newCopy)
-   const recipesFounded = newCopy.filter((item) => {
-        return item.recipeName === searchValue
-     })
-   console.log("recipes founded: ", {recipesFounded})
-   this.setState({
-       shownRecipes: recipesFounded[0]
-   })
-  };
-
    handleSearchRecipeByIngredients = (event) => {
     event.preventDefault();
-    const { searchValueIngredients } = this.state; // "chicken", "pork"
+    const { searchValueIngredients } = this.state; 
     console.log("searchvalueIngredient :", searchValueIngredients)
     const newCopy = [...this.state.initialRecipes];
     const foundRecipes = [];
@@ -83,6 +66,7 @@ class Main extends Component {
         if(match === searchValueIngredients.length) {
           foundRecipes.push(newCopy[element]);
         }
+       
       }
     } catch(e){
       console.log(e)
@@ -102,6 +86,34 @@ class Main extends Component {
       })
     //  this.props.onSearchRecipeByIngredient(this.props.value)
   }
+
+   handleChange = (event) => {
+     console.log(event.target.value)
+    this.setState({
+      searchValue: event.target.value,
+    });
+  };
+
+ 
+  // handleSubmitFormInput = (event) => {
+  //   event.preventDefault()
+  //   console.log("click submit: ",this.props.value)
+  //   this.props.onSearchRecipe(this.props.value)
+  // }
+
+   handleSearchRecipe = () => {
+   const {searchValue} = this.state;
+   console.log("searchvalue :", searchValue)
+   const newCopy = [...this.state.initialRecipes]
+   console.log("newCopy: ", newCopy)
+   const recipesFounded = newCopy.filter((item) => {
+        return item.recipeName === searchValue
+     })
+   console.log("recipes founded: ", {recipesFounded})
+   this.setState({
+       shownRecipes: recipesFounded[0]
+   })
+  };
   
 	render() {
     console.log("initialRecipes" ,this.state.initialRecipes)
@@ -109,13 +121,33 @@ class Main extends Component {
    
 		return (
 			<>
-        <Sidebar isOpen={this.state.isOpen} toggle = {this.toggle}/> 
-        <Navbar toggle = {this.toggle}/>
-				<FormInput 
+        {/* <Sidebar /> */}
+        <Navbar/>
+				{/* <FormInput 
           value={this.state.searchValue}
           onSearchValue={this.handleSearchValue}
           onSearchRecipe= {this.handleSearchRecipe}    
-        />
+        /> */}
+         <div className="recipes-container">
+     
+       <h3 className="title-search-input" >Search a recipe</h3>
+       <div className="search-recipe">
+         
+        <form onSubmit={this.handleSearchRecipe}>
+        <input 
+         className="input-search" 
+         type="text"
+         name="search" 
+         onChange = {this.handleChange}
+         value={this.state.searchValue}
+         placeholder="e.g. Salad"/>
+         <div className="btn-search">
+         <button type="submit" className="fas fa-search"></button>
+         </div>
+        </form>
+      </div>
+     
+   </div> 
           <h3 className="title-search">Search by ingredients</h3>
           <div className="search-ingredients">
           <form className="search-form" onSubmit={this.handleSearchRecipeByIngredients}>
@@ -238,11 +270,13 @@ class Main extends Component {
            })}
            </div>
            </div>
-          </>) : <div className="message-notFound"><p>Not found recipes yet</p></div> 
-        }
+          </>) :   <p>Sorry we have not found any recipe that has all these ingredients</p>
+          
+        } 
+        
 
 
-          <h2 className="title-search">Check some of our recipes</h2>
+          <h3 className="title-search">Check some of our recipes</h3>
              <div className="recipe-box">
                { this.state.initialRecipes.map( (recipe) => { 
                 return (
