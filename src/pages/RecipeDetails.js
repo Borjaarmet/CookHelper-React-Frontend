@@ -46,6 +46,7 @@ class RecipeDetail extends Component {
        <Navbar/>
         {status === 'loading' && <div>loading</div>}
         {status === 'loaded' && 
+        <div className="container-profile">
         <div className="card">
           <div className="header">
             <iframe 
@@ -94,6 +95,7 @@ class RecipeDetail extends Component {
           </div>
           
           <button onClick={this.addToFav} className="btn"><span>Add to your list!</span></button>
+        </div>
         </div>
   } 
       </>
