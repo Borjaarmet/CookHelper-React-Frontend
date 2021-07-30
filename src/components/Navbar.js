@@ -3,12 +3,15 @@ import { Link } from 'react-router-dom';
 import { withAuth } from '../providers/AuthProvider';
 import { FaBars } from "react-icons/fa";
 import '../App.css'
-import Sidebar from './Sidebar';
+import Sidebar from '../pages/Sidebar';
 
 class Navbar extends Component {
-	
 
-handleClick = () => {}
+	handleClick = () => {
+		console.log("click sidebar")
+	  const sidebar = document.getElementById('sidebarContainer')
+		sidebar.classList.toggle('hidden')
+	}
 
 	render() {
 		const { user, isLoggedIn, logout } = this.props;
@@ -50,11 +53,15 @@ handleClick = () => {}
 						<div className="navBtn">
 						<button className="navBtnLink"  onClick={logout}>Logout</button>
 						</div>
-						<div className="mobileIcon"  onClick = {this.handleClick}>
+			
+						
+						<span onClick={this.handleClick} className="mobileIcon"  >
 							<FaBars/>
-						</div>
+						</span>
+						
+						
 					</div>
-					<div  className="hidden">
+					<div id="sidebarContainer" className="hidden">
 						<Sidebar/>
 					</div>
 					</div>
@@ -73,18 +80,13 @@ handleClick = () => {}
 									<button className="navBtnLink">Login</button>
 								</Link>
 							</div>
-							<div >
-								<Link to="/signup">
-					   			<button className="navBtnLink">Signup</button>
-								</Link>
-						  </div>
-							<div className="mobileIcon">
-								<button onClick = {this.handleClick}><FaBars/></button>
 							
-						</div>
+						<span onClick={this.handleClick} className="mobileIcon"  >
+							<FaBars/>
+						</span>
 						</div>	
 					</div>
-					<div className="hidden">
+					<div id="sidebarContainer" className="hidden">
 						<Sidebar/>
 					</div>
 					</div>
