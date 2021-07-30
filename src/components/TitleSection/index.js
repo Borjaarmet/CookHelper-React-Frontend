@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import Video from "../../video/pexels-miguel-á-padriñán-6122138.mp4";
 
 // import { Button } from "../ButtonElement";
@@ -15,8 +16,6 @@ import {
   IconLink,
   TitleButton,
   Button,
-  // ArrowForward,
-  // ArrowRight,
 } from "./titleElements";
 import {
   TiSocialLinkedin,
@@ -84,9 +83,11 @@ class TitleSection extends Component {
           </TitleIcons>
         </TitleText>
         <TitleButton>
+          <Link to= '/signup'>
           <Button>
             Get started
           </Button>
+          </Link>
         </TitleButton>
       </TitleContent>
     </TitleContainer>
