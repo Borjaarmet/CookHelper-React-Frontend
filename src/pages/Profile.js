@@ -73,7 +73,7 @@ import Navbar from '../components/Navbar';
          
                <form onSubmit={this.handleSubmit}>
                 <div className="container-form">
-                  <h3>{user.username}´s profile</h3>
+                  <h3 >{user.username}´s profile</h3>
                   <hr/>
                 <label className='label-profile' htmlFor='name'>Username</label>
               
