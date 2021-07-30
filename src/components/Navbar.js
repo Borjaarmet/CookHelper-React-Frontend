@@ -77,7 +77,7 @@ class Navbar extends Component {
 						<div className="navBtn">
 							<div >
 								<Link to="/login">
-									<button className="navBtnLink">Login</button>
+									<button className="navBtnLinkLogin">Login</button>
 								</Link>
 							</div>
 							

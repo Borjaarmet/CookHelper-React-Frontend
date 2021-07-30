@@ -8,7 +8,7 @@
 import React, { Component} from 'react';
 import Navbar from '../components/Navbar';
 import { withAuth } from '../providers/AuthProvider';
-// import FormInput from '../components/FormInput';
+import FormInput from '../components/FormInput';
 
 import recipeClient from '../lib/recipeClient';
 import {Link} from 'react-router-dom';
@@ -21,8 +21,8 @@ class Main extends Component {
       initialRecipes: [],
       shownRecipes: [],
       searchValue: "", 
-      isOpen: false,
       searchValueIngredients: [],
+      notFoundBox: false,
     }
   }
 
@@ -47,6 +47,20 @@ class Main extends Component {
     this.setState({
       searchValue: event.target.value,
     });
+  };
+  
+handleSearchRecipe = () => {
+   const {searchValue} = this.state;
+   console.log("searchvalue :", searchValue)
+   const newCopy = [...this.state.initialRecipes]
+   console.log("newCopy: ", newCopy)
+   const recipesFounded = newCopy.filter((item) => {
+        return item.recipeName === searchValue
+     })
+   console.log("recipes founded: ", {recipesFounded})
+   this.setState({
+       shownRecipes: recipesFounded[0]
+   })
   };
 
    handleSearchRecipeByIngredients = (event) => {
@@ -87,13 +101,6 @@ class Main extends Component {
     //  this.props.onSearchRecipeByIngredient(this.props.value)
   }
 
-   handleChange = (event) => {
-     console.log(event.target.value)
-    this.setState({
-      searchValue: event.target.value,
-    });
-  };
-
  
   // handleSubmitFormInput = (event) => {
   //   event.preventDefault()
@@ -101,19 +108,6 @@ class Main extends Component {
   //   this.props.onSearchRecipe(this.props.value)
   // }
 
-   handleSearchRecipe = () => {
-   const {searchValue} = this.state;
-   console.log("searchvalue :", searchValue)
-   const newCopy = [...this.state.initialRecipes]
-   console.log("newCopy: ", newCopy)
-   const recipesFounded = newCopy.filter((item) => {
-        return item.recipeName === searchValue
-     })
-   console.log("recipes founded: ", {recipesFounded})
-   this.setState({
-       shownRecipes: recipesFounded[0]
-   })
-  };
   
 	render() {
     console.log("initialRecipes" ,this.state.initialRecipes)
@@ -123,12 +117,12 @@ class Main extends Component {
 			<>
         {/* <Sidebar /> */}
         <Navbar/>
-				{/* <FormInput 
+				 <FormInput 
           value={this.state.searchValue}
           onSearchValue={this.handleSearchValue}
           onSearchRecipe= {this.handleSearchRecipe}    
-        /> */}
-         <div className="recipes-container">
+        /> 
+       {/* <div className="recipes-container">
      
        <h3 className="title-search-input" >Search a recipe</h3>
        <div className="search-recipe">
@@ -147,7 +141,7 @@ class Main extends Component {
         </form>
       </div>
      
-   </div> 
+   </div>  */}
           <h3 className="title-search">Search by ingredients</h3>
           <div className="search-ingredients">
           <form className="search-form" onSubmit={this.handleSearchRecipeByIngredients}>
@@ -247,7 +241,7 @@ class Main extends Component {
           </div>
        
        {this.state.shownRecipes.length !== 0 ? (<>
-         	<div className="recipes-container">
+         	<div className="foundBox">
            <h3>We found {this.state.shownRecipes.length} recipes</h3>
            <div className="recipe-box">
            {this.state.shownRecipes.map((recipe) => {
@@ -270,10 +264,17 @@ class Main extends Component {
            })}
            </div>
            </div>
-          </>) :   <p>Sorry we have not found any recipe that has all these ingredients</p>
-          
+          </>) : <div className="foundBox">
+                    <div className="recipe-box">
+                      <div className="recipe-box-recipe">
+                      <p className="foundedRecipe">Not recipe found</p>
+                      </div>
+                    </div>
+                  </div> 
+       
+                
         } 
-        
+       
 
 
           <h3 className="title-search">Check some of our recipes</h3>

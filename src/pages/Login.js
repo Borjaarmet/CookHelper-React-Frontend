@@ -49,6 +49,7 @@ class Login extends Component {
     return (
       <>
       <Navbar/>
+      <div className="container-login">
         <form onSubmit={this.handleFormSubmit}>
           <div className="container-form">
             <h2>Login</h2>
@@ -75,6 +76,7 @@ class Login extends Component {
           </div>
           </div>
         </form>
+        </div>
       </>
     );
   }

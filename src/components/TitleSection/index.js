@@ -85,7 +85,7 @@ class TitleSection extends Component {
         <TitleButton>
           <Link to= '/signup'>
           <Button>
-            Get started
+            Sign up
           </Button>
           </Link>
         </TitleButton>

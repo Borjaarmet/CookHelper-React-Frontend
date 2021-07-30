@@ -114,17 +114,13 @@ export const IconLink = styled.p`
 `;
 
 export const Button = styled.button`
- background-color: #01bf71;
+ background-color: #ffd154;
   border-radius: 50px;
-  padding: 5px 10px;
+  padding: 15px 30px;
   border: none;
   cursor: pointer;
   text-decoration: none;
-  font-size: 16px;
-  outline: none;
-  white-space: nowrap;
+  font-size: 20px;
   color: #010606;
-  transition: all 0.2s ease-in-out;
-  margin-right: 10px;
 `
 

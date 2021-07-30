@@ -12,9 +12,8 @@
 
 .container {
   background: #ffd154 ;
-  background-repeat: repeat;
-  height: 100%;
-  width: 100%;
+  height: 100vh;
+  width: 100vw;
 }
 .logo {
   font-family: 'Cookie', cursive;
@@ -89,19 +88,27 @@
   cursor: pointer;
   text-decoration: none;
   font-size: 16px;
-  outline: none;
-  white-space: nowrap;
   color: #010606;
-  
+}
+.navBtnLinkLogin{
+  background-color: #ffd154;
+  border-radius: 50px;
+  padding: 5px 10px;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 18px;
+  color: #010606;
+ 
 }
 .mobileIcon {
   display: none;
 }
 
 @media screen and (max-width: 960px) {
-   .navContainer{
+   /* .navContainer{
    transition: 0.8s all ease;
-  } 
+  }  */
   .navLogo {
   font-size: 1.2rem;
   margin-left: 18px;
@@ -153,6 +160,7 @@
   top: 0;
   left: 0;
   transition: 0ms.3s ease-in-out;
+  overflow-x: hidden;
 }
 
 .sidebarMenu {
@@ -194,7 +202,13 @@
  /* }     */
 
 /*  signup and login form */
-
+.container-login {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #ffd154;
+}
 .container-form {
   border:none;
   border-radius: 5px;
@@ -502,6 +516,18 @@ input[type=checkbox]:checked:disabled + label:before {
 }
 .searchBox hr {
   margin-bottom: 30px;
+}
+.foundedRecipe {
+  font-family: 'Nanum Brush Script', cursive;
+ font-size: 1.5rem;
+ color: #fff;
+}
+.foundBox {
+  margin: 20px 0 20px 0;
+}
+.foundBox h3 {
+  margin-left:60px;
+  color:#434343;
 }
 
 @media screen and (max-width: 768px) {
