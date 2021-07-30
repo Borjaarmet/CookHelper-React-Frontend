@@ -28,18 +28,20 @@ class FavList extends Component {
    } 
   };
 
-  handleDelete = async (recipe) => {
-    
-    try{
-      const deletedRecipe = await recipeClient.deleteRecipeFromFav(recipe.id) 
-      console.log("deleted recipe:" , deletedRecipe)
-      this.setState({
-        favouriteList: this.state.favouriteList.splice(1, deletedRecipe)
-      })
+  handleDelete = (recipe) => {
+    try {
+      recipeClient.deleteRecipeFromFav(recipe._id) 
     }
     catch(error) {
     console.log(error)
-   } 
+   } finally {
+     const favourites = [...this.state.favouriteList].filter(item => {
+       return item._id !== recipe._id
+     })
+     this.setState({
+       favouriteList: favourites
+     })
+   }
   };
 
   handleSortByTime = () => {
@@ -137,7 +139,7 @@ class FavList extends Component {
                             <button className="navBtnLink">See details</button>
                             </Link>
                           
-                            <button className="fas fa-trash" onClick={() => {this.handleDelete(recipe)}}></button>                     
+                            <button className="fas fa-trash" onClick={() => this.handleDelete(recipe)}></button>                     
                           </div>
                       </div>
             })}  
