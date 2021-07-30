@@ -23,6 +23,7 @@ import { withAuth } from './providers/AuthProvider';
 // import assets
 import './App.css'
 
+
 class App extends Component {
 	render() {
 		const { isLoading } = this.props;
@@ -41,7 +42,6 @@ class App extends Component {
 					<PrivateRoute path="/user/favourites" component={FavList}/>
 					<PrivateRoute path="/user/create" component={CreateList}/>
 					<PrivateRoute path="/user/createRecipe" component={CreateRecipe}/>
-
 					<Route path="/recipes/:recipeId/details" component= {RecipeDetail}/>
 				</Switch>
 			</div>
