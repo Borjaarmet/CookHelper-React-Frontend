@@ -19,6 +19,7 @@ class Main extends Component {
     super(props)
     this.state={
       initialRecipes: [],
+      shownInputRecipe:[],
       shownRecipes: [],
       searchValue: "", 
       searchValueIngredients: [],
@@ -42,14 +43,13 @@ class Main extends Component {
   };
 
   handleSearchValue = (event) => {
-    console.log(event.target.name)
     console.log(event.target.value)
     this.setState({
       searchValue: event.target.value,
     });
   };
   
-handleSearchRecipe = () => {
+  handleSearchRecipe = () => {
    const {searchValue} = this.state;
    console.log("searchvalue :", searchValue)
    const newCopy = [...this.state.initialRecipes]
@@ -59,7 +59,7 @@ handleSearchRecipe = () => {
      })
    console.log("recipes founded: ", {recipesFounded})
    this.setState({
-       shownRecipes: recipesFounded[0]
+       shownInputRecipe: recipesFounded[0]
    })
   };
 
@@ -100,48 +100,21 @@ handleSearchRecipe = () => {
       })
     //  this.props.onSearchRecipeByIngredient(this.props.value)
   }
-
- 
-  // handleSubmitFormInput = (event) => {
-  //   event.preventDefault()
-  //   console.log("click submit: ",this.props.value)
-  //   this.props.onSearchRecipe(this.props.value)
-  // }
-
   
 	render() {
     console.log("initialRecipes" ,this.state.initialRecipes)
     console.log("shownRecipes:" ,this.state.shownRecipes)
-   
+    console.log("shownInputRecipes:" ,this.state.shownInputRecipe)
+
 		return (
 			<>
-        {/* <Sidebar /> */}
+        
         <Navbar/>
 				 <FormInput 
           value={this.state.searchValue}
           onSearchValue={this.handleSearchValue}
           onSearchRecipe= {this.handleSearchRecipe}    
         /> 
-       {/* <div className="recipes-container">
-     
-       <h3 className="title-search-input" >Search a recipe</h3>
-       <div className="search-recipe">
-         
-        <form onSubmit={this.handleSearchRecipe}>
-        <input 
-         className="input-search" 
-         type="text"
-         name="search" 
-         onChange = {this.handleChange}
-         value={this.state.searchValue}
-         placeholder="e.g. Salad"/>
-         <div className="btn-search">
-         <button type="submit" className="fas fa-search"></button>
-         </div>
-        </form>
-      </div>
-     
-   </div>  */}
           <h3 className="title-search">Search by ingredients</h3>
           <div className="search-ingredients">
           <form className="search-form" onSubmit={this.handleSearchRecipeByIngredients}>
@@ -239,6 +212,13 @@ handleSearchRecipe = () => {
             
           </form>
           </div>
+
+       {this.state.shownInputRecipe !== [] ? (
+         <>
+         <h1>{this.state.shownInputRecipe.recipeName}</h1>
+         </>
+       ): <h1></h1>
+       }   
        
        {this.state.shownRecipes.length !== 0 ? (<>
          	<div className="foundBox">
@@ -267,7 +247,7 @@ handleSearchRecipe = () => {
           </>) : <div className="foundBox">
                     <div className="recipe-box">
                       <div className="recipe-box-recipe">
-                      <p className="foundedRecipe">Not recipe found</p>
+                      <p className="foundedRecipe">No recipe found</p>
                       </div>
                     </div>
                   </div> 
@@ -277,7 +257,7 @@ handleSearchRecipe = () => {
        
 
 
-          <h3 className="title-search">Check some of our recipes</h3>
+          <h3 className="title-search">Check out some of our recipes</h3>
              <div className="recipe-box">
                { this.state.initialRecipes.map( (recipe) => { 
                 return (

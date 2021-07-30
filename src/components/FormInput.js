@@ -34,7 +34,7 @@ class FormInput extends Component {
          name="search" 
          onChange = {this.handleChange}
          value={this.props.value}
-         placeholder="Search a recipe"/>
+         placeholder="e.g. Salad"/>
          <div className="btn-search">
          <button type="submit" className="fas fa-search"></button>
          </div>
