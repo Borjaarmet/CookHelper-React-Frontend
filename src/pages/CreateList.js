@@ -119,9 +119,9 @@ class CreateList extends Component {
             {createdList.length > 1 && <h2 className="title-search">You have {createdList.length} recipes!</h2>}
             {createdList.length === 0 && <h2 className="title-search">You don´t have any recipe saved!</h2>} 
             <div className="sortbtns">
-            <button onClick={this.handleSortByTime}>Sort by time to cook</button>
+            <button onClick={this.handleSortByTime}>Sort by cooking time</button>
             <button onClick={this.handleSortByDifficulty}>Sort by difficulty</button>
-            <button onClick={this.handleSortByIngredients}>Sort by quantity of ingredients</button>
+            <button onClick={this.handleSortByIngredients}>Sort by num of ingredients</button>
             </div>
               <div className="recipe-box">
               {createdList.map((recipe) => {
@@ -129,7 +129,7 @@ class CreateList extends Component {
                           <div className="recipeBox-title">
                             <h3>{recipe.recipeName}</h3>
                           </div>
-                          <div className="recipeBox-video">
+                          {/* <div className="recipeBox-video">
                             <iframe
                               width='200'
                               height='150'
@@ -139,7 +139,7 @@ class CreateList extends Component {
                               allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
                               allowFullScreen
                             ></iframe>
-                          </div>
+                          </div> */}
                           <div className="recipeBox-btns">
                             <Link to = {`/recipes/${recipe._id}/details`}>
                             <button className="navBtnLink">See details</button>

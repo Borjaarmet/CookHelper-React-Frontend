@@ -1,10 +1,4 @@
-// State
-// initialRecipes: [] lo lleno con componentDidMount
-// shownRecipes: [] lo lleno condicionalmente con los cambios de formulario (manipulación de Arrays)
-// control de formularios y checkbox
-// onCheckBoxMeat > Controlo el estado
 
-// componente RecipeCard tiene sus botones me dirigen al single view
 import React, { Component} from 'react';
 import Navbar from '../components/Navbar';
 import { withAuth } from '../providers/AuthProvider';
@@ -12,7 +6,7 @@ import FormInput from '../components/FormInput';
 
 import recipeClient from '../lib/recipeClient';
 import {Link} from 'react-router-dom';
-// import Sidebar from './Sidebar';
+
 
 class Main extends Component {
   constructor(props){
@@ -69,6 +63,8 @@ class Main extends Component {
     console.log("searchvalueIngredient :", searchValueIngredients)
     const newCopy = [...this.state.initialRecipes];
     const foundRecipes = [];
+    // const recipeCheckBoxFound = document.getElementById('recipeCheckBoxFound')
+		// recipeCheckBoxFound.classList.toggle('hidden')
     try {
       for (let element = 0; element < newCopy.length; element++) {
         let match = 0;
@@ -89,6 +85,7 @@ class Main extends Component {
         shownRecipes: foundRecipes
       })
     }
+   
   };
 
    handleSubmitCheckBox = (event) => {
@@ -215,14 +212,33 @@ class Main extends Component {
 
        {this.state.shownInputRecipe !== [] ? (
          <>
-         <h1>{this.state.shownInputRecipe.recipeName}</h1>
+         <div id="recipeFounded" className="hidden">
+           <div className="recipe-box">
+             <div className="recipe-box-recipe">
+                <Link to={`/recipes/${this.state.shownInputRecipe._id}/details`}>
+                  <h4>{this.state.shownInputRecipe.recipeName}</h4>
+                  <iframe
+                         width='200'
+                         height='200'
+                         src={this.state.shownInputRecipe.videoLink}
+                         title='YouTube video player'
+                         frameBorder='0'
+                         allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
+                         allowFullScreen
+                     ></iframe> 
+                </Link>
+             </div>
+           </div>
+         </div>
+         
          </>
-       ): <h1></h1>
+       ): <h1>Recipe not found</h1>
+
        }   
        
        {this.state.shownRecipes.length !== 0 ? (<>
-         	<div className="foundBox">
-           <h3>We found {this.state.shownRecipes.length} recipes</h3>
+         	<div  className="foundBox">
+           <h3 classsName="title-search">We found {this.state.shownRecipes.length} recipes</h3>
            <div className="recipe-box">
            {this.state.shownRecipes.map((recipe) => {
              return (
@@ -244,10 +260,10 @@ class Main extends Component {
            })}
            </div>
            </div>
-          </>) : <div className="foundBox">
+          </>) : <div id="recipeCheckBoxFound" className="foundBox">
                     <div className="recipe-box">
                       <div className="recipe-box-recipe">
-                      <p className="foundedRecipe">No recipe found</p>
+                      <p className="foundedRecipe">Search results</p>
                       </div>
                     </div>
                   </div> 

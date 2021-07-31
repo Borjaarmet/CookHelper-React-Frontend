@@ -17,6 +17,10 @@ class FormInput extends Component {
     event.preventDefault()
     console.log("click submit: ",this.props.value)
     this.props.onSearchRecipe(this.props.value)
+    const recipefounded = document.getElementById('recipeFounded')
+		recipefounded.classList.toggle('hidden')
+    const recipeCheckBoxFound = document.getElementById('recipeCheckBoxFound')
+    recipeCheckBoxFound.classList.add('hidden')
   }
 
   render() {
