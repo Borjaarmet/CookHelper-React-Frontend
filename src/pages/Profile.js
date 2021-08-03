@@ -1,10 +1,7 @@
 import React, { Component } from 'react';
 import userClient from '../lib/userClient'
-// import apiClient from '../lib/apiClient';
 import { withAuth } from '../providers/AuthProvider';
 import Navbar from '../components/Navbar';
-
-
 
  class Profile extends Component {
   constructor(props) {
@@ -12,11 +9,6 @@ import Navbar from '../components/Navbar';
     this.state = {
       status: "loading",
       user:{},
-      username:"",
-      age:"",
-      nationality:"",
-      email:"",
-      cookLevel:"",
     }
   }
 
@@ -45,20 +37,6 @@ import Navbar from '../components/Navbar';
       [event.target.name]: event.target.value,
     });
   }
-
-  // handleSubmit = async (event) => {
-  //   event.preventDefault()
-  //   try{
-  //     const updatedProfile = await apiClient.updateUserProfile(this.state) 
-  //     console.log("profile updated:", updatedProfile)
-  //     this.props.history.push(`/user/${user._id}/profile`)
-  //   }
-  //   catch(error){
-  //     console.log(error)
-  //   }
-    
-  // } 
-  
 
   render() {
     const {user, status} = this.state;
@@ -103,7 +81,7 @@ import Navbar from '../components/Navbar';
                     <option value='Advanced '  onChange={this.handleChange}>Advanced</option>
                     <option value='I´m a chef'  onChange={this.handleChange}>I´m a chef</option>
                   </select>
-                <button className='signupbtn' type='submit'>Save Changes</button>
+                
               </div>
              </form>
              </div>
