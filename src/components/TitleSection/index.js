@@ -43,8 +43,7 @@ class TitleSection extends Component {
         <TitleText>
           <TitleH1>COOK HELPER</TitleH1>
           <TitleP>
-            We are an App that help you to find a recipe from the ingredients
-            that you have in your fridge.Enjoy cooking!!
+            You don´t know what to cook today? Tell us what ingredients you have and we will find you the recipes. <br/>Enjoy cooking!
           </TitleP>
 
           <TitleIcons>

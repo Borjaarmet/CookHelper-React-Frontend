@@ -107,6 +107,7 @@ class Main extends Component {
 			<>
         
         <Navbar/>
+        <div className="container-favList">
 				 <FormInput 
           value={this.state.searchValue}
           onSearchValue={this.handleSearchValue}
@@ -295,7 +296,7 @@ class Main extends Component {
                 )})
                } 
              </div>
-	      
+	      </div>
 			</>
 		);
 	}
