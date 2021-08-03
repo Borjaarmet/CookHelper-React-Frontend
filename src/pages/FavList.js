@@ -47,7 +47,6 @@ class FavList extends Component {
   handleSortByTime = () => {
     console.log("click");
     const { favouriteList } = this.state;
-
     const newCopy = [...favouriteList];
     newCopy.sort(function (a, b) {
       if (a.TimeToCook > b.TimeToCook) {
@@ -65,7 +64,6 @@ class FavList extends Component {
   handleSortByIngredients = () => {
     console.log("click");
     const { favouriteList } = this.state;
-
     const newCopy = [...favouriteList];
     newCopy.sort(function (a, b) {
       if (a.ingredientsList > b.ingredientsList) {
@@ -83,12 +81,11 @@ class FavList extends Component {
    handleSortByDifficulty = () => {
     console.log("click");
     const { favouriteList } = this.state;
-    
     const newCopy = [...favouriteList];
     newCopy.sort(function (a, b) {
-      if (a.difficulty > b.TimeToCook) {
+      if (a.difficulty > b.difficulty) {
         return 1;
-      } else if (a.TimeToCook < b.TimeToCook) {
+      } else if (a.difficulty < b.difficulty) {
         return -1;
       }
       return 0;
