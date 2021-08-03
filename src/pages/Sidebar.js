@@ -3,22 +3,20 @@ import { Link } from "react-router-dom";
 import { withAuth } from '../providers/AuthProvider';
 
 class Sidebar extends Component {
-  constructor(props){
-    super(props)
-    this.state = {
-      visible: false,
-    }
-  }
+  // constructor(props){
+  //   super(props)
+  //   this.state = {
+  //     visible: false,
+  //   }
+  // }
 
 	closeSidebar = () => {
-		console.log("click sidebar")
 	  const sidebar = document.getElementById('sidebarContainer')
 		sidebar.classList.add('hidden')
 	}
 
  	render() {
 		const { user, isLoggedIn, logout } = this.props;
-    // const { visible } = this.state
 		return (
 			< >
 				{isLoggedIn ? (
@@ -54,8 +52,7 @@ class Sidebar extends Component {
 						</div>
 						<div className="sidebarBtn">
 						<button className="navBtnLink" onClick={logout}>Logout</button>
-						</div>
-						
+						</div>	
 					</div>
 					
 				) : (
@@ -74,16 +71,13 @@ class Sidebar extends Component {
 								<Link to="/signup">
 					   			<button className="navBtnLink">Signup</button>
 								</Link>
-						  </div>
-							
+						  </div>	
 						</div>	
-					</div>
-					
+					</div>	
 				)}
 			</>
 		);
 	}
-  
 };
 
 export default withAuth(Sidebar);

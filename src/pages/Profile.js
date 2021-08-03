@@ -62,49 +62,39 @@ import Navbar from '../components/Navbar';
 
   render() {
     const {user, status} = this.state;
-    console.log("render user:", user)
     return (
       <>
       <Navbar/>
          {status === 'loading' && <div>loading</div>}
          {status === 'loaded' && 
-           <div className="container-profile">
-         
-         
-               <form onSubmit={this.handleSubmit}>
+            <div className="container-profile">
+              <form onSubmit={this.handleSubmit}>
                 <div className="container-form">
                   <h3 >{user.username}´s profile</h3>
                   <hr/>
-                <label className='label-profile' htmlFor='name'>Username</label>
-              
-              <input className='input-signup' type='text' name='username' id='name' value={user.username} onChange={this.handleChange} />
-              
-              <label className='label-profile' htmlFor='email'>Email</label>
-             
-              <input className='input-signup' type='text' name='email' id='email' value={user.email} onChange={this.handleChange} />
-              
-              <label className='label-profile' htmlFor='country' >Nationality</label>
-              
-              <input
-                className='input-signup'
-                type='text'
-                name='nationality'
-                id='nationality'
-                value={user.nationality}
-                onChange={this.handleChange}
-              />
-              
-              <label className='label-profile' htmlFor='age'>Age</label>
-              
-              <input
-                className='input-signup'
-                type='number'
-                name='age'
-                id='age'
-                placeholder='Your age'
-                value={user.age}
-                onChange={this.handleChange}
-              />
+                  <label className='label-profile' htmlFor='name'>Username</label>
+                  <input className='input-signup' type='text' name='username' id='name' value={user.username} onChange={this.handleChange} />                   
+                  <label className='label-profile' htmlFor='email'>Email</label>               
+                  <input className='input-signup' type='text' name='email' id='email' value={user.email} onChange={this.handleChange} />                  
+                  <label className='label-profile' htmlFor='country' >Nationality</label>                    
+                  <input
+                    className='input-signup'
+                    type='text'
+                    name='nationality'
+                    id='nationality'
+                    value={user.nationality}
+                    onChange={this.handleChange}
+                  />            
+                  <label className='label-profile' htmlFor='age'>Age</label>            
+                  <input
+                  className='input-signup'
+                  type='number'
+                  name='age'
+                  id='age'
+                  placeholder='Your age'
+                  value={user.age}
+                  onChange={this.handleChange}
+                  />
             
               <label className='label-profile' htmlFor='cookLevel'>Cook level <br /></label>
              

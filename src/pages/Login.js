@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { withAuth } from "../providers/AuthProvider";
-import apiClient from "../lib/apiClient";
+// import apiClient from "../lib/apiClient";
 import Navbar from "../components/Navbar";
 
 
@@ -13,15 +13,15 @@ class Login extends Component {
     };
   }
 
-  componentDidMount = () => {
-    apiClient.login(this.state.username).then((user) => {
-     console.log(user)
-      // this.setState({
-      //   username: user,
-      //   password: user
-      // })
-    })
-  }
+  // componentDidMount = () => {
+  //   apiClient.login(this.state.username).then((user) => {
+  //    console.log(user)
+  //     // this.setState({
+  //     //   username: user,
+  //     //   password: user
+  //     // })
+  //   })
+  // }
 
   handleFormSubmit = (event) => {
     event.preventDefault();
