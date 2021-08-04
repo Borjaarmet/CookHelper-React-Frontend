@@ -29,8 +29,10 @@ export default class CreateRecipe extends Component {
    try{
     const recipe = await userClient.getUserCreateRecipe(this.state)
     console.log("newRecipe:", recipe)
+    
     }
     catch(error) {
+     
     console.log(error)
    } finally {
      this.props.history.push('/user/create')
