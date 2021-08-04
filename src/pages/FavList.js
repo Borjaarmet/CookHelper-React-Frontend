@@ -77,23 +77,6 @@ class FavList extends Component {
       favouriteList: newCopy,
     });
   };
-
-   handleSortByDifficulty = () => {
-    console.log("click");
-    const { favouriteList } = this.state;
-    const newCopy = [...favouriteList];
-    newCopy.sort(function (a, b) {
-      if (a.difficulty > b.difficulty) {
-        return 1;
-      } else if (a.difficulty < b.difficulty) {
-        return -1;
-      }
-      return 0;
-    });
-    this.setState({
-      favouriteList: newCopy,
-    });
-  };
     
   render() {
     const {favouriteList} = this.state
@@ -111,7 +94,6 @@ class FavList extends Component {
              {favouriteList.length === 0 && <h2 className="title-search">You don´t have any recipe saved!</h2>} 
             <div className="sortbtns">
             <button onClick={this.handleSortByTime}>Sort by cooking time</button>
-            <button onClick={this.handleSortByDifficulty}>Sort by difficulty</button>
             <button onClick={this.handleSortByIngredients}>Sort by num of ingredients</button>
             </div>
               <div className="recipe-box">

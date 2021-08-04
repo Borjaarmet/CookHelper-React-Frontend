@@ -7,7 +7,7 @@ export const TitleContainer = styled.div`
   justify-content: center;
   align-items: center;
   padding: 0 30px;
-  height: 500px;
+  height: 600px;
   position: relative;
   z-index: 1;
   overflow-y: hidden;
@@ -51,7 +51,6 @@ export const TitleContent = styled.div`
 export const TitleText = styled.div`
   z-index: 3;
   max-width: 1200px;
-
   padding: 8px 24px;
   display: flex;
   flex-direction: column;

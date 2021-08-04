@@ -1,0 +1,50 @@
+.container-login {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #ffd154;
+}
+.container-form {
+  border:none;
+  border-radius: 5px;
+  padding:10px;
+  width:75%;
+  margin-top: 30px;
+  -webkit-box-shadow: -5px -5px 10px rgba(50, 50, 50, 1);
+  -moz-box-shadow: -5px -5px 10px rgba(50, 50, 50, 1);
+  box-shadow: -5px -5px 10px rgba(50, 50, 50, 1);
+  
+}
+.container-form h1,p{
+  margin: 10px 0;
+}
+.input-signup , select {
+  width: 100%;
+  padding: 10px;
+  margin: 5px 0 10px 0;
+  display: inline-block;
+  border: none;
+  background: #f1f1f1;
+}
+.input-signup, select :focus {
+  background-color: #ddd;
+  outline: none;
+}
+hr {
+  border: 1px solid #f1f1f1;
+  margin-bottom: 25px;
+}
+.signupbtn {
+  background-color: #01bf71;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  opacity: 0.9;
+}
+button:hover {
+  opacity:1;
+}

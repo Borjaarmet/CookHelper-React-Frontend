@@ -1,6 +1,7 @@
-import React, { Component } from 'react'
-import recipeClient from '../lib/recipeClient'
-import Navbar from '../components/Navbar'
+import React, { Component } from 'react';
+import recipeClient from '../lib/recipeClient';
+import Navbar from '../components/Navbar';
+import NotFound from '../components/NotFound';
 
 class RecipeDetail extends Component {
   constructor(props){
@@ -37,6 +38,7 @@ class RecipeDetail extends Component {
     return (
       <>
        <Navbar/>
+        {recipe === undefined && <NotFound/>}
         {status === 'loading' && <div>loading</div>}
         {status === 'loaded' && 
             <div className="container-profile">

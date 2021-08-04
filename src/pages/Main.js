@@ -1,4 +1,3 @@
-
 import React, { Component} from 'react';
 import Navbar from '../components/Navbar';
 import { withAuth } from '../providers/AuthProvider';
@@ -94,7 +93,7 @@ class Main extends Component {
 		return (
 			<>
         <Navbar/>
-        <div className="container-favList">
+        {/* <div className="container-favList"> */}
 				  <FormInput 
             value={this.state.searchValue}
             onSearchValue={this.handleSearchValue}
@@ -177,7 +176,7 @@ class Main extends Component {
                 <input className='input-searchBox' type='checkbox' name='butter' id="butter" onChange={this.handleSubmitCheckBox}/>
                 <label htmlFor='butter'> Butter</label><br />
                 <input className='input-searchBox' type='checkbox' name='milk' id="milk" onChange={this.handleSubmitCheckBox}/>
-                <label htmlFor='milk'> Milk</label><br />
+                <label htmlFor='milk'> milk</label><br />
                 <input className='input-searchBox' type='checkbox' name='eggs' id="eggs" onChange={this.handleSubmitCheckBox}/>
                 <label htmlFor='eggs'> Eggs</label><br />
                 <input className='input-searchBox' type='checkbox' name='sour cream' id="sourCream" onChange={this.handleSubmitCheckBox} />
@@ -277,7 +276,7 @@ class Main extends Component {
                   )})
               } 
             </div>
-	      </div>
+	      {/* </div> */}
 			</>
 		);
 	}

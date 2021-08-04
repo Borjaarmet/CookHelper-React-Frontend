@@ -1,0 +1,121 @@
+.nav{
+  background: rgb(204, 204, 204);
+  background: linear-gradient(0deg,  rgb(26, 26, 26) 0%, #434343 100%);
+  display: flex;
+  height: 80px;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+.navContainer {
+  display: flex;
+  justify-content: space-between;
+  height: 80px;
+  z-index: 1;
+  width: 100%;
+  padding: 0 10px;
+  max-width: 1100px;
+}
+.navLogo {
+  justify-self: flex-start;
+  cursor: pointer;
+  display: flex;
+  font-size: 1.5rem;
+  margin-left: 24px;
+  font-weight: bold;
+  align-items: center;
+  text-decoration: none;
+}
+.navLogo a{
+  color: #fff;
+}
+.navMenu {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  text-align: center; 
+}
+.navLink {
+ color: #fff;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  padding: 0 1rem;
+  height: 100%;
+  cursor: pointer;
+  font-size: 1.2rem;
+}
+.navBtn{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.navBtnLink {
+  background-color: #ffd154;
+  border-radius: 50px;
+  padding: 5px 10px;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 16px;
+  color: #010606;
+}
+.navBtnLinkLogin{
+  background-color: #ffd154;
+  border-radius: 50px;
+  padding: 5px 10px;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 18px;
+  color: #010606;
+}
+.mobileIcon {
+  display: none;
+}
+
+@media screen and (max-width: 1200px) {
+  .navLogo {
+  font-size: 1.4rem;
+  margin-left: 20px;
+ }
+ .navLink {
+  font-size: 1.2rem;
+ }
+}
+@media screen and (max-width: 960px) {
+    .navContainer{
+   transition: 0.8s all ease;
+  }  
+  .navLogo {
+  font-size: 1.2rem;
+  margin-left: 18px;
+ }
+ .navLink {
+  font-size: 1rem;
+ }
+}
+
+@media screen and (max-width: 768px) {
+  .mobileIcon {
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    transform: translate(-120%, 80%);
+    font-size: 26px;
+    color: #fff;
+    cursor: pointer;
+  }
+  .navMenu {
+    display: none;
+  }
+  .navBtn {
+    display: none;
+  }
+  .navLogo {
+  font-size: 1rem;
+ }
+}

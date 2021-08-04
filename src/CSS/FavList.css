@@ -1,0 +1,52 @@
+.container-favList {
+  margin: 50px;
+  /* height: 100vh; */
+}
+.container-favList h1 {
+  margin-bottom: 30px;
+}
+.sortbtns {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 20px 0;
+}
+.sortbtns button {
+  border: none;
+  padding: 10px 20px;
+  border-radius: 25px;
+  color: #fff;
+  background: rgb(204, 204, 204);
+  background: linear-gradient(0deg,  rgb(26, 26, 26) 0%, #434343 100%);
+}
+
+.recipeBox-title {
+  text-align: center;
+  font-size: 16px;
+}
+.recipeBox-video {
+ text-align: center;
+}
+.recipeBox-btns {
+  display: flex;
+}
+.recipeBox-btns button {
+  padding: 5px 15px;
+  color: #fff;
+  margin-right: 15px;
+}
+
+@media screen and (max-width: 768px) {
+  .sortbtns{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 20px 0;
+  }
+  .sortbtns button {
+  border: none;
+  padding: 8px 15px;
+  margin-bottom: 10px;
+}
+}
