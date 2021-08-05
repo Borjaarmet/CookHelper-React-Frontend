@@ -24,6 +24,7 @@ class Signup extends Component {
       this.props.history.push('/app');
     }
   };
+  
 
   handleChange = event => {
     const { name, value } = event.target;
