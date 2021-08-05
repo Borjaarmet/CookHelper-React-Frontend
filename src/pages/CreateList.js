@@ -98,6 +98,17 @@ class CreateList extends Component {
                           <div className="recipeBox-title">
                             <h3>{recipe.recipeName}</h3>
                           </div>
+                           <div className="recipeBox-video">
+                                <iframe
+                                  width='200'
+                                  height='150'
+                                  src={recipe.videoLink}
+                                  title='YouTube video player'
+                                  frameBorder='0'
+                                  allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
+                                  allowFullScreen
+                                ></iframe>
+                              </div> 
                           <div className="recipeBox-btns">
                             <Link to = {`/recipes/${recipe._id}/details`}>
                             <button className="navBtnLink">See details</button>
