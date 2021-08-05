@@ -1,14 +1,9 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+
 import { withAuth } from '../providers/AuthProvider';
 
 class Sidebar extends Component {
-  // constructor(props){
-  //   super(props)
-  //   this.state = {
-  //     visible: false,
-  //   }
-  // }
 
 	closeSidebar = () => {
 	  const sidebar = document.getElementById('sidebarContainer')
@@ -20,7 +15,6 @@ class Sidebar extends Component {
 		return (
 			< >
 				{isLoggedIn ? (
-					
 					<div className="sidebarContainer">
 						<div>
 						<i onClick={this.closeSidebar} className="far fa-window-close"></i>
@@ -77,7 +71,7 @@ class Sidebar extends Component {
 				)}
 			</>
 		);
-	}
+	};
 };
 
 export default withAuth(Sidebar);

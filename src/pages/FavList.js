@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
+import {Link} from 'react-router-dom';
+
 import userClient from '../lib/userClient';
 import recipeClient from '../lib/recipeClient';
-import {Link} from 'react-router-dom';
+
 import Navbar from '../components/Navbar'
 
 class FavList extends Component {
@@ -14,7 +16,6 @@ class FavList extends Component {
   }
   
   async componentDidMount(){
-    console.log("compdidmount");
    try{
     const myList = await userClient.getUserFavouriteList();
       console.log("favList: ",myList)
@@ -84,53 +85,50 @@ class FavList extends Component {
       <>
         <Navbar/>
         <div>
-       
-       {this.state === "loading" ? <p>Loading...</p> :   
-          <div  className="container-favList">
-            <h1 className="title-search">Your favourite recipes</h1>
-            
-            {favouriteList.length === 1 && <h2 className="title-search">You have {favouriteList.length} recipe!</h2>} 
-            {favouriteList.length > 1 && <h2 className="title-search">You have {favouriteList.length} recipes!</h2> }
-             {favouriteList.length === 0 && <h2 className="title-search">You don´t have any recipe saved!</h2>} 
-            <div className="sortbtns">
-            <button onClick={this.handleSortByTime}>Sort by cooking time</button>
-            <button onClick={this.handleSortByIngredients}>Sort by num of ingredients</button>
+          {this.state === "loading" ? <p>Loading...</p> :   
+              <div  className="container-favList">
+                <h1 className="title-search">Your favourite recipes</h1>
+                {favouriteList.length === 1 && <h2 className="title-search">You have {favouriteList.length} recipe!</h2>} 
+                {favouriteList.length > 1 && <h2 className="title-search">You have {favouriteList.length} recipes!</h2> }
+                {favouriteList.length === 0 && <h2 className="title-search">You don´t have any recipe saved!</h2>} 
+                <div className="sortbtns">
+                <button onClick={this.handleSortByTime}>Sort by cooking time</button>
+                <button onClick={this.handleSortByIngredients}>Sort by num of ingredients</button>
+                </div>
+                  <div className="recipe-box">
+                  {favouriteList.map((recipe) => {
+                    return <div className="recipe-box-recipe" key={recipe._id}>
+                              <div className="recipeBox-title">
+                                <h3>{recipe.recipeName}</h3>
+                              </div>
+                              <div className="recipeBox-video">
+                                <iframe
+                                  width='200'
+                                  height='150'
+                                  src={recipe.videoLink}
+                                  title='YouTube video player'
+                                  frameBorder='0'
+                                  allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
+                                  allowFullScreen
+                                ></iframe>
+                              </div> 
+                              <div className="recipeBox-btns">
+                                <Link to = {`/recipes/${recipe._id}/details`}>
+                                <button className="navBtnLink">See details</button>
+                                </Link>
+                              
+                                <button className="fas fa-trash" onClick={() => this.handleDelete(recipe)}></button>                     
+                              </div>
+                            </div>
+                })}  
+              </div>  
             </div>
-              <div className="recipe-box">
-              {favouriteList.map((recipe) => {
-                return <div className="recipe-box-recipe" key={recipe._id}>
-                          <div className="recipeBox-title">
-                            <h3>{recipe.recipeName}</h3>
-                          </div>
-                          {/* <div className="recipeBox-video">
-                            <iframe
-                              width='200'
-                              height='150'
-                              src={recipe.videoLink}
-                              title='YouTube video player'
-                              frameBorder='0'
-                              allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
-                              allowFullScreen
-                            ></iframe>
-                          </div> */}
-                          <div className="recipeBox-btns">
-                            <Link to = {`/recipes/${recipe._id}/details`}>
-                            <button className="navBtnLink">See details</button>
-                            </Link>
-                          
-                            <button className="fas fa-trash" onClick={() => this.handleDelete(recipe)}></button>                     
-                          </div>
-                      </div>
-            })}  
-          </div>  
+          }
         </div>
-      }
-      </div>
       </>
     )
   };
 };
-
 
 export default FavList;
 

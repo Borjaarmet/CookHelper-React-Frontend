@@ -28,13 +28,11 @@
   margin:30px;
   font-size: 35px;
 }
-
 .hrSidebar {
   border: 1px solid #ffd154;
   height: 1px;
   margin: 40px 0 20px 0;
 }
-
 .sidebarLink {
    display: flex;
   align-items: center;

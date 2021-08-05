@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import image from '../images/bacon-n-eggs-404.jpg'
 
+import image from '../images/bacon-n-eggs-404.jpg';
 
 const NotFound = () => {
   return (

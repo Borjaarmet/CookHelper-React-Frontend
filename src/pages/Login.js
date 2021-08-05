@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import { withAuth } from "../providers/AuthProvider";
-// import apiClient from "../lib/apiClient";
-import Navbar from "../components/Navbar";
 
+import { withAuth } from "../providers/AuthProvider";
+
+import Navbar from "../components/Navbar";
 
 class Login extends Component {
   constructor(props) {
@@ -12,16 +12,6 @@ class Login extends Component {
       password: ""
     };
   }
-
-  // componentDidMount = () => {
-  //   apiClient.login(this.state.username).then((user) => {
-  //    console.log(user)
-  //     // this.setState({
-  //     //   username: user,
-  //     //   password: user
-  //     // })
-  //   })
-  // }
 
   handleFormSubmit = (event) => {
     event.preventDefault();
@@ -39,7 +29,6 @@ class Login extends Component {
   };
 
   handleChange = event => {
-    
     const { name, value } = event.target;
     this.setState({ [name]: value });
   };

@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 
-
 class FormInput extends Component {
   constructor(props){
     super(props)
@@ -23,8 +22,7 @@ class FormInput extends Component {
     recipeCheckBoxFound.classList.add('hidden')
   }
 
-  render() {
-    
+  render() { 
     return (
      <div className="recipes-container">
      

@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
+
 import recipeClient from '../lib/recipeClient';
+
 import Navbar from '../components/Navbar';
 import NotFound from '../components/NotFound';
 
@@ -28,7 +30,7 @@ class RecipeDetail extends Component {
 
   addToFav = () => {
    recipeClient.pushRecipeToFav(this.props.match.params.recipeId).then((recipe) => {
-    console.log("recipe:", recipe)
+    console.log(recipe)
     this.props.history.push('/user/favourites')
    })
   };
@@ -41,7 +43,7 @@ class RecipeDetail extends Component {
         {recipe === undefined && <NotFound/>}
         {status === 'loading' && <div>loading</div>}
         {status === 'loaded' && 
-            <div className="container-profile">
+          <div className="container-profile">
             <div className="card">
               <div className="header">
                 <iframe 
@@ -59,14 +61,13 @@ class RecipeDetail extends Component {
                 </h2>
                 <i className="fa fa-clock">{recipe.TimeToCook}</i>
                 <i className="fa fa-users"> Serves 4</i>
-                
                 <div className="stars">
                   <li>
-                      <a href="#"><i className="fa fa-star"></i></a>
-                      <a href="#"><i className="fa fa-star"></i></a>
-                      <a href="#"><i className="fa fa-star"></i></a>
-                      <a href="#"><i className="fa fa-star"></i></a>
-                      <a href="#"><i className="fa fa-star-o"></i></a>
+                    <a href="#"><i className="fa fa-star"></i></a>
+                    <a href="#"><i className="fa fa-star"></i></a>
+                    <a href="#"><i className="fa fa-star"></i></a>
+                    <a href="#"><i className="fa fa-star"></i></a>
+                    <a href="#"><i className="fa fa-star-o"></i></a>
                   </li>
                 </div>
                 <div className="info">
@@ -92,7 +93,7 @@ class RecipeDetail extends Component {
         } 
       </>
     )
-  }
+  };
 };
 
 export default RecipeDetail;

@@ -34,7 +34,6 @@ import './CSS/CreateRecipe.css';
 import './CSS/CreatedList.css';
 
 
-
 class App extends Component {
 	render() {
 		const { isLoading } = this.props;
@@ -43,7 +42,6 @@ class App extends Component {
 		}
 		return (
 			<div className="container">
-				
 				<Switch>
 					<AnonRoute exact path= "/" component= {Home}/>
 					<AnonRoute path="/signup" component={Signup} />

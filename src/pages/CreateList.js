@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+
 import userClient from '../lib/userClient';
 import recipeClient from '../lib/recipeClient';
+
 import Navbar from '../components/Navbar';
-import { Link } from 'react-router-dom';
 
 class CreateList extends Component {
   constructor(props){
@@ -14,8 +16,6 @@ class CreateList extends Component {
   }
   
   async componentDidMount(){
-    console.log("compdidmount");
-    console.log("props:",this.props.match.params)
    try{
     const myList = await userClient.getUserCreatedRecipesList();
       console.log("createdList: ",myList)
@@ -29,25 +29,24 @@ class CreateList extends Component {
    } 
   };
 
-  handleDelete = async (recipe) => {
-    console.log("click delete")
-    try{
-      const recipeId = await recipeClient.deleteRecipeCreated(recipe._id) 
-      console.log("deleted recipe:" , recipeId)
-      console.log("props", this.props)
-      this.setState({
-        createdList: this.state.createdList.splice(1, recipeId)
-      })
+  handleDelete = (recipe) => {
+    try {
+      recipeClient.deleteRecipeCreated(recipe._id) 
     }
     catch(error) {
       console.log(error)
-    }
+    } finally {
+     const myRecipes = [...this.state.createdList].filter(item => {
+       return item._id !== recipe._id
+     })
+     this.setState({
+       createdList: myRecipes
+     })
+   }
   };
 
-   handleSortByTime = () => {
-    console.log("click");
+  handleSortByTime = () => {
     const { createdList } = this.state;
-
     const newCopy = [...createdList];
     newCopy.sort(function (a, b) {
       if (a.TimeToCook > b.TimeToCook) {
@@ -62,10 +61,8 @@ class CreateList extends Component {
     });
   };
 
-   handleSortByIngredients = () => {
-    console.log("click");
+  handleSortByIngredients = () => {
     const { createdList } = this.state;
-
     const newCopy = [...createdList];
     newCopy.sort(function (a, b) {
       if (a.ingredientsList < b.ingredientsList) {
@@ -81,13 +78,10 @@ class CreateList extends Component {
   };
     
   render() {
-    const {createdList} = this.state
-    console.log("render createdList", this.state)
-    
+    const {createdList} = this.state    
     return (
       <>
         <Navbar/>
-        
          {this.state === "loading" ? <p>Loading...</p> :   
           <div  className="container-favList">
             <h1 className="title-search">Your own recipes</h1>
@@ -95,10 +89,10 @@ class CreateList extends Component {
             {createdList.length > 1 && <h2 className="title-search">You have {createdList.length} recipes!</h2>}
             {createdList.length === 0 && <h2 className="title-search">You don´t have any recipe saved!</h2>} 
             <div className="sortbtns">
-            <button onClick={this.handleSortByTime}>Sort by cooking time</button>
-            <button onClick={this.handleSortByIngredients}>Sort by num of ingredients</button>
+              <button onClick={this.handleSortByTime}>Sort by cooking time</button>
+              <button onClick={this.handleSortByIngredients}>Sort by num of ingredients</button>
             </div>
-              <div className="recipe-box">
+            <div className="recipe-box">
               {createdList.map((recipe) => {
                 return <div className="recipe-box-recipe" key={recipe._id}>
                           <div className="recipeBox-title">
@@ -111,14 +105,13 @@ class CreateList extends Component {
                             <button className="fas fa-trash" onClick={()=> {this.handleDelete(recipe)}}></button>                     
                           </div>
                       </div>
-            })}  
-          </div>  
-        </div>
-      }
+              })}  
+            </div>  
+          </div>
+        }
       </>
     )
   };
 };
-
 
 export default CreateList;

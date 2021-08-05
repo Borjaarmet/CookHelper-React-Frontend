@@ -7,13 +7,13 @@ export const TitleContainer = styled.div`
   justify-content: center;
   align-items: center;
   padding: 0 30px;
-  height: 600px;
+  height: 800px;
   position: relative;
   z-index: 1;
   overflow-y: hidden;
 
   @media screen and (max-width: 1200px) {
-    height: 800px;
+    height: 1000px;
     overflow-y: hidden;
   }
 `;

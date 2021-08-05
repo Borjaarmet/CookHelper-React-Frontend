@@ -18,6 +18,10 @@
   padding: 0 10px;
   max-width: 1100px;
 }
+.logo {
+  font-family: 'Cookie', cursive;
+  color: #ffd154;
+}
 .navLogo {
   justify-self: flex-start;
   cursor: pointer;
@@ -92,10 +96,10 @@
   .navLogo {
   font-size: 1.2rem;
   margin-left: 18px;
- }
+  }
  .navLink {
   font-size: 1rem;
- }
+  }
 }
 
 @media screen and (max-width: 768px) {
@@ -117,5 +121,5 @@
   }
   .navLogo {
   font-size: 1rem;
- }
+  }
 }

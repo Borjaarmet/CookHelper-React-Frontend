@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
-import userClient from '../lib/userClient'
+
+import userClient from '../lib/userClient';
+
 import { withAuth } from '../providers/AuthProvider';
+
 import Navbar from '../components/Navbar';
 
  class Profile extends Component {
@@ -18,7 +21,6 @@ import Navbar from '../components/Navbar';
 
    try{
     const profile = await userClient.getUserProfile(this.props.match.params.recipeId);
-      console.log("user: ",profile)
       this.setState({
         status: 'loaded',
         user: profile.userProfile,
@@ -31,8 +33,6 @@ import Navbar from '../components/Navbar';
   };
 
   handleChange = (event) => {
-    console.log(event.target.name)
-    console.log(event.target.value)
      this.setState({
       [event.target.name]: event.target.value,
     });
@@ -42,7 +42,7 @@ import Navbar from '../components/Navbar';
     const {user, status} = this.state;
     return (
       <>
-      <Navbar/>
+        <Navbar/>
          {status === 'loading' && <div>loading</div>}
          {status === 'loaded' && 
             <div className="container-profile">
@@ -81,14 +81,13 @@ import Navbar from '../components/Navbar';
                     <option value='Advanced '  onChange={this.handleChange}>Advanced</option>
                     <option value='I´m a chef'  onChange={this.handleChange}>I´m a chef</option>
                   </select>
-                
-              </div>
-             </form>
-             </div>
+                </div>
+              </form>
+            </div>
          } 
       </>
     )
-  }
+  };
 };
 
 export default withAuth(Profile)

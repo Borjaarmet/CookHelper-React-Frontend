@@ -1,7 +1,9 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+
 import { withAuth } from "../providers/AuthProvider";
-import Navbar from '../components/Navbar'
+
+import Navbar from '../components/Navbar';
 
 class Signup extends Component {
   constructor(props) {

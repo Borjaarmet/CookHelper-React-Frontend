@@ -1,6 +1,5 @@
 .container-favList {
   margin: 50px;
-  /* height: 100vh; */
 }
 .container-favList h1 {
   margin-bottom: 30px;
@@ -19,7 +18,6 @@
   background: rgb(204, 204, 204);
   background: linear-gradient(0deg,  rgb(26, 26, 26) 0%, #434343 100%);
 }
-
 .recipeBox-title {
   text-align: center;
   font-size: 16px;
@@ -48,5 +46,5 @@
   border: none;
   padding: 8px 15px;
   margin-bottom: 10px;
-}
+  }
 }
