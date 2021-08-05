@@ -8,14 +8,18 @@
   height: 100vh;
 }
 .title-notFound {
-  margin: 50px;
+  margin: 100px 50px 30px 50px;
   text-align: center;
 }
 .title-notFound h1 {
   font-family:fantasy;
 }
 .image-notFound{
-  width:700px;
+  margin-top: 50px;
+  width:500px;
+}
+.link-notFound{
+  margin-top: 30px;
 }
 .btn-notFound {
   background-color: #ffd154;

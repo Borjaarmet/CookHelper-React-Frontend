@@ -9,7 +9,7 @@ const NotFound = () => {
       <div className="title-notFound">
       <h1>Ooops!, the page you are looking for is not on the menu</h1>
       </div>
-            <div className="link-notFound">
+      <div className="link-notFound">
       <Link to= "/app">
         <button className="btn-notFound">GO BACK</button>
       </Link>
