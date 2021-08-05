@@ -32,6 +32,7 @@ import './CSS/Profile.css';
 import './CSS/FavList.css';
 import './CSS/CreateRecipe.css';
 import './CSS/CreatedList.css';
+import './CSS/NotFound.css'
 
 
 class App extends Component {
