@@ -223,7 +223,7 @@ class Main extends Component {
                       return (
                         <div className="recipe-box-recipe" key={recipe._id}>
                           <Link to={`/recipes/${recipe._id}/details`}>
-                            <h4>{recipe.recipeName}</h4>
+                            <h4 >{recipe.recipeName}</h4>
                           </Link>
                           <iframe
                             width='200'

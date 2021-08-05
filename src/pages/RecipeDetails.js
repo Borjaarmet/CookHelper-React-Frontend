@@ -10,7 +10,7 @@ class RecipeDetail extends Component {
     super(props)
     this.state= {
       status: 'loading',
-      recipe:undefined,
+      recipe: undefined,
     }
   }
 

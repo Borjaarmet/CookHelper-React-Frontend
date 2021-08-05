@@ -27,12 +27,6 @@ class RecipeClient {
 	deleteRecipeCreated(id) {
 		return this.recipeClient.put(`/recipes/create/${id}`).then(({ data }) => data);
 	}
-
-	getUpdateRecipe(recipe) {
-    const {recipeName, difficulty, TimeToCook, ingredientsList, Steps, videoLink} = recipe
-    const {id} = recipe._id
-		return this.recipeClient.post(`/recipes/${id}`, {recipeName, difficulty, TimeToCook, ingredientsList, Steps, videoLink}).then(response => response.data);
-	}
 };
 
 const recipeClient = new RecipeClient();

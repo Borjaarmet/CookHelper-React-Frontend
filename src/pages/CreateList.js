@@ -78,7 +78,7 @@ class CreateList extends Component {
   };
     
   render() {
-    const {createdList} = this.state    
+    const {createdList} = this.state   
     return (
       <>
         <Navbar/>
@@ -113,7 +113,8 @@ class CreateList extends Component {
                             <Link to = {`/recipes/${recipe._id}/details`}>
                             <button className="navBtnLink">See details</button>
                             </Link>
-                            <button className="fas fa-trash" onClick={()=> {this.handleDelete(recipe)}}></button>                     
+                            <button className="fas fa-trash" onClick={()=> {this.handleDelete(recipe)}}></button> 
+                        
                           </div>
                       </div>
               })}  

@@ -24,6 +24,10 @@ class UserClient {
 		return this.userClient.get('/user/favourites').then(({ data }) => data);
 	}
 
+	UpdateRecipe(recipe) {
+    const {id} = recipe._id
+		return this.userClient.post(`/user/create/${id}`, recipe).then(response => response.data);
+	}
   
 
 };
